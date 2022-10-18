@@ -1,12 +1,12 @@
-# QuickStart app for the Sightics Analytics iOS SDK
+# QuickStart app for the Sightic Analytics iOS SDK
 
-The purpose of this app is to show developers how to integrate the [Sightics Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) in their project.
+The purpose of this app is to show developers how to integrate the [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) in their project.
 
 ## App overview
 
 * The app uses SwiftUI
 * The deployment target is set to iOS 15
-* The app adds [Sightics Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a Swift Package.
+* The app adds [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a Swift Package.
 
 ### Start view
 
@@ -16,7 +16,7 @@ The start view contains a button to go to the `TestView`.
 
 ### Test view
 
-The test view is a container for the `SighticView`. The `SighticView` is part of [Sightics Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) and performs the following steps:
+The test view is a container for the `SighticView`. The `SighticView` is part of [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) and performs the following steps:
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/2-quickstart-app-instruction-view.png)
 1. The next step is to help the user position the phone and their head correctly.<br>
@@ -51,3 +51,20 @@ The `performInference` is an async function and will return a `SighticResult` ob
 1. Select the _SighticQuickstart_ scheme in Xcode
 1. Select a Simulator or Device as destination. Please observe that the test can only be run on a device. A replacement view will be instead of the test by the SDK when running on a simulator so that the flow of the app can be tested.
 1. Run `⌘R` the app.
+
+## Add SDK as xcframework instead of Swift Package
+
+You can add the [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a xcframework to your app instead of as a Swift Package:
+
+1. Remove `SighitAnalytics` Swift Package on the _Package Denedencies_ pane of the the _SighticQuickstart_ project.
+   ![Remove Swift Package](images/7-xcframework-quickstart-remove-swift-package.png)
+1. Goto https://github.com/EyescannerTechnology/sightic-sdk-ios/releases
+1. Scroll to the release you would like to use.
+1. Download the file `SighticAnalytics.xcframework.zip`.<br>
+   ![Download zip file](images/8-xcframework-quickstart-app-download-xcframework-zip.png)
+1. Unpack the zip file<br>
+   ![Unpack zip file](images/9-xcframework-quickstart-app-unpack-xcframeowrk-zip.png)
+1. Drag `SighticAnalytics.xcframework` into your app projext in Xcode.<br>
+   ![Copy xcframework to Xcode project](images/10-xcframework-quickstart-app-drag-xcframework-to-app.png)
+1. Add `SighitAnalytics` as a framework in the General pane of the `SighticQuickstart` target.<br>
+   ![Add xcframework as Framework in Xcode](images/11-xcframework-quickstart-app-add-xcframework-as-dependency.png)
