@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		157FC8D628FE949A0022093A /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 157FC8D528FE949A0022093A /* SighticAnalytics */; };
-		15EFC98228FD670A00E3FE5F /* SighticQuickstartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98128FD670A00E3FE5F /* SighticQuickstartApp.swift */; };
+		15EFC98228FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */; };
 		15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98328FD670A00E3FE5F /* ContentView.swift */; };
 		15EFC98628FD670B00E3FE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15EFC98528FD670B00E3FE5F /* Assets.xcassets */; };
 		15EFC98928FD670B00E3FE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15EFC98828FD670B00E3FE5F /* Preview Assets.xcassets */; };
@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SighticQuickstart.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		15EFC98128FD670A00E3FE5F /* SighticQuickstartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighticQuickstartApp.swift; sourceTree = "<group>"; };
+		15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SighticQuickstartSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighticQuickstartSwiftUIApp.swift; sourceTree = "<group>"; };
 		15EFC98328FD670A00E3FE5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		15EFC98528FD670B00E3FE5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15EFC98828FD670B00E3FE5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		15EFC97528FD670A00E3FE5F = {
 			isa = PBXGroup;
 			children = (
-				15EFC98028FD670A00E3FE5F /* SighticQuickstart */,
+				15EFC98028FD670A00E3FE5F /* SighticQuickstartSwiftUI */,
 				15EFC97F28FD670A00E3FE5F /* Products */,
 				15EFC9C328FD7F5800E3FE5F /* Frameworks */,
 			);
@@ -54,15 +54,15 @@
 		15EFC97F28FD670A00E3FE5F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */,
+				15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15EFC98028FD670A00E3FE5F /* SighticQuickstart */ = {
+		15EFC98028FD670A00E3FE5F /* SighticQuickstartSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				15EFC98128FD670A00E3FE5F /* SighticQuickstartApp.swift */,
+				15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */,
 				15EFC98328FD670A00E3FE5F /* ContentView.swift */,
 				15EFC99228FD715F00E3FE5F /* StartView.swift */,
 				15EFC99428FD71ED00E3FE5F /* TestView.swift */,
@@ -71,7 +71,7 @@
 				15EFC98528FD670B00E3FE5F /* Assets.xcassets */,
 				15EFC98728FD670B00E3FE5F /* Preview Content */,
 			);
-			path = SighticQuickstart;
+			path = SighticQuickstartSwiftUI;
 			sourceTree = "<group>";
 		};
 		15EFC98728FD670B00E3FE5F /* Preview Content */ = {
@@ -92,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		15EFC97D28FD670A00E3FE5F /* SighticQuickstart */ = {
+		15EFC97D28FD670A00E3FE5F /* SighticQuickstartSwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstart" */;
+			buildConfigurationList = 15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstartSwiftUI" */;
 			buildPhases = (
 				15EFC97A28FD670A00E3FE5F /* Sources */,
 				15EFC97B28FD670A00E3FE5F /* Frameworks */,
@@ -104,12 +104,12 @@
 			);
 			dependencies = (
 			);
-			name = SighticQuickstart;
+			name = SighticQuickstartSwiftUI;
 			packageProductDependencies = (
 				157FC8D528FE949A0022093A /* SighticAnalytics */,
 			);
 			productName = SighticsQuickstart;
-			productReference = 15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */;
+			productReference = 15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstart" */;
+			buildConfigurationList = 15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstartSwiftUI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -143,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15EFC97D28FD670A00E3FE5F /* SighticQuickstart */,
+				15EFC97D28FD670A00E3FE5F /* SighticQuickstartSwiftUI */,
 			);
 		};
 /* End PBXProject section */
@@ -170,7 +170,7 @@
 				15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */,
 				15EFC99728FD721000E3FE5F /* ResultView.swift in Sources */,
 				15EFC99328FD715F00E3FE5F /* StartView.swift in Sources */,
-				15EFC98228FD670A00E3FE5F /* SighticQuickstartApp.swift in Sources */,
+				15EFC98228FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,11 +299,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstart/Preview Content\"";
-				DEVELOPMENT_TEAM = 38M74ZQGUZ;
+				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstartSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Sightic Quickstart";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quickstart SwiftUI";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to test for impairment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -316,7 +316,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstart;
+				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstartSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -333,11 +333,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstart/Preview Content\"";
-				DEVELOPMENT_TEAM = 38M74ZQGUZ;
+				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstartSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Sightic Quickstart";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quickstart SwiftUI";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to test for impairment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,7 +350,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstart;
+				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstartSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -362,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstart" */ = {
+		15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstartSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15EFC98A28FD670B00E3FE5F /* Debug */,
@@ -371,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstart" */ = {
+		15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstartSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15EFC98D28FD670B00E3FE5F /* Debug */,

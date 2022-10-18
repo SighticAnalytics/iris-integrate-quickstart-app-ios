@@ -4,9 +4,14 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 ## App overview
 
-* The app uses SwiftUI
-* The deployment target is set to iOS 15
-* The app adds [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a Swift Package.
+* There is one QuickStart app variant for SwiftUI based apps in the folder `SighticQuickstartSwiftUI`.
+* There is one QuickStart app variant for UIKit based apps in the folder `SighticQuickstartUIKit`.
+* The deployment target is set to iOS 15 for both the SwiftUI and the UIKit variants.
+* Both variants adds [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a Swift Package.
+
+## App flow
+
+The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots below are from the SwiftUI variant.
 
 ### Start view
 
@@ -40,15 +45,17 @@ The `performInference` is an async function and will return a `SighticResult` ob
 
 ## Configure signing
 
-1. Open `SighticQuickstart/SighticQuickstart.xcodeproj` with Xcode.
-1. Navigate to the Signing and Capabilites pane for the `SighticQuickstart` target.
+The steps below use names from the SwiftUI variant.
+
+1. Open `SighticQuickstartSwiftUI/SighticQuickstartSwiftUI.xcodeproj` with Xcode.
+1. Navigate to the Signing and Capabilites pane for the `SighticQuickstartSwiftUI` target.
 1. Change _team_ to your team.
 1. Change _Bundle identifier_ to something unique.
 1. Check _Automatically manage signing_.
 
 ## Run
 
-1. Select the _SighticQuickstart_ scheme in Xcode
+1. Select the _SighticQuickstartSwiftUI_ or _SighticQuickstartUIKit_ scheme in Xcode depending on what variant you are running.
 1. Select a Simulator or Device as destination. Please observe that the test can only be run on a device. A replacement view will be instead of the test by the SDK when running on a simulator so that the flow of the app can be tested.
 1. Run `⌘R` the app.
 
