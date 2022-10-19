@@ -22,6 +22,9 @@ class HostViewController: UIViewController {
             vc = WaitingViewController()
         case .result:
             vc = ResultViewController()
+        case .error:
+            vc = ErrorViewController()
+
         }
 
         guard let vc = vc else { fatalError() }

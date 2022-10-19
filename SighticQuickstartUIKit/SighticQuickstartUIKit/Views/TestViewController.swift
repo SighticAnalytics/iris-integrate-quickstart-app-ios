@@ -7,35 +7,44 @@ import SwiftUI
 import SighticAnalytics
 
 class TestViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let sighticView = SighticView(apiKey: "secret_api_key", completion: { sighticRecording in
+    func sendRecodingForAnalysis(_ sighticRecording: SighticRecording) {
+        Task.init {
             /*
-             The app now has the SighticRecording. We
-             want to present a waiting screen while waiting
-             for the result from Sightic backend.
-             We update the app state to trigger the waiting screen.
+             - The app now has a SighticRecording that we can call
+               performInference on to send the recording Sightic server
+               for analysis.
+
+             - We update appstate to show a waiting view while
+               waiting for the test result from the Sightic backend.
+
+             - We update the app state with the inference result after
+               receving it back from performInference. It
+               will be used in the ResultView.
              */
             model.appState = AppState.waiting
-            Task {
-                do {
-                    /*
-                     Send the recording to Sightic for analysis. The result
-                     will be returned when analysis is done. The QuickStart
-                     app passes the result to the app state and uses this
-                     in the result view.
-                     */
-                    let result = try await sighticRecording.performInference()
-                    model.appState = .result(result)
-                } catch SighticError.invalidApiKey {
-                    print("Invalid API key")
-                    model.appState = .start
-                } catch {
-                    print("Error while analyzing the result")
-                    model.appState = .start
-                }
+            let inferenceResult = await sighticRecording.performInference()
+            switch inferenceResult {
+            case .success(let sighticInference):
+                model.appState = .result(sighticInference)
+            case .failure(let sighticError):
+                model.appState = .error(sighticError)
             }
-        })
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let sighticView = SighticView(apiKey: "secret_api_key",
+                                      completion:
+                                        { [weak self] sighticRecordingResult in
+                                          guard let self = self else { return }
+                                          switch sighticRecordingResult {
+                                          case .success(let sighticRecording):
+                                              self.sendRecodingForAnalysis(sighticRecording)
+                                          case .failure(let sighticError):
+                                              model.appState = .error(sighticError)
+                                      }
+                                  })
 
         let sighticViewController = UIHostingController(rootView: sighticView)
 

@@ -1,5 +1,5 @@
 //
-//  ResultView.swift
+//  ErrorView.swift
 //  SighticQuickstartSwiftUI
 //
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
@@ -8,26 +8,26 @@
 import SwiftUI
 import SighticAnalytics
 
-struct ResultView: View {
+struct ErrorView: View {
     @Binding var appState: AppState
 
-    func generateResultText(_ inference: SighticInference) -> String {
-        let text = "hasImpairment = \(inference.hasImpairment), confidence = \(inference.confidence)"
+    func generateErrorText(error: SighticError) -> String {
+        let text = "SighticError: \(error.localizedDescription)"
         return text
     }
-    
+
     var body: some View {
         switch appState {
-        case .result(let sighticInference):
+        case .error(let sighticError):
             VStack {
                 Text("Sightic SDK Quickstart")
                     .font(.title)
                     .padding()
                 Spacer()
-                Text("ResultView")
+                Text("ErrorView")
                     .font(.title2)
                     .padding()
-                Text(generateResultText(sighticInference))
+                Text(generateErrorText(error: sighticError))
                     .padding()
                 Button(action: {
                         appState = .start
@@ -41,8 +41,9 @@ struct ResultView: View {
     }
 }
 
-struct ResultView_Previews: PreviewProvider {
+struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(appState: .constant(.result(SighticInference(hasImpairment: true, confidence: 100))))
+        ResultView(appState: .constant(.error(SighticError.noConnection)))
     }
 }
+

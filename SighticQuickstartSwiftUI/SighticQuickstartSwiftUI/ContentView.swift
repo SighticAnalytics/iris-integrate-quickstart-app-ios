@@ -12,7 +12,8 @@ enum AppState {
     case start
     case test
     case waitingForAnalysis
-    case result(SighticResult)
+    case result(SighticInference)
+    case error(SighticError)
 }
 
 struct ContentView: View {
@@ -28,6 +29,8 @@ struct ContentView: View {
             WaitingView()
         case .result:
             ResultView(appState: $appState)
+        case .error:
+            ErrorView(appState: $appState)
         }
     }
 }
