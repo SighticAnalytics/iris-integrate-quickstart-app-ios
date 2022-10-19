@@ -1,6 +1,6 @@
 //
-//  SighticQuickstartApp.swift
-//  SighticQuickstart
+//  SighticQuickstartSwiftUIApp.swift
+//  SighticQuickstartSwiftUI
 //
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SighticQuickstartApp: App {
+struct SighticQuickstartSwiftUI: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

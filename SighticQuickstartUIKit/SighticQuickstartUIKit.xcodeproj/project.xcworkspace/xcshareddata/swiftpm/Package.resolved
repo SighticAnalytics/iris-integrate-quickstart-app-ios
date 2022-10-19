@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "sightic-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EyescannerTechnology/sightic-sdk-ios",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e7f030c76e5432567cdf5f90cee3c9a6ab77311e"
+      }
+    }
+  ],
+  "version" : 2
+}
