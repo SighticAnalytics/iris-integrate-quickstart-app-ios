@@ -9,7 +9,8 @@ enum AppState {
     case start
     case test
     case waiting
-    case result(SighticResult)
+    case result(SighticInference)
+    case error(SighticError)
 }
 
 class Model {
