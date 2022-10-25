@@ -19,8 +19,8 @@ class ResultViewController: UIViewController {
         ])
 
         let resultText: String
-        if case .result(let sighticResult) = model.appState {
-            resultText = "sighticResult.hasImpairment = \(sighticResult.hasImpairment)"
+        if case .result(let sighticInference) = model.appState {
+            resultText = "hasImpairment = \(sighticInference.hasImpairment), confidence = \(sighticInference.confidence)"
         } else {
             resultText = "<result not available>"
         }
