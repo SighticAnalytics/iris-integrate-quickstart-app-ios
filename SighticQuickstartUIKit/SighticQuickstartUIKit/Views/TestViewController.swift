@@ -34,7 +34,7 @@ class TestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sighticView = SighticView(apiKey: "secret_api_key",
+        let sighticView = SighticView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
                                       completion:
                                         { [weak self] sighticRecordingResult in
                                           guard let self = self else { return }
