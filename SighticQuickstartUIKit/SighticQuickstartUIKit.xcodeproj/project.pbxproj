@@ -353,6 +353,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SighticQuickstartUIKit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Quickstart UIKit";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to test for impairment.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -383,6 +384,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SighticQuickstartUIKit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Quickstart UIKit";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to test for impairment.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
