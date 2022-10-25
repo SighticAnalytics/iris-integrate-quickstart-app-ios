@@ -4,44 +4,44 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 ## App overview
 
-* There is one QuickStart app variant for SwiftUI based apps in the folder `SighticQuickstartSwiftUI`.
 * There is one QuickStart app variant for UIKit based apps in the folder `SighticQuickstartUIKit`.
+* There is one QuickStart app variant for SwiftUI based apps in the folder `SighticQuickstartSwiftUI`.
 * The deployment target is set to iOS 15 for both the SwiftUI and the UIKit variants.
 * Both variants adds [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a Swift Package.
 
 ## App flow
 
-The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots below are from the SwiftUI variant.
+The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots below are from the UIKit variant.
 
-### Start view
+### StartViewController
 
-The start view contains a button to go to the `TestView`.
+The `StartViewController` contains a button to go to the `TestViewController`.
 
-![Start view](images/1-quickstart-app-start-view.png)
+![Start view](images/1-quickstart-app-start-view.jpeg)
 
-### Test view
+### TestViewController
 
-The test view is a container for the `SighticView`. The `SighticView` is part of [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) and performs the following steps:
+The `TestViewController` is a container for the `SighticView`. The `SighticView` is part of [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) and performs the following steps:
 1. Shows an instruction view to the user.<br>
-   ![Instruction view](images/2-quickstart-app-instruction-view.png)
+   ![Instruction view](images/2-quickstart-app-instruction-view.jpeg)
 1. The next step is to help the user position the phone and their head correctly.<br>
-   ![Test in progress view - Positioning camera](images/3-quickstart-app-test-in-progress-a.png)
+   ![Test in progress view - Positioning camera](images/3-quickstart-app-test-in-progress-a.jpeg)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
-  ![Test in progress view - Moving dot](images/4-quickstart-app-test-in-progress-b.png)
+  ![Test in progress view - Moving dot](images/4-quickstart-app-test-in-progress-b.jpeg)
 
-The `SighticView` triggers a callback to the app to indicate that the test has finished. The app receives a `SighticRecording` object through the callback. `SighticRecording` implements a function named `performInference`.
+The `SighticView` triggers a callback to the app to indicate that the recording has finished. The app receives a `SighticRecordingResult` object through the callback. `SighticRecordingResult` is a result type that contains either a `SighticRecording` or a `SighticError`. `SighticRecording` implements a function named `performInference`. The app shall call the `performInference` method to send the recorded data to the `Sightic` server for analysis.
 
-### Waiting for analysis view
+### WaitingViewController
 
-The app shall call the `performInference` method to send the recorded data to the `Sightic` server for analysis. This may take a couple of seconds. The QuickStart app impelements a `WaitingView` to inform the app user about the status.
+The analysis by the Sightic server may take a couple of seconds. The QuickStart app shows `WaitingViewController` to inform the app user about the status.
 
-![Waiting for analysis view](images/5-quickstart-app-waiting-for-analsysis.png)
+![Waiting for analysis view](images/5-quickstart-app-waiting-for-analsysis.jpeg)
 
-### Result view
+### ResultViewController
 
-The `performInference` is an async function and will return a `SighticResult` object when done. The `SighticResult` object contains a bool property named `hasImpairment` that can be used by the app to present the result. The QuickStart app shows the raw value of `hasImpairment`.
+The `performInference` is an async function and will return a `SighticInferenceResult` object when done. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`. The `SighticInference` object contains a `bool` property named `hasImpairment` and an `Int` property named `confidence` betwen 0 to 100 that can be used by the app to present the result. The QuickStart app shows the raw value of `hasImpairment` and `confidence`.
 
-![Result view](images/6-quickstart-app-result-view.png)
+![Result view](images/6-quickstart-app-result-view.jpeg)
 
 ## Configure signing
 
