@@ -1,37 +1,19 @@
-//
-//  TestView.swift
-//  SighticQuickstartSwiftUI
-//
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
-//
 
 import SwiftUI
 import SighticAnalytics
 
-/// The ``TestView`` acts as a container view for the ``SighticView``.
+/// The ``TestView`` acts as a container view for the ``SighticInferenceView``.
 ///
-/// 1. Create a ``SighticView`` and let it occupy the whole screen.
-/// 2. Provide an API key to the ``SighticView``.
-/// 3. Provide a limit on how many times the app user is allow to fail
-///   to do a recording before triggering completion handler with an error.
-/// 3. Provide a completion handler to SighticView
-///    - The completion handler will receive a
-///      ``SighticRecordingResult`` which is of type ``Result``.
-///    - ``SighticRecordingResult`` case ``.success`` contains ``SighticRecording``
-///    - ``SighticRecordingResult`` case ``.failure`` contains ``SighticError``.
-/// 4. ``SighticRecording`` implements the function ``performInference`` that sends the
-///   recording to the Sightic backend for analysis.
-/// 5. The ``performInference`` function returns a ``SighticInferenceResult``
-///   which is of type ``Result``:
-///     - ``SighticInferenceResult`` case ``.success`` contains ``SighticResult``
-///     - ``SighticInferenceResult`` case ``.failure`` contains  ``SighticError``.
+/// See https://github.com/EyescannerTechnology/sightic-sdk-ios/blob/main/README.md
+/// regarding how to use the ``SighticInferenceView`` view.
 struct TestView: View {
     @Binding var appState: AppState
 
-    func sendRecodingForAnalysis(_ sighticRecording: SighticRecording) {
+    func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task {
             /*
-             - The app now has a SighticRecording that we can call
+             - The app now has a sighticInferenceRecording that we can call
                performInference on to send the recording Sightic server
                for analysis.
 
@@ -43,7 +25,7 @@ struct TestView: View {
                will be used in the ResultView.
              */
             appState = .waitingForAnalysis
-            let inferenceResult = await sighticRecording.performInference()
+            let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {
             case .success(let sighticInference):
                 appState = .result(sighticInference)
@@ -54,15 +36,17 @@ struct TestView: View {
     }
 
     var body: some View {
-        SighticView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
-                    completion: { sighticRecordingResult in
-            switch sighticRecordingResult {
-            case .success(let sighticRecording):
-                sendRecodingForAnalysis(sighticRecording)
-            case .failure(let sighticError):
-                appState = .error(sighticError)
-            }
-        })
+        /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
+        /// for the Quickstart app and shall not be used in production.
+        SighticInferenceView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
+                    completion: { sighticInferenceRecordingResult in
+                                    switch sighticInferenceRecordingResult {
+                                    case .success(let sighticInferenceRecording):
+                                        sendRecodingForAnalysis(sighticInferenceRecording)
+                                    case .failure(let sighticError):
+                                        appState = .error(sighticError)
+                                    }
+                                })
     }
 }
 
