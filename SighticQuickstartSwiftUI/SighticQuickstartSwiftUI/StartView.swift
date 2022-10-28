@@ -1,11 +1,7 @@
-//
-//  Start.swift
-//  SighticQuickstartSwiftUI
-//
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
-//
 
 import SwiftUI
+import SighticAnalytics
 
 struct StartView: View {
     @Binding var appState: AppState
@@ -14,6 +10,9 @@ struct StartView: View {
         VStack {
             Text("Sightic SDK Quickstart")
                 .font(.title)
+                .padding()
+            Text("SDK version: \(SighticVersion.sdkVersion)")
+                .font(.body)
                 .padding()
             Spacer()
             Text("StartView")

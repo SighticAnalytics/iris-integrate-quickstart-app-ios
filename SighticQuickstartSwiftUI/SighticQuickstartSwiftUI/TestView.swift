@@ -39,7 +39,8 @@ struct TestView: View {
         /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
         /// for the Quickstart app and shall not be used in production.
         SighticInferenceView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
-                    completion: { sighticInferenceRecordingResult in
+                             skipInstructions: false,
+                             completion: { sighticInferenceRecordingResult in
                                     switch sighticInferenceRecordingResult {
                                     case .success(let sighticInferenceRecording):
                                         sendRecodingForAnalysis(sighticInferenceRecording)

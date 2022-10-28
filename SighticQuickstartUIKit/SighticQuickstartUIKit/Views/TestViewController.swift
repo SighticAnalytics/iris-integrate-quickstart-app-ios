@@ -41,15 +41,16 @@ class TestViewController: UIViewController {
         /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
         /// for the Quickstart app and shall not be used in production.
         let sighticView = SighticInferenceView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
-                                      completion:
-                                        { [weak self] sighticInferenceRecordingResult in
-                                          guard let self = self else { return }
-                                          switch sighticInferenceRecordingResult {
-                                          case .success(let sighticInferenceRecording):
-                                              self.sendRecodingForAnalysis(sighticInferenceRecording)
-                                          case .failure(let sighticError):
-                                              model.appState = .error(sighticError)
-                                      }
+                                               skipInstructions: false,
+                                               completion:
+                                                    { [weak self] sighticInferenceRecordingResult in
+                                                      guard let self = self else { return }
+                                                      switch sighticInferenceRecordingResult {
+                                                      case .success(let sighticInferenceRecording):
+                                                          self.sendRecodingForAnalysis(sighticInferenceRecording)
+                                                      case .failure(let sighticError):
+                                                          model.appState = .error(sighticError)
+                                                  }
                                   })
 
         let sighticViewController = UIHostingController(rootView: sighticView)
