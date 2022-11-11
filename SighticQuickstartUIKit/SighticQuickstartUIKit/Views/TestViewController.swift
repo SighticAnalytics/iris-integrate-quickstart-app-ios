@@ -6,8 +6,12 @@ import UIKit
 import SwiftUI
 import SighticAnalytics
 
+/// The ``TestViewController`` acts as a container view for the ``SighticInferenceView``.
+///
+/// See https://github.com/EyescannerTechnology/sightic-sdk-ios/blob/main/README.md
+/// regarding how to use the ``SighticInferenceView`` view.
 class TestViewController: UIViewController {
-    func sendRecodingForAnalysis(_ sighticRecording: SighticRecording) {
+    func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task.init {
             /*
              - The app now has a SighticRecording that we can call
@@ -22,7 +26,7 @@ class TestViewController: UIViewController {
                will be used in the ResultView.
              */
             model.appState = AppState.waiting
-            let inferenceResult = await sighticRecording.performInference()
+            let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {
             case .success(let sighticInference):
                 model.appState = .result(sighticInference)
@@ -34,16 +38,19 @@ class TestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sighticView = SighticView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
-                                      completion:
-                                        { [weak self] sighticRecordingResult in
-                                          guard let self = self else { return }
-                                          switch sighticRecordingResult {
-                                          case .success(let sighticRecording):
-                                              self.sendRecodingForAnalysis(sighticRecording)
-                                          case .failure(let sighticError):
-                                              model.appState = .error(sighticError)
-                                      }
+        /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
+        /// for the Quickstart app and shall not be used in production.
+        let sighticView = SighticInferenceView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
+                                               skipInstructions: false,
+                                               completion:
+                                                    { [weak self] sighticInferenceRecordingResult in
+                                                      guard let self = self else { return }
+                                                      switch sighticInferenceRecordingResult {
+                                                      case .success(let sighticInferenceRecording):
+                                                          self.sendRecodingForAnalysis(sighticInferenceRecording)
+                                                      case .failure(let sighticError):
+                                                          model.appState = .error(sighticError)
+                                                  }
                                   })
 
         let sighticViewController = UIHostingController(rootView: sighticView)

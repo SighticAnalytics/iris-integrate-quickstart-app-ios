@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import SighticAnalytics
 
 class StartViewController: UIViewController {
     override func viewDidLoad() {
@@ -19,16 +20,18 @@ class StartViewController: UIViewController {
         ])
 
         let title = UIQuickstartTitle(title: "Sightic SDK Quickstart")
+        let body1 = UIQuickstartBody(text: "SDK Version: \(SighticVersion.sdkVersion)")
         let spacer1 = UIQuickstartSpacer()
-        let body = UIQuickstartBody(text: "StartView")
+        let body2 = UIQuickstartBody(text: "StartView")
         let button = UIQuickstartButton(title: "Go to test", action: {
             model.appState = .test
         })
         let spacer2 = UIQuickstartSpacer()
 
         sv.addArrangedSubview(title)
+        sv.addArrangedSubview(body1)
         sv.addArrangedSubview(spacer1)
-        sv.addArrangedSubview(body)
+        sv.addArrangedSubview(body2)
         sv.addArrangedSubview(button)
         sv.addArrangedSubview(spacer2)
 
