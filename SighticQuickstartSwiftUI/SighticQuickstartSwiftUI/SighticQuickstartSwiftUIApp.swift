@@ -9,6 +9,14 @@ import SwiftUI
 
 @main
 struct SighticQuickstartSwiftUI: App {
+    static var apiKey: String {
+        let apiKey = ""
+        guard !apiKey.isEmpty else {
+            fatalError("No SighticAnalytics API key was set")
+        }
+        return apiKey
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

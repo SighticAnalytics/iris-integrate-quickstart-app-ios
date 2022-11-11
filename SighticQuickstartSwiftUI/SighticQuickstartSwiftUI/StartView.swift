@@ -56,7 +56,7 @@ struct StartView: View {
     }
     
     func checkSdkVersions() async {
-        switch await SighticVersion.sdkVersions(apiKey: "") {
+        switch await SighticVersion.sdkVersions(apiKey: SighticQuickstartSwiftUI.apiKey) {
         case let .failure(error):
             print("Error while checking for supported versions: \(error)")
         case let .success(versions):
