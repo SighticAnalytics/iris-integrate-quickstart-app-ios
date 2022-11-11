@@ -28,7 +28,7 @@ import SighticAnalytics
 struct TestView: View {
     @Binding var appState: AppState
 
-    func sendRecodingForAnalysis(_ sighticRecording: SighticRecording) {
+    func sendRecodingForAnalysis(_ sighticRecording: SighticInferenceRecording) {
         Task {
             /*
              - The app now has a SighticRecording that we can call
@@ -54,15 +54,18 @@ struct TestView: View {
     }
 
     var body: some View {
-        SighticView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
-                    completion: { sighticRecordingResult in
-            switch sighticRecordingResult {
-            case .success(let sighticRecording):
-                sendRecodingForAnalysis(sighticRecording)
-            case .failure(let sighticError):
-                appState = .error(sighticError)
+        SighticInferenceView(
+            apiKey: "",
+            skipInstructions: false,
+            completion: { sighticRecordingResult in
+                switch sighticRecordingResult {
+                case .success(let sighticRecording):
+                    sendRecodingForAnalysis(sighticRecording)
+                case .failure(let sighticError):
+                    appState = .error(sighticError)
+                }
             }
-        })
+        )
     }
 }
 
