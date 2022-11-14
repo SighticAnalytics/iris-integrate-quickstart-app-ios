@@ -7,7 +7,6 @@ import SighticAnalytics
 
 class StartViewController: UIViewController {
     var runAnyway: Bool = false
-    var unsupportedSdkVersion = false
 
     let sv = UIQuickstartStackview()
     let errorUnsupportedSDKVersionText = UIQuickstartBody(text: "Unsupported SDK version (\(SighticVersion.sdkVersion))")
@@ -60,9 +59,9 @@ class StartViewController: UIViewController {
     
     func goToTest() {
         Task {
-            await checkSdkVersions()
-
-            if unsupportedSdkVersion {
+            let isSupported = try? await isSDKVersionSupported()
+            
+            if isSupported == false {
                 let stackView = self.view.subviews[0] as? UIQuickstartStackview
                 stackView!.insertArrangedSubview(errorUnsupportedSDKVersionText, at: 4)
                 self.view.setNeedsLayout()
@@ -80,17 +79,18 @@ class StartViewController: UIViewController {
         }
     }
 
-    func checkSdkVersions() async {
+    func isSDKVersionSupported() async throws -> Bool {
         switch await SighticVersion.sdkVersions(apiKey: AppDelegate.apiKey) {
         case let .failure(error):
             print("Error while checking for supported versions: \(error)")
+            throw error
         case let .success(versions):
             if !versions.isCurrentVersionSupported {
                 print("Current version is not supported. Supported versions are: \(versions.supportedVersions)")
-                unsupportedSdkVersion = true
+                return false
             }
             else {
-                unsupportedSdkVersion = false
+                return true
             }
         }
     }
