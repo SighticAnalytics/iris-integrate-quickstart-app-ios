@@ -432,8 +432,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EyescannerTechnology/sightic-sdk-ios";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.51;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
