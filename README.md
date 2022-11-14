@@ -63,7 +63,7 @@ The steps below use names from the SwiftUI variant.
 
 You can add the [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnology/sightic-sdk-ios) as a xcframework to your app instead of as a Swift Package:
 
-1. Remove `SighitAnalytics` Swift Package on the _Package Denedencies_ pane of the the _SighticQuickstart_ project.
+1. Remove `SighticAnalytics` Swift Package on the _Package Denedencies_ pane of the the _SighticQuickstart_ project.
    ![Remove Swift Package](images/7-xcframework-quickstart-remove-swift-package.png)
 1. Goto https://github.com/EyescannerTechnology/sightic-sdk-ios/releases
 1. Scroll to the release you would like to use.
@@ -73,5 +73,5 @@ You can add the [Sightic Analytics iOS SDK](https://github.com/EyescannerTechnol
    ![Unpack zip file](images/9-xcframework-quickstart-app-unpack-xcframeowrk-zip.png)
 1. Drag `SighticAnalytics.xcframework` into your app projext in Xcode.<br>
    ![Copy xcframework to Xcode project](images/10-xcframework-quickstart-app-drag-xcframework-to-app.png)
-1. Add `SighitAnalytics` as a framework in the General pane of the `SighticQuickstart` target.<br>
+1. Add `SighticAnalytics` as a framework in the General pane of the `SighticQuickstart` target.<br>
    ![Add xcframework as Framework in Xcode](images/11-xcframework-quickstart-app-add-xcframework-as-dependency.png)
