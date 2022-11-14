@@ -37,7 +37,7 @@ struct TestView: View {
 
     var body: some View {
         SighticInferenceView(
-            apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
+            apiKey: SighticQuickstartSwiftUI.apiKey,
             skipInstructions: false,
             completion: { sighticInferenceRecordingResult in
                 switch sighticInferenceRecordingResult {

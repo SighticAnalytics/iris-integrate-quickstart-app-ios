@@ -6,6 +6,14 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    static var apiKey: String {
+        let apiKey = ""
+        guard !apiKey.isEmpty else {
+            fatalError("No SighticAnalytics API key was set")
+        }
+        return apiKey
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }
