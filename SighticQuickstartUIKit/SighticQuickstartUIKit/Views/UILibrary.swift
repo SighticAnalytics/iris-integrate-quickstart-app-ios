@@ -24,6 +24,8 @@ class UIQuickstartBody: UILabel {
         self.text = text
         translatesAutoresizingMaskIntoConstraints = false
         textAlignment = .center
+        numberOfLines = 0
+        lineBreakMode = .byWordWrapping
         font = .preferredFont(forTextStyle: .body)
     }
 
