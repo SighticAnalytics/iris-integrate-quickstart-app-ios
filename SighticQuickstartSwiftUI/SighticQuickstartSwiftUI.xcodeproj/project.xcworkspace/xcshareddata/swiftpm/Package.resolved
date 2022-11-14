@@ -3,10 +3,10 @@
     {
       "identity" : "sightic-sdk-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/EyescannerTechnology/sightic-sdk-ios",
+      "location" : "https://github.com/SighticAnalytics/sightic-sdk-ios",
       "state" : {
-        "revision" : "01707b2f857e1d0877e951e7e764e03f8bacde9c",
-        "version" : "0.0.51"
+        "revision" : "2417cc44c843bab6f54b1bed4f3217fc3a9bf292",
+        "version" : "0.0.53"
       }
     }
   ],

@@ -1,4 +1,6 @@
+//
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
+//
 
 import SwiftUI
 import SighticAnalytics

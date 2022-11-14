@@ -1,7 +1,4 @@
 //
-//  WaitingView.swift
-//  SighticQuickstartSwiftUI
-//
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
 //
 

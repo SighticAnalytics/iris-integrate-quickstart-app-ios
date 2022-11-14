@@ -1,11 +1,13 @@
+//
 //  Copyright © 2022 Sightic Analytics AB All rights reserved.
+//
 
 import SwiftUI
 import SighticAnalytics
 
 /// The ``TestView`` acts as a container view for the ``SighticInferenceView``.
 ///
-/// See https://github.com/EyescannerTechnology/sightic-sdk-ios/blob/main/README.md
+/// See https://github.com/SighticAnalytics/sightic-sdk-ios/blob/main/README.md
 /// regarding how to use the ``SighticInferenceView`` view.
 struct TestView: View {
     @Binding var appState: AppState
