@@ -18,8 +18,8 @@
 		1565AC1328FEF17700B242A6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1228FEF17700B242A6 /* TestViewController.swift */; };
 		1565AC1528FEF32100B242A6 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1428FEF32100B242A6 /* WaitingViewController.swift */; };
 		1565AC1728FEF34D00B242A6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1628FEF34D00B242A6 /* ResultViewController.swift */; };
+		157C92EF2922774E0093EFE7 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 157C92EE2922774E0093EFE7 /* SighticAnalytics */; };
 		15D8ABE1290179330070079A /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D8ABE0290179330070079A /* ErrorViewController.swift */; };
-		15D8ABE529017A3D0070079A /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 15D8ABE429017A3D0070079A /* SighticAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D8ABE529017A3D0070079A /* SighticAnalytics in Frameworks */,
+				157C92EF2922774E0093EFE7 /* SighticAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +142,7 @@
 			);
 			name = SighticQuickstartUIKit;
 			packageProductDependencies = (
-				15D8ABE429017A3D0070079A /* SighticAnalytics */,
+				157C92EE2922774E0093EFE7 /* SighticAnalytics */,
 			);
 			productName = SighticQuickstartUIKit;
 			productReference = 1565ABF528FEC51200B242A6 /* SighticQuickstartUIKit.app */;
@@ -173,7 +173,7 @@
 			);
 			mainGroup = 1565ABEC28FEC51200B242A6;
 			packageReferences = (
-				15D8ABE329017A3D0070079A /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
+				157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
 			);
 			productRefGroup = 1565ABF628FEC51200B242A6 /* Products */;
 			projectDirPath = "";
@@ -365,7 +365,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstartUIKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighticanalytics.SighticQuickstartUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -396,7 +396,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.eyescanner.SighticQuickstartUIKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighticanalytics.SighticQuickstartUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -428,20 +428,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		15D8ABE329017A3D0070079A /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
+		157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EyescannerTechnology/sightic-sdk-ios";
+			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios/";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.51;
+				minimumVersion = 0.0.53;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		15D8ABE429017A3D0070079A /* SighticAnalytics */ = {
+		157C92EE2922774E0093EFE7 /* SighticAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 15D8ABE329017A3D0070079A /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
+			package = 157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
 			productName = SighticAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */

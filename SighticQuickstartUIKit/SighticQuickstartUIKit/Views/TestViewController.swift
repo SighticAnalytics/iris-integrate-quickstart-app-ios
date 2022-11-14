@@ -8,7 +8,7 @@ import SighticAnalytics
 
 /// The ``TestViewController`` acts as a container view for the ``SighticInferenceView``.
 ///
-/// See https://github.com/EyescannerTechnology/sightic-sdk-ios/blob/main/README.md
+/// See https://github.com/SighticAnalytics/sightic-sdk-ios/blob/main/README.md
 /// regarding how to use the ``SighticInferenceView`` view.
 class TestViewController: UIViewController {
     func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
@@ -40,7 +40,7 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
         /// for the Quickstart app and shall not be used in production.
-        let sighticView = SighticInferenceView(apiKey: "e4c4e2f7-aedc-4462-a74f-5a43967346b9",
+        let sighticView = SighticInferenceView(apiKey: AppDelegate.apiKey,
                                                skipInstructions: false,
                                                completion:
                                                     { [weak self] sighticInferenceRecordingResult in
