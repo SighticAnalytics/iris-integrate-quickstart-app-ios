@@ -6,25 +6,9 @@ import UIKit
 import SwiftUI
 import SighticAnalytics
 
-/// The ``TestViewController`` acts as a container view for the ``SighticInferenceView``.
-///
-/// See https://github.com/SighticAnalytics/sightic-sdk-ios/blob/main/README.md
-/// regarding how to use the ``SighticInferenceView`` view.
 class TestViewController: UIViewController {
     func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task.init {
-            /*
-             - The app now has a SighticRecording that we can call
-               performInference on to send the recording Sightic server
-               for analysis.
-
-             - We update appstate to show a waiting view while
-               waiting for the test result from the Sightic backend.
-
-             - We update the app state with the inference result after
-               receving it back from performInference. It
-               will be used in the ResultView.
-             */
             model.appState = AppState.waiting
             let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {
@@ -38,8 +22,6 @@ class TestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /// The API key e4c4e2f7-aedc-4462-a74f-5a43967346b9 is specific
-        /// for the Quickstart app and shall not be used in production.
         let sighticView = SighticInferenceView(apiKey: AppDelegate.apiKey,
                                                skipInstructions: false,
                                                completion:

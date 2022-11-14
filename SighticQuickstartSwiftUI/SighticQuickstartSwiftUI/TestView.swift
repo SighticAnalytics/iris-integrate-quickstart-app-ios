@@ -5,27 +5,11 @@
 import SwiftUI
 import SighticAnalytics
 
-/// The ``TestView`` acts as a container view for the ``SighticInferenceView``.
-///
-/// See https://github.com/SighticAnalytics/sightic-sdk-ios/blob/main/README.md
-/// regarding how to use the ``SighticInferenceView`` view.
 struct TestView: View {
     @Binding var appState: AppState
 
     func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task {
-            /*
-             - The app now has a sighticInferenceRecording that we can call
-               performInference on to send the recording Sightic server
-               for analysis.
-
-             - We update appstate to show a waiting view while
-               waiting for the test result from the Sightic backend.
-
-             - We update the app state with the inference result after
-               receving it back from performInference. It
-               will be used in the ResultView.
-             */
             appState = .waitingForAnalysis
             let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {

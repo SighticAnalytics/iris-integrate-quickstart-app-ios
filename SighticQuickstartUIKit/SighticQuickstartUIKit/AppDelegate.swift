@@ -7,6 +7,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static var apiKey: String {
+        //TODO: Add your API key below. Get in touch with Sightic Analytics to retrieve an API key.
         let apiKey = ""
         guard !apiKey.isEmpty else {
             fatalError("No SighticAnalytics API key was set")
