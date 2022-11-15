@@ -128,6 +128,12 @@ if SighticSupportedDevices.isCurrentDeviceSupported {
 * The deployment target is set to iOS 15 for both the SwiftUI and the UIKit variants.
 * Both variants add [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) as a Swift Package.
 
+## SDK API key in the QuickStart apps
+
+You must provide an API key to the SDK in order to run the QuickStart apps successfully:
+* `SighticQuickstartUIKit`: Add the API key to the `AppDelegate.swift`.
+* `SighticQuickstartSwiftUI`: Add the API key to `SighticQuickstartSwiftUIApp.swift`.
+
 ## Configure signing
 
 The steps below use names from the SwiftUI variant.
