@@ -9,7 +9,7 @@ struct ResultView: View {
     @Binding var appState: AppState
 
     func generateResultText(_ inference: SighticInference) -> String {
-        let text = "hasImpairment = \(inference.hasImpairment), confidence = \(inference.confidence)"
+        let text = "hasImpairment = \(inference.hasImpairment)"
         return text
     }
     
@@ -40,6 +40,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(appState: .constant(.result(SighticInference(hasImpairment: true, confidence: 100))))
+        ResultView(appState: .constant(.result(SighticInference(hasImpairment: true))))
     }
 }
