@@ -188,7 +188,7 @@ The `performInference` is an async function and will return a `SighticInferenceR
 
 You can add the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) as a xcframework to your app instead of as a Swift Package:
 
-1. Remove `SighticAnalytics` Swift Package on the _Package Denedencies_ pane of the the _SighticQuickstart_ project.
+1. Remove `SighticAnalytics` Swift Package on the _Package Dependencies_ pane of the the _SighticQuickstart_ project.
    ![Remove Swift Package](images/7-xcframework-quickstart-remove-swift-package.png)
 1. Goto https://github.com/SighticAnalytics/sightic-sdk-ios/releases
 1. Scroll to the release you would like to use.
