@@ -42,11 +42,11 @@ The SDK requires an API key in order to provide the app with a result. Please ge
 1. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
 1. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
 1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
-1. The `SighticInference` object contains a `bool` property named `hasImpairment` and an `Int` property named `confidence` betwen 0 to 100 that can be used by the app to present the result.
+1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
 
 ## Translations using custom strings
 
-A number of user-visible strings can be customized by the host application, by implementing the protocol `SighticStrings` and provide an instance to the `SighticInferenceView`. This could for example be used to add support for more languages. The host application is then expected to return a non-nil string for each property defined by the protocol. The protocol is documented with a brief comment of what the string is supposed to say.
+A number of user-visible strings can be customized by the host application, by implementing the protocol `SighticStrings` and provide it to the `SighticInferenceView`. This could for example be used to add support for more languages. The host application is then expected to return a non-nil string for each property defined by the protocol. The protocol is documented with a brief comment of what the string is supposed to say.
 
 If a `nil` value is returned, the SDK will fallback to a default value based on the current language setting. For this to work properly it is important that the returned value is `nil`, and not any other default value.
 
@@ -70,7 +70,7 @@ struct MyStrings: SighticStrings {
 }
 ```
 
-### Providing strings to SDK
+### Providing strings to the SDK
 
 ```swift
 @main
@@ -180,7 +180,7 @@ The analysis by the Sightic server may take a couple of seconds. The QuickStart 
 
 ### ResultViewController
 
-The `performInference` is an async function and will return a `SighticInferenceResult` object when done. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`. The `SighticInference` object contains a `bool` property named `hasImpairment` and an `Int` property named `confidence` betwen 0 to 100 that can be used by the app to present the result. The QuickStart app shows the raw value of `hasImpairment` and `confidence`.
+The `performInference` is an async function and will return a `SighticInferenceResult` object when done. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result. The QuickStart app shows the raw value of `hasImpairment`.
 
 ![Result view](images/6-quickstart-app-result-view.jpeg)
 
