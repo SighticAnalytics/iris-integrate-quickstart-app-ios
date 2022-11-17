@@ -8,13 +8,14 @@ import SighticAnalytics
 struct StartView: View {
     @Binding var appState: AppState
     
+    @State private var unsupportedDevice = false
     @State private var unsupportedSdkVersion = false
     @State private var runAnyway = false
     
     var body: some View {
         let showWarning =
             unsupportedSdkVersion ||
-            !SighticSupportedDevices.isCurrentDeviceSupported
+            unsupportedDevice
         
         VStack {
             Text("Sightic SDK Quickstart")
@@ -27,7 +28,7 @@ struct StartView: View {
             Text("StartView")
                 .font(.title2)
                 .padding()
-            if !SighticSupportedDevices.isCurrentDeviceSupported {
+            if unsupportedDevice {
                 Text("Unsupported iDevice")
                     .foregroundColor(.red)
             }
@@ -44,8 +45,9 @@ struct StartView: View {
     func goToTest() {
         Task {
             await checkSdkVersions()
-            
-            if unsupportedSdkVersion {
+            await checkDeviceModel()
+                        
+            if unsupportedSdkVersion || unsupportedDevice {
                 guard runAnyway else {
                     // Make user click the button again
                     runAnyway = true
@@ -54,6 +56,15 @@ struct StartView: View {
             }
 
             appState = .test
+        }
+    }
+    
+    func checkDeviceModel() async {
+        switch await SighticSupportedDevices.load() {
+        case let .success(supportedDevices):
+            unsupportedDevice = !supportedDevices.isCurrentSupported
+        case let .failure(error):
+            print("Error while checking for supprted devices: \(error)")
         }
     }
     

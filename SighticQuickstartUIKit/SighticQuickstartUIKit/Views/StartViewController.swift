@@ -9,15 +9,13 @@ class StartViewController: UIViewController {
     var runAnyway: Bool = false
 
     let sv = UIQuickstartStackview()
-    let errorUnsupportedSDKVersionText = UIQuickstartBody(text: "Unsupported SDK version (\(SighticVersion.sdkVersion))")
+    let errorMessages = UIQuickstartBody(text: "")
     var button: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        errorUnsupportedSDKVersionText.textColor = .red
-
         view.addSubview(sv)
         NSLayoutConstraint.activate([
             sv.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -40,15 +38,6 @@ class StartViewController: UIViewController {
         sv.addArrangedSubview(body1)
         sv.addArrangedSubview(spacer1)
         sv.addArrangedSubview(body2)
-
-        if !SighticSupportedDevices.isCurrentDeviceSupported {
-            let errorMessage = UIQuickstartBody(text: "Unsupported iDevice")
-            errorMessage.textColor = .red
-            sv.addArrangedSubview(errorMessage)
-            
-            button?.setTitle("Go to test anyway", for: .normal)
-        }
-
         sv.addArrangedSubview(button!)
         sv.addArrangedSubview(spacer2)
 
@@ -57,15 +46,32 @@ class StartViewController: UIViewController {
         ])
     }
     
+    func setErrorMessages(_ messages: [String]) {
+        guard !messages.isEmpty else {
+            sv.removeArrangedSubview(errorMessages)
+            return
+        }
+
+        errorMessages.text = messages.joined(separator: "\n")
+        errorMessages.textColor = .red
+        sv.insertArrangedSubview(errorMessages, at: 4)
+    }
+    
     func goToTest() {
         Task {
-            let isSupported = try? await isSDKVersionSupported()
+            let isSDKSupported = (try? await isSDKVersionSupported()) ?? true
+            let isDeviceModelSupported = (try? await isDeviceModelSupported()) ?? true
             
-            if isSupported == false {
-                let stackView = self.view.subviews[0] as? UIQuickstartStackview
-                stackView!.insertArrangedSubview(errorUnsupportedSDKVersionText, at: 4)
-                self.view.setNeedsLayout()
-                
+            var errorMessages: [String] = []
+            if isSDKSupported == false {
+                errorMessages.append("Unsupported SDK version (\(SighticVersion.sdkVersion))")
+            }
+            if isDeviceModelSupported == false {
+                errorMessages.append("Unsupported iDevice")
+            }
+            setErrorMessages(errorMessages)
+
+            if isSDKSupported == false || isDeviceModelSupported == false {
                 button?.setTitle("Go to test anyway", for: .normal)
 
                 guard self.runAnyway else {
@@ -79,6 +85,16 @@ class StartViewController: UIViewController {
         }
     }
 
+    func isDeviceModelSupported() async throws -> Bool {
+        switch await SighticSupportedDevices.load() {
+        case let .failure(error):
+            print("Error while checking for supprted devices: \(error)")
+            throw error
+        case let .success(supportedDevices):
+            return supportedDevices.isCurrentSupported
+        }
+    }
+    
     func isSDKVersionSupported() async throws -> Bool {
         switch await SighticVersion.sdkVersions(apiKey: AppDelegate.apiKey) {
         case let .failure(error):
