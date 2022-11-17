@@ -6,7 +6,7 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 * Platforms
   * iOS 15
-  * iPhone X or later (except iPhone SE) is recommended
+  * iPhone 12 or later (except iPhone SE) is recommended
 * Programming languages
   * Swift 5
   * No Objective-C support
