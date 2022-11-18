@@ -115,9 +115,14 @@ Supported versions are: ["0.0.47", "0.0.48", "1.0"]
 
 ### Is my device supported?
 
+This code sample queries the backend for a list of supported devices, and ensures that the phone the app is running on is supported.
+
 ```swift
-if SighticSupportedDevices.isCurrentDeviceSupported {  
-    // Use SDK
+if case let .success(supportedDevices) = await SighticSupportedDevices.load() {
+    guard supportedDevices.isCurrentSupported else {
+        // Handle the case where the current phone is not supported
+        return
+    }
 }
 ```
 
