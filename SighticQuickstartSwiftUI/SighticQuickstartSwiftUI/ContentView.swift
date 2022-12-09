@@ -5,9 +5,15 @@
 import SwiftUI
 import SighticAnalytics
 
+
+struct SighticInferenceViewConfiguration {
+    var showInstructions: Bool = false
+    var showRawAlignmentStatus: Bool = false
+}
+
 enum AppState {
     case start
-    case test
+    case test(SighticInferenceViewConfiguration)
     case waitingForAnalysis
     case result(SighticInference)
     case error(SighticError)
