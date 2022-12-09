@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "sightic-sdk-ios",
+      "identity" : "callisto",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SighticAnalytics/sightic-sdk-ios",
+      "location" : "https://github.com/SighticAnalytics/Callisto",
       "state" : {
-        "revision" : "6c6eaf66f346b406e3634a77490544f43228a9a0",
-        "version" : "0.1.1"
+        "branch" : "main",
+        "revision" : "ef37f3d83580515e78f05875f4325336f967a044"
       }
     }
   ],

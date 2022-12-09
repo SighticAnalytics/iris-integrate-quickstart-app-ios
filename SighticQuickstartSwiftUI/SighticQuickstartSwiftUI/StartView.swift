@@ -11,6 +11,7 @@ struct StartView: View {
     @State private var unsupportedDevice = false
     @State private var unsupportedSdkVersion = false
     @State private var runAnyway = false
+    @State private var sighticInferenceViewConfiguration = SighticInferenceViewConfiguration()
     
     var body: some View {
         let showWarning =
@@ -28,6 +29,12 @@ struct StartView: View {
             Text("StartView")
                 .font(.title2)
                 .padding()
+            StartViewInstructionToggle(showInstructions:
+                                        $sighticInferenceViewConfiguration.showInstructions)
+            StartViewShowRawAlignmentStatusToggle(showRawAlignmentStatusToggle:
+                                                    $sighticInferenceViewConfiguration.showRawAlignmentStatus)
+            Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
+                .padding()
             if unsupportedDevice {
                 Text("Unsupported iDevice")
                     .foregroundColor(.red)
@@ -36,8 +43,6 @@ struct StartView: View {
                 Text("Unsupported SDK version (\(SighticVersion.sdkVersion))")
                    .foregroundColor(.red)
             }
-            Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
-                .padding()
             Spacer()
         }
     }
@@ -55,7 +60,7 @@ struct StartView: View {
                 }
             }
 
-            appState = .test
+            appState = .test(sighticInferenceViewConfiguration)
         }
     }
     
@@ -81,6 +86,32 @@ struct StartView: View {
             else {
                 unsupportedSdkVersion = false
             }
+        }
+    }
+}
+
+struct StartViewInstructionToggle: View {
+    @Binding var showInstructions: Bool
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Show instructions")
+            Toggle("Show instructions", isOn: $showInstructions).labelsHidden()
+            Spacer()
+        }
+    }
+}
+
+struct StartViewShowRawAlignmentStatusToggle: View {
+    @Binding var showRawAlignmentStatusToggle: Bool
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Show raw alignment status")
+            Toggle("Show raw alignment status", isOn: $showRawAlignmentStatusToggle).labelsHidden()
+            Spacer()
         }
     }
 }
