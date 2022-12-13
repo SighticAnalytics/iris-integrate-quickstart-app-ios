@@ -22,7 +22,7 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
   * Swift 5
   * No Objective-C support
 * Package managers
-  * Swift Packages
+  * [Swift Package Manager](https://www.swift.org/package-manager/)
   * No CocoaPods support
   * No Carthage support
 
