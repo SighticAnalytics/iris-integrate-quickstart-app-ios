@@ -45,7 +45,7 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
    * An API key
    * A bool stating whether to show instructions to the app user prior to starting the test itself.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
-1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section *How to use SighticStatus optionally provided by the SDK* below.
+1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
 1. Show the `SighticInferenceView` view to start the test. The face of the user will be recorded during a test sequence involving eye movements.
 
 ### SighticInferenceView shows instruction screens
@@ -58,7 +58,7 @@ The instructions screens shows the app user how to position her face in front of
 
 The alignment screen helps the app user position her face in front of the screen. A combination of written instructions and a face mesh to give visual cues are used. The face mesh will become green and a three second countdown is shown when the SDK deems the app user face to be in the correct position.
 
-The app can optionally overlay the alignment screen with its own design of alignment screen. See section *How to use SighticStatus optionally provided by the SDK* below.
+The app can optionally overlay the alignment screen with its own design of alignment screen. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
 
 ![Alignment phase 1](images/b-alignment-phase-1.jpeg) ![Alignment phase 2](images/b-alignment-phase-2.jpeg)
 
