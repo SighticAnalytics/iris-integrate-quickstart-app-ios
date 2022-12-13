@@ -51,7 +51,7 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
 
 The instructions screens shows the app user how to position her face in front of the screen. This phase can be skipped using a parameter to the init method of `SighticInferenceView`.
 
-![Instruction phase](images/a-instruction-phase.jpeg)
+![Instruction phase](images/instruction-view.png)
 
 ### SighticInferenceView shows alignment screen
 
@@ -59,13 +59,15 @@ The alignment screen helps the app user position her face in front of the screen
 
 The app can optionally overlay the alignment screen with its own design of alignment screen. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
 
-![Alignment phase 1](images/b-alignment-phase-1.jpeg) ![Alignment phase 2](images/b-alignment-phase-2.jpeg)
+![Alignment phase - Place face in mask](images/alignment-view-place-face-in-mask.png)
+![Alignment phase - Hold phone closer](images/alignment-view-hold-phone-closer.png)
+![Alignment phase - Countdown](images/alignment-view-countdown.png)
 
 ### SighticInferenceView shows test screen
 
 A green moving dot is presented during the test phase. The app user is supposed to follow the dot with her eyes and keep the phone still. The SDK records the face of the user during the test phase.
 
-![Test phase](images/c-test-phase.jpeg)
+![Test phase](images/test-view.png)
 
 ### App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView
 
@@ -81,11 +83,16 @@ A green moving dot is presented during the test phase. The app user is supposed 
 1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
 1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
 
+![Call graph - perform inference](images/call-graph-perform-inference.png)
+
 ## How to use SighticStatus optionally provided by the SDK
 
 The SDK can optionally provide `SighticStatus` information to make it possible for the app to create its own alignment screen. `SighticStatus` is an enum that contains `SighticAlignmentStatus`. It also shows when countdownn is ongoing and when the test itself has started. The app must remove its alignment overlay when the test starts.
 
 The QuickStart app has a `StatusViewController` that overlays the alignment screen if the user has selected to *Show raw alignment status* in the `StartViewContorller`.
+
+![Status View - Not centered](images/raw-alignment-status-view-not-centered.png)
+![Status View - Countdown](images/raw-alignment-status-view-countdown.png)
 
 ## Translations using custom strings
 
@@ -208,7 +215,7 @@ The `StartViewController` contains a button to go to the `TestViewController`. I
 * Whether to show the instruction screens
 * Whether to overlay the default alignment screen with another view that shows `SighticStatus` provided by the SDK in an optional closure to the app. 
 
-![Start view](images/1-quickstart-app-start-view.jpeg)
+![Start view](images/start-view.png)
 
 ### TestViewController
 
@@ -226,13 +233,19 @@ The `SighticInferenceView` triggers a callback to the app to indicate that the r
 
 The analysis by the Sightic server may take a couple of seconds. The QuickStart app shows `WaitingViewController` to inform the app user about the status.
 
-![Waiting for analysis view](images/5-quickstart-app-waiting-for-analsysis.jpeg)
+![Waiting for analysis view](images/waiting-view.png)
 
 ### ResultViewController
 
 The `performInference` is an async function and will return a `SighticInferenceResult` object when done. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result. The QuickStart app shows the raw value of `hasImpairment`.
 
-![Result view](images/6-quickstart-app-result-view.jpeg)
+![Result view](images/result-view.png)
+
+### ErrorViewController
+
+An error view is shown if something goes wrong when using the test. In the screenshot below the app user moved the phone during the test so that her face was no longer in the correct position. The test was aborted and an error was shown.
+
+![Result view](images/error-view.png)
 
 ## Add SDK as xcframework instead of Swift Package
 
