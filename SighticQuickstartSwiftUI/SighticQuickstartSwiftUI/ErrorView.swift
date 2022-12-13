@@ -26,6 +26,12 @@ struct ErrorView: View {
                     .padding()
                 Text(generateErrorText(error: sighticError))
                     .padding()
+                if case let .recordingFailed(recordingError) = sighticError {
+                    Text("Test failed because \(recordingError.reasonString).")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.red)
+                        .padding()
+                }
                 Button(action: {
                         appState = .start
                 },
@@ -44,3 +50,28 @@ struct ErrorView_Previews: PreviewProvider {
     }
 }
 
+extension SighticRecordingError {
+    public var reasonString: String {
+        switch self {
+        case .interrupted:
+            return "the recording was interrupted"
+        case let .alignment(alignmentStatus):
+            switch alignmentStatus {
+            case .noFaceTracked:
+                return "there was no face in the frame"
+            case .tooFarAway:
+                return "user was too far away"
+            case .noAttention:
+                return "the user was not looking at the display"
+            case .blink:
+                return "the user blinked too much"
+            case .notCentered:
+                return "the user's face was not centered in the frame"
+            case .headTilted:
+                return "the user's head was tilted"
+            default:
+                return ""
+            }
+        }
+    }
+}
