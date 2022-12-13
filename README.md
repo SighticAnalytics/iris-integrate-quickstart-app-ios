@@ -46,7 +46,6 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
    * A bool stating whether to show instructions to the app user.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
 1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
-1. Show the `SighticInferenceView` view to start the test. The face of the user will be recorded during a test sequence involving eye movements.
 
 ### SighticInferenceView shows instruction screens
 
