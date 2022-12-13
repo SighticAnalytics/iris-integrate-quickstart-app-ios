@@ -8,8 +8,8 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 1. **Instruction screen**<br>The instruction view presents a number of screens to the app user informering her how to position her device in front of her face. This step can be deactivate through a parameter to the `SighticInferenceView` init method.
 2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is poisitioned correctly in fron of the screen. `SighticInferenceView` presents an alignment view that make use of a face mesh to provide the app user with visual clues on how to position her device and face. A three second countdown is shown in the alignment view when the SDK deems face position to be ok. The app can optionally subscribe to alignment status updates from the SDK by providing a closure. The app can then implement its own alignment view on top of `SighticInferenceView`.
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
-4. **Recording object**<br>The `SighticInferenceView` provides the app with a `SighticInferenceRecording` through a closure. `SighticInferenceRecording` implements the method `performInference` that the app calls to send the recorded data to the `Sightic Analytics` server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
-6. **Result object**<br>The app will receive a response back that contains a boolean value named `hasImpairment` that contains the result of the analysis.
+4. **Recording object**<br>The `SighticInferenceView` provides the app with the recorded data. The app sends the recorded data to the `Sightic Analytics` server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
+6. **Result object**<br>The app will receive a boolean value back from the `Sightic Analytics` server that contains the result of the analysis.
 
 ![SDK phases](images/sdk-overview-phases.png)
 
@@ -45,7 +45,7 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
    * An API key
    * A bool stating whether to show instructions to the app user prior to starting the test itself.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
-1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section ... (TODO: Add section)
+1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section *How to use SighticStatus optionally provided by the SDK* below.
 1. Show the `SighticInferenceView` view to start the test. The face of the user will be recorded during a test sequence involving eye movements.
 
 ### SighticInferenceView shows instruction screens
@@ -58,7 +58,7 @@ The instructions screens shows the app user how to position her face in front of
 
 The alignment screen helps the app user position her face in front of the screen. A combination of written instructions and a face mesh to give visual cues are used. The face mesh will become green and a three second countdown is shown when the SDK deems the app user face to be in the correct position.
 
-The app can optionally overlay the alignment screen with its own design of alignment screen. See section ... (TODO: Add section)
+The app can optionally overlay the alignment screen with its own design of alignment screen. See section *How to use SighticStatus optionally provided by the SDK* below.
 
 ![Alignment phase 1](images/b-alignment-phase-1.jpeg) ![Alignment phase 2](images/b-alignment-phase-2.jpeg)
 
@@ -81,6 +81,12 @@ A green moving dot is presented during the test phase. The app user is supposed 
 1. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
 1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
 1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
+
+## How to use SighticStatus optionally provided by the SDK
+
+The SDK can optionally provide `SighticStatus` information to make it possible for the app to create its own alignment screen. `SighticStatus` is an enum that contains `SighticAlignmentStatus`. It also shows when countdownn is ongoing and when the test itself has started. The app must remove its alignment overlay when the test starts.
+
+The QuickStart app has a `StatusViewController` that overlays the alignment screen if the user has selected to *Show raw alignment status* in the `StartViewContorller`.
 
 ## Translations using custom strings
 
@@ -199,7 +205,9 @@ The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots bel
 
 ### StartViewController
 
-The `StartViewController` contains a button to go to the `TestViewController`.
+The `StartViewController` contains a button to go to the `TestViewController`. It also allows you to configure the `SighticInferenceView`:
+* Whether to show the instruction screens
+* Whether to overlay the default alignment screen with another view that shows `SighticStatus` provided by the SDK in an optional closure to the app. 
 
 ![Start view](images/1-quickstart-app-start-view.jpeg)
 
@@ -208,12 +216,12 @@ The `StartViewController` contains a button to go to the `TestViewController`.
 The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following steps:
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/2-quickstart-app-instruction-view.jpeg)
-1. The next step is to help the user position the phone and their head correctly.<br>
+1. The next step is an alignment screen to help the user position the phone and their head correctly. Optionally the QuickStart app overlays the default alignment screen with a white screen showing `SighticStatus` provided in a closure.<br>
    ![Test in progress view - Positioning camera](images/3-quickstart-app-test-in-progress-a.jpeg)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
   ![Test in progress view - Moving dot](images/4-quickstart-app-test-in-progress-b.jpeg)
 
-The `SighticInferenceView` triggers a callback to the app to indicate that the recording has finished. The app receives a `SighticInferenceRecordingResult` object through the callback. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`. `SighticInferenceRecording` implements a function named `performInference`. The app shall call the `performInference` method to send the recorded data to the Sightic Analytics server for analysis.
+The `SighticInferenceView` triggers a callback to the app to indicate that the recording has finished. The app receives a `SighticInferenceRecordingResult` object through the callback. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`. `SighticInferenceRecording` implements a function named `performInference`. The app shall call the `performInference` method to send the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
 
 ### WaitingViewController
 
