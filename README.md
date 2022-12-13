@@ -219,13 +219,13 @@ The `StartViewController` contains a button to go to the `TestViewController`. I
 
 ### TestViewController
 
-The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following steps:
+The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
 1. Shows an instruction view to the user.<br>
-   ![Instruction view](images/2-quickstart-app-instruction-view.jpeg)
+   ![Instruction view](images/instruction-view.png)
 1. The next step is an alignment screen to help the user position the phone and their head correctly. Optionally the QuickStart app overlays the default alignment screen with a white screen showing `SighticStatus` provided in a closure.<br>
-   ![Test in progress view - Positioning camera](images/3-quickstart-app-test-in-progress-a.jpeg)
+   ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
-  ![Test in progress view - Moving dot](images/4-quickstart-app-test-in-progress-b.jpeg)
+  ![Test in progress view - Moving dot](images/test-view.png)
 
 The `SighticInferenceView` triggers a callback to the app to indicate that the recording has finished. The app receives a `SighticInferenceRecordingResult` object through the callback. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`. `SighticInferenceRecording` implements a function named `performInference`. The app shall call the `performInference` method to send the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
 
