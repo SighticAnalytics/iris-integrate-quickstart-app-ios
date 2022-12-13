@@ -4,7 +4,7 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 ## SDK Overview
 
-The SDK provides a view named `SighticInferenceView` that you must add to your app. The view goes through the following phases:
+The SDK provides a view named `SighticInferenceView` that you must add to your app. The SDK goes through the following phases:
 1. **Instruction screen**<br>The instruction view presents a number of screens to the app user how to perform the test. The instruction screen can be deactivated through a parameter to the `SighticInferenceView` init method.
 2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is poisitioned correctly in front of the screen. `SighticInferenceView` presents an alignment view with a face mesh to provide the app user with visual clues on how to position her device and face. A three second countdown is shown when the SDK deems face position to be ok. The app can optionally subscribe to alignment status updates from the SDK by providing a closure. The app can then implement its own alignment view on top of `SighticInferenceView`.
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
