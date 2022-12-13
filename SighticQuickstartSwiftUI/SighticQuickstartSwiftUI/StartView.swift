@@ -63,7 +63,7 @@ struct StartView: View {
     var body: some View {
         let showWarning =
             unsupportedSdkVersion == true ||
-            deviceSupport?.isCurrentSupported ?? false
+            deviceSupport?.isCurrentSupported == false
         
         VStack {
             Text("Sightic SDK Quickstart")
