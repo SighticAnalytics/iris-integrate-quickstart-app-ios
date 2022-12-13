@@ -16,8 +16,8 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 ## SDK Requirements
 
 * Platforms
-  * iOS 15
-  * iPhone 12 or later (except iPhone SE) is recommended
+  * iOS 15 or later
+  * iPhone 12 or later (except iPhone SE)
 * Programming languages
   * Swift 5
   * No Objective-C support
