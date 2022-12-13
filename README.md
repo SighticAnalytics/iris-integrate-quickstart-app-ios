@@ -222,7 +222,7 @@ The `StartViewController` contains a button to go to the `TestViewController`. I
 The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/instruction-view.png)
-1. The next step is an alignment screen to help the user position the phone and their head correctly. Optionally the QuickStart app overlays the default alignment screen with a white screen showing `SighticStatus` provided in a closure.<br>
+1. The next step is an alignment screen to help the user position the phone and their head correctly. Optionally the QuickStart app overlays the default alignment screen with a white screen showing `SighticStatus` provided in a closure. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk).<br>
    ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
   ![Test in progress view - Moving dot](images/test-view.png)
