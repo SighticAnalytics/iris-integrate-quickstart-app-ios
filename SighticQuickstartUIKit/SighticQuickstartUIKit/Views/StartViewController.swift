@@ -60,9 +60,9 @@ class StartViewController: UIViewController {
             self.goToTest()
         })
         let spacer3 = UIQuickstartSpacer()
-        let sdkSupportTitle = UIQuickstartBody(text: "SDK backend support:")
+        let sdkSupportTitle = UIQuickstartBody(text: "SDK version support?")
         let spacer4 = UIQuickstartSpacer()
-        let deviceSupportTitle = UIQuickstartBody(text: "Device model support:")
+        let deviceSupportTitle = UIQuickstartBody(text: "Device model support?")
         let spacer5 = UIQuickstartSpacer()
         
         // Title and SDK version
@@ -110,10 +110,10 @@ class StartViewController: UIViewController {
             let isSDKSupported = (try? await isSDKVersionSupported()) ?? true
 
             if isSDKSupported == true {
-                sdkSupport.text = "SDK backend support OK"
+                sdkSupport.text = "SDK version (\(SighticVersion.sdkVersion)) is supported"
                 sdkSupport.textColor = .green
             } else {
-                sdkSupport.text = "SDK version not supported by backend"
+                sdkSupport.text = "Unsupported SDK version (\(SighticVersion.sdkVersion))"
                 sdkSupport.textColor = .red
             }
         }
@@ -121,13 +121,15 @@ class StartViewController: UIViewController {
 
     func loadDeviceSupport() {
         Task {
-            let isDeviceModelSupported = (try? await isDeviceModelSupported()) ?? true
+            guard let device = try? await isDeviceModelSupported() else {
+                return
+            }
 
-            if isDeviceModelSupported == true {
-                deviceSupport.text = "iDevice supported"
+            if device.isCurrentSupported {
+                deviceSupport.text = "iDevice supported (\(device.currentDevice))"
                 deviceSupport.textColor = .green
             } else {
-                deviceSupport.text = "iDevice not supported"
+                deviceSupport.text = "Unsupported iDevice (\(device.currentDevice))"
                 deviceSupport.textColor = .red
             }
         }
@@ -139,13 +141,13 @@ class StartViewController: UIViewController {
         }
     }
 
-    func isDeviceModelSupported() async throws -> Bool {
+    func isDeviceModelSupported() async throws -> SighticSupportedDevices {
         switch await SighticSupportedDevices.load() {
         case let .failure(error):
             print("Error while checking for supprted devices: \(error)")
             throw error
         case let .success(supportedDevices):
-            return supportedDevices.isCurrentSupported
+            return supportedDevices
         }
     }
     
