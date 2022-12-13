@@ -13,7 +13,6 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 
 ![SDK phases](images/sdk-overview-phases.png)
 
-
 ## SDK Requirements
 
 * Platforms
@@ -31,9 +30,6 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 
 The SDK requires an API key in order to provide the app with a result. Please get in touch with [Sightic Analytics](https://www.sighticanalytics.com/contact) to retrieve a key.
 
-
-
-
 ## How to use the SDK in your app
 
 ### Add Swift package
@@ -49,8 +45,28 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
    * An API key
    * A bool stating whether to show instructions to the app user prior to starting the test itself.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
-1. Optionally the app can provide a closure to receive `SighticStatus` updates. 
+1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section ... (TODO: Add section)
 1. Show the `SighticInferenceView` view to start the test. The face of the user will be recorded during a test sequence involving eye movements.
+
+### SighticInferenceView shows instruction screens
+
+The instructions screens shows the app user how to position her face in front of the screen. This phase can be skipped using a parameter to the init method of `SighticInferenceView`.
+
+![Instruction phase](images/a-instruction-phase.jpeg)
+
+### SighticInferenceView shows alignment screen
+
+The alignment screen helps the app user position her face in front of the screen. A combination of written instructions and a face mesh to give visual cues are used. The face mesh will become green and a three second countdown is shown when the SDK deems the app user face to be in the correct position.
+
+The app can optionally overlay the alignment screen with its own design of alignment screen. See section ... (TODO: Add section)
+
+![Alignment phase 1](images/b-alignment-phase-1.jpeg) ![Alignment phase 2](images/b-alignment-phase-2.jpeg)
+
+### SighticInferenceView shows test screen
+
+A green moving dot is presented during the test phase. The app user is supposed to follow the dot with her eyes and keep the phone still. The SDK records the face of the user during the test phase.
+
+![Test phase](images/c-test-phase.jpeg)
 
 ### App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView
 
