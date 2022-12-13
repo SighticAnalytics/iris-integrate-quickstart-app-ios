@@ -5,18 +5,65 @@
 import SwiftUI
 import SighticAnalytics
 
+struct SupportView: View {
+    let deviceSupport: SighticSupportedDevices?
+    let unsupportedSdkVersion: Bool?
+    
+    var body: some View {
+        if let unsupportedSdkVersion = unsupportedSdkVersion {
+            SupportStatus(
+                title: "SDK version support?",
+                supported: !unsupportedSdkVersion,
+                supportOK: "SDK version (\(SighticVersion.sdkVersion)) is supported",
+                supportNotOK: "Unsupported SDK version (\(SighticVersion.sdkVersion))"
+            )
+        }
+        if let deviceSupport = deviceSupport {
+            SupportStatus(
+                title: "Device model support?",
+                supported: deviceSupport.isCurrentSupported,
+                supportOK: "iDevice supported (\(deviceSupport.currentDevice))",
+                supportNotOK: "Unsupported iDevice (\(deviceSupport.currentDevice))"
+            )
+        }
+    }
+}
+
+struct SupportStatus: View {
+    let title: String
+    let supported: Bool
+    let supportOK: String
+    let supportNotOK: String
+    
+    var body: some View {
+        VStack {
+            Text(title)
+            
+            if supported {
+                Text(supportOK)
+                    .foregroundColor(.green)
+            }
+            else {
+                Text(supportNotOK)
+                    .foregroundColor(.red)
+            }
+        }
+        .padding()
+    }
+}
+
 struct StartView: View {
     @Binding var appState: AppState
     
-    @State private var unsupportedDevice = false
-    @State private var unsupportedSdkVersion = false
+    @State private var deviceSupport: SighticSupportedDevices? = nil
+    @State private var unsupportedSdkVersion: Bool? = nil
     @State private var runAnyway = false
     @State private var sighticInferenceViewConfiguration = SighticInferenceViewConfiguration()
-    
+        
     var body: some View {
         let showWarning =
-            unsupportedSdkVersion ||
-            unsupportedDevice
+            unsupportedSdkVersion == true ||
+            deviceSupport?.isCurrentSupported ?? false
         
         VStack {
             Text("Sightic SDK Quickstart")
@@ -35,15 +82,14 @@ struct StartView: View {
                                                     $sighticInferenceViewConfiguration.showRawAlignmentStatus)
             Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
                 .padding()
-            if unsupportedDevice {
-                Text("Unsupported iDevice")
-                    .foregroundColor(.red)
-            }
-            if unsupportedSdkVersion {
-                Text("Unsupported SDK version (\(SighticVersion.sdkVersion))")
-                   .foregroundColor(.red)
-            }
+            SupportView(deviceSupport: deviceSupport, unsupportedSdkVersion: unsupportedSdkVersion)
             Spacer()
+        }
+        .onAppear {
+            Task {
+                await checkSdkVersions()
+                await checkDeviceModel()
+            }
         }
     }
     
@@ -52,7 +98,7 @@ struct StartView: View {
             await checkSdkVersions()
             await checkDeviceModel()
                         
-            if unsupportedSdkVersion || unsupportedDevice {
+            if unsupportedSdkVersion == true || deviceSupport?.isCurrentSupported == false {
                 guard runAnyway else {
                     // Make user click the button again
                     runAnyway = true
@@ -66,8 +112,8 @@ struct StartView: View {
     
     func checkDeviceModel() async {
         switch await SighticSupportedDevices.load() {
-        case let .success(supportedDevices):
-            unsupportedDevice = !supportedDevices.isCurrentSupported
+        case let .success(deviceSupport):
+            self.deviceSupport = deviceSupport
         case let .failure(error):
             print("Error while checking for supprted devices: \(error)")
         }
