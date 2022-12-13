@@ -2,6 +2,19 @@
 
 The purpose of this app is to show developers how to integrate the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) in their project.
 
+## SDK Overview
+
+The SDK provides a view named `SighticInferenceView` that you must add to your app. The view goes through the following phases:
+1. Instruction screen - The instruction view presents a number of screens to the app user informering her how to position her device in front of her face. This step can be deactivate through a parameter to the `SighticInferenceView` init method.
+2. Alignment screen - The purpose of the alignment view is to make sure the face of the app user is poisitioned correctly in fron of the screen. `SighticInferenceView` presents an alignment view that make use of a face mesh to provide the app user with visual clues on how to position her device and face. A three second countdown is shown in the alignment view when the SDK deems face position to be ok. The app can optionally subscribe to alignment status updates from the SDK by providing a closure. The app can then implement its own alignment view on top of `SighticInferenceView`.
+3. Test screen - A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
+4. The `SighticInferenceView` provides the app with a `SighticInferenceRecording` through a closure.
+5. `SighticInferenceRecording` implements the method `performInference` that the app calls to send the recorded data to the `Sightic Analytics` server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
+6. The app will receive a response back that contains a boolean value named `hasImpairment` that contains the result of the analysis.
+
+![SDK phases](images/sdk-overview-phases.png)
+
+
 ## SDK Requirements
 
 * Platforms
@@ -19,15 +32,25 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 The SDK requires an API key in order to provide the app with a result. Please get in touch with [Sightic Analytics](https://www.sighticanalytics.com/contact) to retrieve a key.
 
-## How to use the SDK
 
-### App adds view SighticInferenceView
 
-1. Add `SighticAnalytics` as a Swift package to your app using the URL https://github.com/SighticAnalytics/sightic-sdk-ios. You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios#add-sdk-as-xcframework-instead-of-swift-package).
-1. Add the SwiftUI view `SighticInferenceView` somewhere in your app. You must let the view occupy the **whole** screen. The view requires:
+
+## How to use the SDK in your app
+
+### Add Swift package
+
+Add `SighticAnalytics` as a Swift package to your app using the URL https://github.com/SighticAnalytics/sightic-sdk-ios.
+
+You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios#add-sdk-as-xcframework-instead-of-swift-package).
+
+### Add the SighticInferenceView
+
+1. Add the SwiftUI view `SighticInferenceView` somewhere in your app. You must let the view occupy the **whole** screen.
+1. The `SighticInferenceView` requires:
    * An API key
    * A bool stating whether to show instructions to the app user prior to starting the test itself.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
+1. Optionally the app can provide a closure to receive `SighticStatus` updates. 
 1. Show the `SighticInferenceView` view to start the test. The face of the user will be recorded during a test sequence involving eye movements.
 
 ### App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView
