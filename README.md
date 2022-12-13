@@ -8,9 +8,8 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 1. **Instruction screen**<br>The instruction view presents a number of screens to the app user informering her how to position her device in front of her face. This step can be deactivate through a parameter to the `SighticInferenceView` init method.
 2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is poisitioned correctly in fron of the screen. `SighticInferenceView` presents an alignment view that make use of a face mesh to provide the app user with visual clues on how to position her device and face. A three second countdown is shown in the alignment view when the SDK deems face position to be ok. The app can optionally subscribe to alignment status updates from the SDK by providing a closure. The app can then implement its own alignment view on top of `SighticInferenceView`.
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
-4. The `SighticInferenceView` provides the app with a `SighticInferenceRecording` through a closure.
-5. `SighticInferenceRecording` implements the method `performInference` that the app calls to send the recorded data to the `Sightic Analytics` server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
-6. The app will receive a response back that contains a boolean value named `hasImpairment` that contains the result of the analysis.
+4. **Recording object**<br>The `SighticInferenceView` provides the app with a `SighticInferenceRecording` through a closure. `SighticInferenceRecording` implements the method `performInference` that the app calls to send the recorded data to the `Sightic Analytics` server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
+6. **Result object**<br>The app will receive a response back that contains a boolean value named `hasImpairment` that contains the result of the analysis.
 
 ![SDK phases](images/sdk-overview-phases.png)
 
