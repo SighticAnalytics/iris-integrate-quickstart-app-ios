@@ -75,6 +75,8 @@ struct TestView: View {
             }
         case .instruction, .test:
             return false
+        @unknown default:
+            return false
         }
     }
 
