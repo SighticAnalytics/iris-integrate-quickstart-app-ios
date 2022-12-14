@@ -67,19 +67,48 @@ extension SighticRecordingError {
             case .noFaceTracked:
                 return "there was no face in the frame"
             case .tooFarAway:
-                return "user was too far away"
+                return "the phone was held too far away"
             case .noAttention:
                 return "the user was not looking at the display"
             case .blink:
                 return "the user blinked too much"
-            case .notCentered:
-                return "the user's face was not centered in the frame"
-            case .headTilted:
-                return "the user's head was tilted"
-            default:
+            case let .notCentered(offset):
+                switch offset {
+                case .down:
+                    return "the phone was held too low"
+                case .up:
+                    return "the phone was held too high"
+                case .left:
+                    return "the phone was held too far to the left"
+                case .right:
+                    return "the phone was held too far to the right"
+                case .noOffset:
+                    return ""
+                @unknown default:
+                    return ""
+                }
+            case .ok:
+                return ""
+            case let .headTilted(tilt):
+                switch tilt {
+                case .Up:
+                    return "the user looked up"
+                case .Down:
+                    return "the user looked down"
+                case .Left:
+                    return "the user looked left"
+                case .Right:
+                    return "the user looked right"
+                case .NoTilt:
+                    return ""
+                @unknown default:
+                    return ""
+                }
+            @unknown default:
                 return ""
             }
+        @unknown default:
+            return ""
         }
     }
 }
-

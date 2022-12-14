@@ -36,6 +36,8 @@ struct StatusLabel: View {
             return "countdown(\(int))"
         case .test:
             return "test"
+        @unknown default:
+            return ""
         }
     }
 
@@ -58,6 +60,8 @@ struct AligntmentStatusLabel: View {
             return "notCentered"
         case .headTilted:
             return "headTilted"
+        @unknown default:
+            return ""
         }
     }
 

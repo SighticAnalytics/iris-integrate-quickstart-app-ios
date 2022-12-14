@@ -27,6 +27,8 @@ class StatusViewController: UIViewController {
         case .headTilted(let sighticHeadTilt):
             alignmentStatusLabelText += "headTilted"
             offsetOrTiltLabel.text = "SighticHeadTilt: \(sighticHeadTilt)"
+        @unknown default:
+            break
         }
         alignmentStatusLabel.text = alignmentStatusLabelText
     }
@@ -42,6 +44,8 @@ class StatusViewController: UIViewController {
             sighticStatusLabelText += "countdown(\(int))"
         case .test:
             sighticStatusLabelText += "test"
+        @unknown default:
+            break
         }
         sighticStatusLabel.text = sighticStatusLabelText
 
@@ -51,6 +55,8 @@ class StatusViewController: UIViewController {
         case .countdown, .instruction, .test:
             alignmentStatusLabel.text = ""
             offsetOrTiltLabel.text = ""
+        @unknown default:
+            break
         }
     }
 
