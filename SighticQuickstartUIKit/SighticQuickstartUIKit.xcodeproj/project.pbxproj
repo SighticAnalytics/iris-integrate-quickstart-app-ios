@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1542272C294385FA005E3673 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542272B294385FA005E3673 /* StatusViewController.swift */; };
+		155539032948E5B0007C2BF2 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 155539022948E5B0007C2BF2 /* SighticAnalytics */; };
 		1565ABF928FEC51200B242A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABF828FEC51200B242A6 /* AppDelegate.swift */; };
 		1565ABFB28FEC51200B242A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABFA28FEC51200B242A6 /* SceneDelegate.swift */; };
 		1565ABFD28FEC51200B242A6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABFC28FEC51200B242A6 /* StartViewController.swift */; };
@@ -18,7 +20,6 @@
 		1565AC1328FEF17700B242A6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1228FEF17700B242A6 /* TestViewController.swift */; };
 		1565AC1528FEF32100B242A6 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1428FEF32100B242A6 /* WaitingViewController.swift */; };
 		1565AC1728FEF34D00B242A6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565AC1628FEF34D00B242A6 /* ResultViewController.swift */; };
-		157C92EF2922774E0093EFE7 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 157C92EE2922774E0093EFE7 /* SighticAnalytics */; };
 		15D8ABE1290179330070079A /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D8ABE0290179330070079A /* ErrorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1542272B294385FA005E3673 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		1565ABF528FEC51200B242A6 /* SighticQuickstartUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SighticQuickstartUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1565ABF828FEC51200B242A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1565ABFA28FEC51200B242A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				157C92EF2922774E0093EFE7 /* SighticAnalytics in Frameworks */,
+				155539032948E5B0007C2BF2 /* SighticAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,13 +69,14 @@
 		1517615828FFE1E900494F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1542272B294385FA005E3673 /* StatusViewController.swift */,
+				15D8ABE0290179330070079A /* ErrorViewController.swift */,
 				1565AC1028FED34C00B242A6 /* HostViewController.swift */,
+				1565AC1628FEF34D00B242A6 /* ResultViewController.swift */,
 				1565ABFC28FEC51200B242A6 /* StartViewController.swift */,
 				1565AC1228FEF17700B242A6 /* TestViewController.swift */,
-				1565AC1428FEF32100B242A6 /* WaitingViewController.swift */,
-				1565AC1628FEF34D00B242A6 /* ResultViewController.swift */,
-				15D8ABE0290179330070079A /* ErrorViewController.swift */,
 				1565AC0C28FEC95100B242A6 /* UILibrary.swift */,
+				1565AC1428FEF32100B242A6 /* WaitingViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -89,6 +92,7 @@
 		1565ABEC28FEC51200B242A6 = {
 			isa = PBXGroup;
 			children = (
+				15C7A2C72943280F00C5161A /* Packages */,
 				1565ABF728FEC51200B242A6 /* SighticQuickstartUIKit */,
 				1565ABF628FEC51200B242A6 /* Products */,
 				15D8ABDC290177E10070079A /* Frameworks */,
@@ -117,6 +121,13 @@
 			path = SighticQuickstartUIKit;
 			sourceTree = "<group>";
 		};
+		15C7A2C72943280F00C5161A /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		15D8ABDC290177E10070079A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +153,7 @@
 			);
 			name = SighticQuickstartUIKit;
 			packageProductDependencies = (
-				157C92EE2922774E0093EFE7 /* SighticAnalytics */,
+				155539022948E5B0007C2BF2 /* SighticAnalytics */,
 			);
 			productName = SighticQuickstartUIKit;
 			productReference = 1565ABF528FEC51200B242A6 /* SighticQuickstartUIKit.app */;
@@ -173,7 +184,7 @@
 			);
 			mainGroup = 1565ABEC28FEC51200B242A6;
 			packageReferences = (
-				157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
+				155539012948E5B0007C2BF2 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
 			);
 			productRefGroup = 1565ABF628FEC51200B242A6 /* Products */;
 			projectDirPath = "";
@@ -210,6 +221,7 @@
 				1565ABFB28FEC51200B242A6 /* SceneDelegate.swift in Sources */,
 				15D8ABE1290179330070079A /* ErrorViewController.swift in Sources */,
 				1565AC0D28FEC95100B242A6 /* UILibrary.swift in Sources */,
+				1542272C294385FA005E3673 /* StatusViewController.swift in Sources */,
 				1565AC1728FEF34D00B242A6 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,20 +440,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
+		155539012948E5B0007C2BF2 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios/";
+			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.53;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		157C92EE2922774E0093EFE7 /* SighticAnalytics */ = {
+		155539022948E5B0007C2BF2 /* SighticAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 157C92ED2922774E0093EFE7 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
+			package = 155539012948E5B0007C2BF2 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
 			productName = SighticAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */

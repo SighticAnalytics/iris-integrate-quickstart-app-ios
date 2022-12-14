@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import SighticAnalytics
 
 class ErrorViewController: UIViewController {
     override func viewDidLoad() {
@@ -38,6 +39,9 @@ class ErrorViewController: UIViewController {
         sv.addArrangedSubview(spacer1)
         sv.addArrangedSubview(body)
         sv.addArrangedSubview(result)
+        if case let .error(sighticError) = model.appState, case let .recordingFailed(recordingError) = sighticError {
+            sv.addArrangedSubview(createFailView(recordingError))
+        }
         sv.addArrangedSubview(button)
         sv.addArrangedSubview(spacer2)
 
@@ -45,4 +49,37 @@ class ErrorViewController: UIViewController {
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor)
         ])
     }
+    
+    func createFailView(_ recordingError: SighticRecordingError) -> UIView {
+        let label = UIQuickstartBody(text: "Test failed because \(recordingError.reasonString).")
+        label.textColor = .red
+        return label
+    }
 }
+
+extension SighticRecordingError {
+    public var reasonString: String {
+        switch self {
+        case .interrupted:
+            return "the recording was interrupted"
+        case let .alignment(alignmentStatus):
+            switch alignmentStatus {
+            case .noFaceTracked:
+                return "there was no face in the frame"
+            case .tooFarAway:
+                return "user was too far away"
+            case .noAttention:
+                return "the user was not looking at the display"
+            case .blink:
+                return "the user blinked too much"
+            case .notCentered:
+                return "the user's face was not centered in the frame"
+            case .headTilted:
+                return "the user's head was tilted"
+            default:
+                return ""
+            }
+        }
+    }
+}
+

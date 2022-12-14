@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1524BAF8292279E3002999CE /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1524BAF7292279E3002999CE /* SighticAnalytics */; };
+		159674592948E4DE00F80F83 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 159674582948E4DE00F80F83 /* SighticAnalytics */; };
 		15DAAB7929002E30008BE1D4 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAAB7829002E30008BE1D4 /* ErrorView.swift */; };
 		15EFC98228FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */; };
 		15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98328FD670A00E3FE5F /* ContentView.swift */; };
@@ -17,6 +17,7 @@
 		15EFC99528FD71ED00E3FE5F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC99428FD71ED00E3FE5F /* TestView.swift */; };
 		15EFC99728FD721000E3FE5F /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC99628FD721000E3FE5F /* ResultView.swift */; };
 		15EFC99C28FD759400E3FE5F /* WaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC99B28FD759400E3FE5F /* WaitingView.swift */; };
+		15F82DEE2947740900126150 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82DED2947740900126150 /* StatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		15EFC99428FD71ED00E3FE5F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		15EFC99628FD721000E3FE5F /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		15EFC99B28FD759400E3FE5F /* WaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingView.swift; sourceTree = "<group>"; };
+		15F82DED2947740900126150 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1524BAF8292279E3002999CE /* SighticAnalytics in Frameworks */,
+				159674592948E4DE00F80F83 /* SighticAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +62,7 @@
 		15EFC97528FD670A00E3FE5F = {
 			isa = PBXGroup;
 			children = (
+				15F82DE929476A4300126150 /* Packages */,
 				15EFC98028FD670A00E3FE5F /* SighticQuickstartSwiftUI */,
 				15EFC97F28FD670A00E3FE5F /* Products */,
 				15EFC9C328FD7F5800E3FE5F /* Frameworks */,
@@ -86,6 +89,7 @@
 				15DAAB7829002E30008BE1D4 /* ErrorView.swift */,
 				15EFC98528FD670B00E3FE5F /* Assets.xcassets */,
 				15EFC98728FD670B00E3FE5F /* Preview Content */,
+				15F82DED2947740900126150 /* StatusView.swift */,
 			);
 			path = SighticQuickstartSwiftUI;
 			sourceTree = "<group>";
@@ -103,6 +107,13 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		15F82DE929476A4300126150 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +134,7 @@
 			);
 			name = SighticQuickstartSwiftUI;
 			packageProductDependencies = (
-				1524BAF7292279E3002999CE /* SighticAnalytics */,
+				159674582948E4DE00F80F83 /* SighticAnalytics */,
 			);
 			productName = SighticsQuickstart;
 			productReference = 15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */;
@@ -154,7 +165,7 @@
 			);
 			mainGroup = 15EFC97528FD670A00E3FE5F;
 			packageReferences = (
-				1524BAF6292279E3002999CE /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
+				159674572948E4DE00F80F83 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
 			);
 			productRefGroup = 15EFC97F28FD670A00E3FE5F /* Products */;
 			projectDirPath = "";
@@ -186,6 +197,7 @@
 				15EFC99C28FD759400E3FE5F /* WaitingView.swift in Sources */,
 				15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */,
 				15EFC99728FD721000E3FE5F /* ResultView.swift in Sources */,
+				15F82DEE2947740900126150 /* StatusView.swift in Sources */,
 				15DAAB7929002E30008BE1D4 /* ErrorView.swift in Sources */,
 				15EFC99328FD715F00E3FE5F /* StartView.swift in Sources */,
 				15EFC98228FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift in Sources */,
@@ -401,20 +413,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1524BAF6292279E3002999CE /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
+		159674572948E4DE00F80F83 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios";
+			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios/";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.53;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1524BAF7292279E3002999CE /* SighticAnalytics */ = {
+		159674582948E4DE00F80F83 /* SighticAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1524BAF6292279E3002999CE /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
+			package = 159674572948E4DE00F80F83 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
 			productName = SighticAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */

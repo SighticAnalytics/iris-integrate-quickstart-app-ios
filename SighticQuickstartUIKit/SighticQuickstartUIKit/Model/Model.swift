@@ -5,9 +5,14 @@
 import Combine
 import SighticAnalytics
 
+struct SighticInferenceViewConfiguration {
+    var showInstructions: Bool = false
+    var showRawAlignmentStatus: Bool = false
+}
+
 enum AppState {
     case start
-    case test
+    case test(SighticInferenceViewConfiguration)
     case waiting
     case result(SighticInference)
     case error(SighticError)
