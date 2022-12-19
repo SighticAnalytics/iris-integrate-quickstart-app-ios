@@ -38,6 +38,16 @@ Add `SighticAnalytics` as a Swift package to your app using the URL https://gith
 
 You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios#add-sdk-as-xcframework-instead-of-swift-package).
 
+### Camera usage description
+
+The SDK needs access to the device's camera and thus you must add a [camera usage description](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) to your app in the [Info.plist](https://developer.apple.com/documentation/bundleresources/information_property_list/managing_your_app_s_information_property_list).
+
+Another option is to set the camera usage description in your build settings if you have enabled automatic generation of an Info.plist file ([GENERATE_INFOPLIST_FILE](https://developer.apple.com/documentation/xcode/build-settings-reference)).
+
+![Camera usage description in Xcode](images/xcode-camera-usage-description.png)
+
+![Automatically Generate Info plist in Xcode](images/xcode-generate-info-plist.png)
+
 ### Add the SighticInferenceView
 
 1. Add the SwiftUI view `SighticInferenceView` somewhere in your app. You must let the view occupy the **whole** screen.
