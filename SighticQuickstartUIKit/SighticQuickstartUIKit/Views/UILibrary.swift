@@ -18,6 +18,160 @@ class UIQuickstartTitle: UILabel {
     }
 }
 
+class UIQuickstartCircle: UIStackView {
+    var text: String? {
+        get {
+            return l.text
+        }
+        set(newValue) {
+            l.text = newValue
+        }
+    }
+
+    private var l: UILabel
+
+    init() {
+        l = UILabel()
+        super.init(frame: .zero)
+        axis = .vertical
+        translatesAutoresizingMaskIntoConstraints = false
+
+        let spacer1 = UIQuickstartSpacer()
+        let hStackView = createHStackView()
+        let spacer2 = UIQuickstartSpacer()
+
+        self.addArrangedSubview(spacer1)
+        self.addArrangedSubview(hStackView)
+        self.addArrangedSubview(spacer2)
+
+        NSLayoutConstraint.activate([
+            spacer1.heightAnchor.constraint(equalToConstant: 10),
+            spacer2.heightAnchor.constraint(equalToConstant: 10)
+        ])
+    }
+
+    func createHStackView() -> UIStackView {
+        let hStackView = UIStackView()
+        hStackView.axis = .horizontal
+        hStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        let spacer1 = UIQuickstartSpacer()
+
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.textAlignment = .center
+        l.numberOfLines = 0
+        l.lineBreakMode = .byWordWrapping
+        l.font = .preferredFont(forTextStyle: .largeTitle)
+        l.layer.backgroundColor = UIColor.black.cgColor
+        l.layer.borderColor = UIColor.green.cgColor
+        l.layer.borderWidth = 3
+        l.layer.cornerRadius = 50
+        l.layer.opacity = 0.5
+        l.textColor = .white
+
+        NSLayoutConstraint.activate([
+            l.heightAnchor.constraint(equalToConstant: 100),
+            l.widthAnchor.constraint(equalToConstant: 100),
+        ])
+
+        let spacer3 = UIQuickstartSpacer()
+
+        hStackView.addArrangedSubview(spacer1)
+        hStackView.addArrangedSubview(l)
+        hStackView.addArrangedSubview(spacer3)
+
+        NSLayoutConstraint.activate([
+            spacer1.widthAnchor.constraint(equalTo: spacer3.widthAnchor)
+        ])
+
+        return hStackView
+    }
+
+    override init(frame: CGRect) {
+        l = UILabel()
+        super.init(frame: frame)
+        fatalError("init(frame:) has not been implemented")
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class UIQuickstartAlignmentHint: UIStackView {
+    var text: String? {
+        get {
+            return l.text
+        }
+        set(newValue) {
+            l.text = newValue
+        }
+    }
+
+    private var l: UIQuickstartLabelExtraInnerMargin
+
+    init() {
+        l = UIQuickstartLabelExtraInnerMargin()
+        super.init(frame: .zero)
+        axis = .vertical
+        translatesAutoresizingMaskIntoConstraints = false
+
+        let spacer1 = UIQuickstartSpacer()
+        let hStackView = createHStackView()
+        let spacer2 = UIQuickstartSpacer()
+
+        self.addArrangedSubview(spacer1)
+        self.addArrangedSubview(hStackView)
+        self.addArrangedSubview(spacer2)
+
+        NSLayoutConstraint.activate([
+            spacer1.heightAnchor.constraint(equalToConstant: 10),
+            spacer2.heightAnchor.constraint(equalToConstant: 10)
+        ])
+    }
+
+    func createHStackView() -> UIStackView {
+        let hStackView = UIStackView()
+        hStackView.axis = .horizontal
+        hStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        let spacer1 = UIQuickstartSpacer()
+
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.textAlignment = .center
+        l.numberOfLines = 0
+        l.lineBreakMode = .byWordWrapping
+        l.font = .preferredFont(forTextStyle: .body)
+        l.textColor = .white
+        l.layer.backgroundColor = UIColor.black.cgColor
+        l.layer.opacity = 0.5
+        l.layer.cornerRadius = 4
+
+        let spacer3 = UIQuickstartSpacer()
+
+        hStackView.addArrangedSubview(spacer1)
+        hStackView.addArrangedSubview(l)
+        hStackView.addArrangedSubview(spacer3)
+
+        NSLayoutConstraint.activate([
+            spacer1.widthAnchor.constraint(equalTo: spacer3.widthAnchor)
+        ])
+
+        return hStackView
+    }
+
+    override init(frame: CGRect) {
+        l = UIQuickstartLabelExtraInnerMargin()
+        super.init(frame: frame)
+        fatalError("init(frame:) has not been implemented")
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
 class UIQuickstartBody: UILabel {
     init(text: String) {
         super.init(frame: .zero)
@@ -27,6 +181,31 @@ class UIQuickstartBody: UILabel {
         numberOfLines = 0
         lineBreakMode = .byWordWrapping
         font = .preferredFont(forTextStyle: .body)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class UIQuickstartLabelExtraInnerMargin: UILabel {
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        textAlignment = .center
+        numberOfLines = 0
+        lineBreakMode = .byWordWrapping
+        font = .preferredFont(forTextStyle: .body)
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        let leftInset: CGFloat = 10
+        let rightInset: CGFloat = 10
+        let topInset: CGFloat = 10
+        let bottomInset: CGFloat = 10
+        return CGSize(width: size.width + leftInset + rightInset,
+                      height: size.height + topInset + bottomInset)
     }
 
     required init?(coder: NSCoder) {

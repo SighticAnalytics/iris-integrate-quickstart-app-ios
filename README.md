@@ -6,7 +6,7 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
 
 The SDK provides a view named `SighticInferenceView` that you must add to your app. The SDK goes through the following phases:
 1. **Instruction screen**<br>The instruction screen shows the app user how to perform the test. The instruction screen can be disabled through a parameter to the `SighticInferenceView` init method.
-2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is positioned correctly in front of the screen. `SighticInferenceView` presents an alignment view with a face mesh to provide the app user with visual clues on how to position her device and face. A three second countdown is shown when the SDK deems face position to be ok. The app can optionally subscribe to alignment status updates from the SDK by providing a closure. The app can then implement its own alignment view on top of `SighticInferenceView`.
+2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is positioned correctly in front of the screen. `SighticInferenceView` presents an alignment view with a face mesh to provide the app user with visual clues on how to position her device and face. The app can subscribe to alignment status updates from the SDK by providing a closure. The app should use the alignment status updates to show hints and a countdown as overlays on the `SighticInferenceView`. The QuickStart app shows an example of how to do this.
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
 4. **Recording object**<br>The `SighticInferenceView` provides the app with the recorded data. The app sends the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
 6. **Result object**<br>The app will receive a boolean value back from the Sightic Analytics server that contains the result of the analysis.
@@ -55,7 +55,7 @@ Another option is to set the camera usage description in your build settings if 
    * An API key
    * A bool stating whether to show instructions to the app user.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
-1. Optionally the app can provide a closure to receive `SighticStatus` updates. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
+1. The app should provide a closure to receive `SighticStatus` updates. The updates should be used by the app to add alignment hints as overlays on the alignment screen below.
 
 ### SighticInferenceView shows instruction screens
 
@@ -65,9 +65,11 @@ The instructions screens shows the app user how to position her face in front of
 
 ### SighticInferenceView shows alignment screen
 
-The alignment screen helps the app user position her face in front of the screen. A combination of written instructions and a face mesh to give visual cues are used. The face mesh will become green and a three second countdown is shown when the SDK deems the app user face to be in the correct position.
+The alignment screen helps the app user position her face in front of the screen. The face mesh will become green when the SDK deems the app user face to be in the correct position.
 
-The app can optionally overlay the alignment screen with its own design of alignment screen. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk) below.
+The app shall add alignment hints and a countdown as overlays on the alignment screen using the `SighticStatus` callback. The QuickStart app code shows an example of how this can be done:
+* See `AlignmentHintViewController` for the UIKit variant.
+* See `AlignmentHintView` for the SwiftUI variant.
 
 ![Alignment phase - Place face in mask](images/alignment-view-place-face-in-mask.png)
 ![Alignment phase - Hold phone closer](images/alignment-view-hold-phone-closer.png)
@@ -98,11 +100,6 @@ A green moving dot is presented during the test phase. The app user is supposed 
 ## How to use SighticStatus optionally provided by the SDK
 
 The SDK can optionally provide `SighticStatus` information to make it possible for the app to create its own alignment screen. `SighticStatus` is an enum that contains `SighticAlignmentStatus`. It also shows when countdown is ongoing and when the test itself has started. The app must remove its alignment overlay when the test starts.
-
-The QuickStart app has a `StatusViewController` that overlays the alignment screen if the user has selected to *Show raw alignment status* in the `StartViewContorller`.
-
-![Status View - Not centered](images/raw-alignment-status-view-not-centered.png)
-![Status View - Countdown](images/raw-alignment-status-view-countdown.png)
 
 ## Translations using custom strings
 
@@ -232,7 +229,7 @@ The `StartViewController` contains a button to go to the `TestViewController`. I
 The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/instruction-view.png)
-1. The next step is an alignment screen to help the user position the phone and their head correctly. Optionally the QuickStart app overlays the default alignment screen with a white screen showing `SighticStatus` provided in a closure. See section [How to use SighticStatus optionally provided by the SDK](https://github.com/SighticAnalytics/sightic-sdk-quickstart-app-ios/tree/use-sightic-status-2#how-to-use-sighticstatus-optionally-provided-by-the-sdk).<br>
+1. The next step is an alignment screen to help the user position the phone and their head correctly. The QuickStart app overlays the default alignment screen with alignment hints and a countdown using information in the `SighticStatus` closure.<br>
    ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
   ![Test in progress view - Moving dot](images/test-view.png)

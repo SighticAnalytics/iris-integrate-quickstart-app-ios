@@ -15,8 +15,8 @@ struct TestView: View {
                                  showInstructions: sighticInferenceViewConfiguration.showInstructions,
                                  statusCallback: self.handleSighticStatus,
                                  completion: self.handleResult)
-            if shallShowAlignmentStatusView() {
-                StatusView(sighticStatus: sighticStatus)
+            if shallShowAlignmentHintView() {
+                AlignmentHintView(sighticStatus: sighticStatus)
             }
         }
     }
@@ -54,33 +54,23 @@ struct TestView: View {
         }
     }
 
-    /// Use the `SighticStatus` to determine whether the `AlignmentStatusViewController` shall be shown.
-    /// Propagate `SighticStatus` to the `AliginmentStatusViewController`.
+    /// Propagate `SighticStatus` to the `AliginmentHintView`.
     private func handleSighticStatus(_ sighticStatus: SighticStatus) {
         self.sighticStatus = sighticStatus
     }
 
-    /// We only want to overlay `SighticInferenceView` with our own `AlignmentStatusViewController`
-    /// if `SighticStatus` is `align` or `countdown` and the QuickStart app user has selected to show
-    /// raw alignment status in the `StartView`.
-    private func shallShowAlignmentStatusView() -> Bool {
-        guard case .test(let sighticInferenceViewConfiguration) = appState else { return false }
-
+    /// We only want to overlay `SighticInferenceView` with `AlignmentHintView`
+    /// if `SighticStatus` is `align` or `countdown`.
+    private func shallShowAlignmentHintView() -> Bool {
         switch sighticStatus {
         case .align, .countdown:
-            if sighticInferenceViewConfiguration.showRawAlignmentStatus {
-                return true
-            } else {
-                return false
-            }
+            return true
         case .instruction, .test:
             return false
         @unknown default:
             return false
         }
     }
-
-
 }
 
 struct TestView_Previews: PreviewProvider {

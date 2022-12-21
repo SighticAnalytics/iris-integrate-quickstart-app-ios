@@ -8,7 +8,6 @@ import SighticAnalytics
 
 struct SighticInferenceViewConfiguration {
     var showInstructions: Bool = false
-    var showRawAlignmentStatus: Bool = false
 }
 
 enum AppState {
