@@ -6,12 +6,11 @@ import UIKit
 import SwiftUI
 import SighticAnalytics
 
-/// The TestViewController contains the SighticInferenceView. It might also add the AlignmentStatusViewController
-/// as overlay on SighticInferenceView if the QuickStart app user has selected to "Show raw alignment status"
-/// in the StartView. The purpose is to demonstrate how the app can implement its own version of the alignment view
-/// instead of using the view provided by SighticAnalytics.
+/// The TestViewController contains the SighticInferenceView. It also adds the AlignmentStatusViewController
+/// as overlay on SighticInferenceView. AlignmentStatusViewController makes use of the optional `statusCallback` parameter
+/// to `SighticInferenceView` to get updates with `SighticStatus`.
 class TestViewController: UIViewController {
-    var statusViewController: StatusViewController?
+    var alignmentHintViewController: AlignmentHintViewController?
     var sighticViewController: UIHostingController<SighticInferenceView>?
 
     private var sighticInferenceViewConfiguration: SighticInferenceViewConfiguration {
@@ -25,7 +24,7 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSighticViewController()
-        addAlignmentStatusViewController()
+        addAlignmentHintViewController()
     }
 
     /// Create an instance of SighticInferenceView and provide callbacks to get  SighticStatus updates
@@ -55,23 +54,23 @@ class TestViewController: UIViewController {
         }
     }
 
-    private func addAlignmentStatusViewController() {
-        guard statusViewController == nil else { return }
-
-        statusViewController = StatusViewController()
-
-        if let statusViewController = statusViewController {
-            view.addSubview(statusViewController.view)
-            addChild(statusViewController)
-            statusViewController.didMove(toParent: self)
-
-            NSLayoutConstraint.activate([
-                statusViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-                statusViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-                statusViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-                statusViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            ])
+    private func addAlignmentHintViewController() {
+        guard alignmentHintViewController == nil else { return }
+        alignmentHintViewController = AlignmentHintViewController()
+        guard let alignmentHintViewController = alignmentHintViewController else {
+            fatalError("missing alignment hint view controller")
         }
+
+        view.addSubview(alignmentHintViewController.view)
+        addChild(alignmentHintViewController)
+        alignmentHintViewController.didMove(toParent: self)
+
+        NSLayoutConstraint.activate([
+            alignmentHintViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            alignmentHintViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            alignmentHintViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            alignmentHintViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+        ])
     }
 
     /// Handle the result from the SighticInferenceView after the test has finished.
@@ -98,37 +97,33 @@ class TestViewController: UIViewController {
         }
     }
 
-    /// Use the `SighticStatus` to determine whether the `AlignmentStatusViewController` shall be shown.
-    /// Propagate `SighticStatus` to the `AliginmentStatusViewController`.
+    /// Use the `SighticStatus` to show alignment hints using the `AlignmentStatusViewController` as an overlay
     private func handleSighticStatus(_ sighticStatus: SighticStatus) {
-        if shallShowAlignmentStatusView(sighticStatus) {
-            showAlignmentView()
-            statusViewController?.handleSighticStatus(sighticStatus)
+        if shallShowAlignmentHintView(sighticStatus) {
+            showAlignmentHintView()
+            alignmentHintViewController?.handleSighticStatus(sighticStatus)
         } else {
             showSighticView()
         }
     }
 
     /// We only want to overlay `SighticInferenceView` with our own `AlignmentStatusViewController`
-    /// if `SighticStatus` is `align` or `countdown` and the QuickStart app user has selected to show
-    /// raw alignment status in the `StartView`.
-    private func shallShowAlignmentStatusView(_ sighticStatus: SighticStatus) -> Bool {
+    /// if `SighticStatus` is `align` or `countdown`
+    private func shallShowAlignmentHintView(_ sighticStatus: SighticStatus) -> Bool {
         switch sighticStatus {
         case .align, .countdown:
-            if sighticInferenceViewConfiguration.showRawAlignmentStatus {
-                return true
-            } else {
-                return false
-            }
+            return true
         case .instruction, .test:
+            return false
+        @unknown default:
             return false
         }
     }
 
-    /// Show AlignmentStatusViewController on top of SighticInferenceView
-    private func showAlignmentView() {
-        if let statusViewController = statusViewController {
-            view.bringSubviewToFront(statusViewController.view)
+    /// Show AlignmentHintViewController on top of SighticInferenceView
+    private func showAlignmentHintView() {
+        if let alignmentHintViewController = alignmentHintViewController {
+            view.bringSubviewToFront(alignmentHintViewController.view)
         }
     }
     /// Show SighticInferenceView on top of AlignmentStatusViewController

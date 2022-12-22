@@ -50,12 +50,6 @@ class StartViewController: UIViewController {
             self.sighticInferenceViewConfiguration.showInstructions = isOn
             print("showInstructions = \(self.sighticInferenceViewConfiguration.showInstructions)")
         })
-        let switch2 = UIQuickstartSwitch(title: "Show raw alignment status",
-                                         initialValue: sighticInferenceViewConfiguration.showRawAlignmentStatus,
-                                         action: { isOn in
-            self.sighticInferenceViewConfiguration.showRawAlignmentStatus = isOn
-            print("showRawAlignmentStatus = \(self.sighticInferenceViewConfiguration.showRawAlignmentStatus)")
-        })
         self.button = UIQuickstartButton(title: "Go to test", action: {
             self.goToTest()
         })
@@ -77,7 +71,6 @@ class StartViewController: UIViewController {
         // Two switches to let QuickStart app user configure SighticInferenceView
         sv.addArrangedSubview(testConfigurationTitle)
         sv.addArrangedSubview(switch1)
-        sv.addArrangedSubview(switch2)
         sv.addArrangedSubview(button!)
 
         sv.addArrangedSubview(spacer3)

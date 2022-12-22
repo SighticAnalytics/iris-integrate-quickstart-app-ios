@@ -78,8 +78,6 @@ struct StartView: View {
                 .padding()
             StartViewInstructionToggle(showInstructions:
                                         $sighticInferenceViewConfiguration.showInstructions)
-            StartViewShowRawAlignmentStatusToggle(showRawAlignmentStatusToggle:
-                                                    $sighticInferenceViewConfiguration.showRawAlignmentStatus)
             Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
                 .padding()
             SupportView(deviceSupport: deviceSupport, unsupportedSdkVersion: unsupportedSdkVersion)
@@ -144,19 +142,6 @@ struct StartViewInstructionToggle: View {
             Spacer()
             Text("Show instructions")
             Toggle("Show instructions", isOn: $showInstructions).labelsHidden()
-            Spacer()
-        }
-    }
-}
-
-struct StartViewShowRawAlignmentStatusToggle: View {
-    @Binding var showRawAlignmentStatusToggle: Bool
-
-    var body: some View {
-        HStack {
-            Spacer()
-            Text("Show raw alignment status")
-            Toggle("Show raw alignment status", isOn: $showRawAlignmentStatusToggle).labelsHidden()
             Spacer()
         }
     }
