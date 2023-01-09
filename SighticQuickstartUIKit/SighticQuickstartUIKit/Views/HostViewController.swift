@@ -24,7 +24,8 @@ class HostViewController: UIViewController {
             vc = ResultViewController()
         case .error:
             vc = ErrorViewController()
-
+        case .feedback:
+            vc = FeedbackViewController()
         }
 
         guard let vc = vc else { fatalError() }

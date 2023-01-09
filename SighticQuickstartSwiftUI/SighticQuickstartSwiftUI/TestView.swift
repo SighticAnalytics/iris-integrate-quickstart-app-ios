@@ -47,7 +47,7 @@ struct TestView: View {
             let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {
             case .success(let sighticInference):
-                appState = .result(sighticInference)
+                appState = .result(sighticInference, sighticInferenceRecording)
             case .failure(let sighticError):
                 appState = .error(sighticError)
             }

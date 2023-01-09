@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		159BA09229545F8A00C658D6 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 159BA09129545F8A00C658D6 /* SighticAnalytics */; };
+		15B184BD296C4B3D003D0180 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B184BC296C4B3D003D0180 /* Model.swift */; };
+		15B184BF296C4B90003D0180 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B184BE296C4B90003D0180 /* FeedbackView.swift */; };
+		15C2AF46296C63AB007F8389 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 15C2AF45296C63AB007F8389 /* SighticAnalytics */; };
 		15DAAB7929002E30008BE1D4 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAAB7829002E30008BE1D4 /* ErrorView.swift */; };
 		15EFC98228FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */; };
 		15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFC98328FD670A00E3FE5F /* ContentView.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15B184BC296C4B3D003D0180 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		15B184BE296C4B90003D0180 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		15DAAB7829002E30008BE1D4 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SighticQuickstartSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighticQuickstartSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -52,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				159BA09229545F8A00C658D6 /* SighticAnalytics in Frameworks */,
+				15C2AF46296C63AB007F8389 /* SighticAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +86,8 @@
 				15F82DED2947740900126150 /* AlignmentHintView.swift */,
 				15EFC98328FD670A00E3FE5F /* ContentView.swift */,
 				15DAAB7829002E30008BE1D4 /* ErrorView.swift */,
+				15B184BE296C4B90003D0180 /* FeedbackView.swift */,
+				15B184BC296C4B3D003D0180 /* Model.swift */,
 				15EFC99628FD721000E3FE5F /* ResultView.swift */,
 				15EFC98128FD670A00E3FE5F /* SighticQuickstartSwiftUIApp.swift */,
 				15EFC99228FD715F00E3FE5F /* StartView.swift */,
@@ -126,7 +132,7 @@
 			);
 			name = SighticQuickstartSwiftUI;
 			packageProductDependencies = (
-				159BA09129545F8A00C658D6 /* SighticAnalytics */,
+				15C2AF45296C63AB007F8389 /* SighticAnalytics */,
 			);
 			productName = SighticsQuickstart;
 			productReference = 15EFC97E28FD670A00E3FE5F /* SighticQuickstartSwiftUI.app */;
@@ -157,7 +163,7 @@
 			);
 			mainGroup = 15EFC97528FD670A00E3FE5F;
 			packageReferences = (
-				159BA09029545F8A00C658D6 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
+				15C2AF44296C63AB007F8389 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
 			);
 			productRefGroup = 15EFC97F28FD670A00E3FE5F /* Products */;
 			projectDirPath = "";
@@ -185,6 +191,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B184BD296C4B3D003D0180 /* Model.swift in Sources */,
+				15B184BF296C4B90003D0180 /* FeedbackView.swift in Sources */,
 				15EFC99528FD71ED00E3FE5F /* TestView.swift in Sources */,
 				15EFC99C28FD759400E3FE5F /* WaitingView.swift in Sources */,
 				15EFC98428FD670A00E3FE5F /* ContentView.swift in Sources */,
@@ -405,9 +413,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		159BA09029545F8A00C658D6 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
+		15C2AF44296C63AB007F8389 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios";
+			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios/";
 			requirement = {
 				kind = exactVersion;
 				version = 0.3.0;
@@ -416,9 +424,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		159BA09129545F8A00C658D6 /* SighticAnalytics */ = {
+		15C2AF45296C63AB007F8389 /* SighticAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 159BA09029545F8A00C658D6 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
+			package = 15C2AF44296C63AB007F8389 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
 			productName = SighticAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -14,7 +14,7 @@ class AlignmentHintViewController: UIViewController {
     func handleSighticStatus(_ sighticStatus: SighticStatus) {
         if case .countdown(let countdownNumber) = sighticStatus {
             if countdown.superview == nil {
-                sv.insertArrangedSubview(countdown, at: 3)
+                sv.insertArrangedSubview(countdown, at: 2)
             }
             countdown.text = "\(countdownNumber)"
         } else {
@@ -44,17 +44,15 @@ class AlignmentHintViewController: UIViewController {
             sv.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
         ])
 
-        let title = UIQuickstartTitle(title: "SighticStatus")
         let spacer1 = UIQuickstartSpacer()
         let spacer2 = UIQuickstartSpacer()
 
-        sv.addArrangedSubview(title)
         sv.addArrangedSubview(spacer1)
         sv.addArrangedSubview(alignmentStatusLabel)
         sv.addArrangedSubview(spacer2)
 
         NSLayoutConstraint.activate([
-            spacer1.heightAnchor.constraint(equalToConstant: 150)
+            spacer1.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
 }

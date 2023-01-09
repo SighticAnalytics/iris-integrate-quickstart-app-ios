@@ -1,8 +1,8 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+//  Copyright © 2023 Sightic Analytics AB All rights reserved.
 //
 
-import Combine
+import Foundation
 import SighticAnalytics
 
 struct SighticInferenceViewConfiguration {
@@ -12,14 +12,8 @@ struct SighticInferenceViewConfiguration {
 enum AppState {
     case start
     case test(SighticInferenceViewConfiguration)
-    case waiting
+    case waitingForAnalysis
     case result(SighticInference, SighticInferenceRecording)
     case error(SighticError)
     case feedback(SighticInference, SighticInferenceRecording)
 }
-
-class Model {
-    @Published var appState: AppState = .start
-}
-
-var model = Model()

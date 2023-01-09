@@ -10,6 +10,7 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
 4. **Recording object**<br>The `SighticInferenceView` provides the app with the recorded data. The app sends the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
 6. **Result object**<br>The app will receive a boolean value back from the Sightic Analytics server that contains the result of the analysis.
+7. **Feedback**<br>The app can optionally collect feedback from the user whether she deems the result correct and send this information to Sightic Analytics. The information is used by Sightic Analytics to improve our model.
 
 ![SDK phases](images/sdk-overview-phases.png)
 
@@ -96,6 +97,11 @@ A green moving dot is presented during the test phase. The app user is supposed 
 1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
 
 ![Call graph - perform inference](images/call-graph-perform-inference.png)
+
+### App optionally sends feedback to Sightic Analytics regarding result
+
+1. `SighticInferenceRecording` implements a function named `sendFeedback`.
+1. The app can optionally call `sendFeedback` to provide `Sightic Analytics` with feedback regarding the inference result.
 
 ## How to use SighticStatus optionally provided by the SDK
 
@@ -252,7 +258,13 @@ The `performInference` is an async function and will return a `SighticInferenceR
 
 An error view is shown if something goes wrong when using the test. In the screenshot below the app user moved the phone during the test so that her face was no longer in the correct position. The test was aborted and an error was shown.
 
-![Result view](images/error-view.png)
+![Error view](images/error-view.png)
+
+### FeedbackViewController
+
+A feedback view is shown to give the app user the possibility to provide feedback on the inference result. The user can provide a boolean value whether she agrees with the result and also provide free text feedback.
+
+![Feedback view](images/feedback-view.png)
 
 ## Add SDK as xcframework instead of Swift Package
 
