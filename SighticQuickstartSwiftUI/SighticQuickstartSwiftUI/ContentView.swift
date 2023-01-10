@@ -5,19 +5,6 @@
 import SwiftUI
 import SighticAnalytics
 
-
-struct SighticInferenceViewConfiguration {
-    var showInstructions: Bool = false
-}
-
-enum AppState {
-    case start
-    case test(SighticInferenceViewConfiguration)
-    case waitingForAnalysis
-    case result(SighticInference)
-    case error(SighticError)
-}
-
 struct ContentView: View {
     @State var appState: AppState = .start
 
@@ -33,6 +20,8 @@ struct ContentView: View {
             ResultView(appState: $appState)
         case .error:
             ErrorView(appState: $appState)
+        case .feedback:
+            FeedbackView(appState: $appState)
         }
     }
 }

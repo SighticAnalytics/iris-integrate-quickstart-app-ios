@@ -15,7 +15,7 @@ struct ResultView: View {
     
     var body: some View {
         switch appState {
-        case .result(let sighticInference):
+        case .result(let sighticInference, let sighticInferenceRecording):
             VStack {
                 Text("Sightic SDK Quickstart")
                     .font(.title)
@@ -27,19 +27,12 @@ struct ResultView: View {
                 Text(generateResultText(sighticInference))
                     .padding()
                 Button(action: {
-                        appState = .start
-                },
-                       label: { Text("Go to start") })
+                    appState = .feedback(sighticInference, sighticInferenceRecording)
+                }, label: { Text("Go to feedback") })
                 Spacer()
             }
         default:
             Text("Invalid app state")
         }
-    }
-}
-
-struct ResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResultView(appState: .constant(.result(SighticInference(hasImpairment: true))))
     }
 }

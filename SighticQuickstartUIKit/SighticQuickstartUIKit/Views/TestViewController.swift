@@ -90,7 +90,7 @@ class TestViewController: UIViewController {
             let inferenceResult = await sighticInferenceRecording.performInference()
             switch inferenceResult {
             case .success(let sighticInference):
-                model.appState = .result(sighticInference)
+                model.appState = .result(sighticInference, sighticInferenceRecording)
             case .failure(let sighticError):
                 model.appState = .error(sighticError)
             }

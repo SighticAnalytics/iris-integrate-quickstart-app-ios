@@ -1,8 +1,51 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+//  Copyright © 2023 Sightic Analytics AB All rights reserved.
 //
 
 import UIKit
+
+class UIQuickstartTextView: UIStackView {
+    let textView = UITextView(frame: .zero)
+
+    var text: String {
+        return textView.text
+    }
+
+    override func resignFirstResponder() -> Bool {
+        textView.resignFirstResponder()
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        textView.becomeFirstResponder()
+    }
+
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        axis = .horizontal
+
+        let leftSpacer = UIQuickstartSpacer()
+        let rightSpacer = UIQuickstartSpacer()
+
+        NSLayoutConstraint.activate([
+            leftSpacer.widthAnchor.constraint(equalToConstant: 10),
+            rightSpacer.widthAnchor.constraint(equalToConstant: 10),
+            textView.heightAnchor.constraint(equalToConstant: 150)
+        ])
+
+        addArrangedSubview(leftSpacer)
+        addArrangedSubview(textView)
+        addArrangedSubview(rightSpacer)
+
+        textView.layer.borderWidth = 1
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+}
 
 class UIQuickstartTitle: UILabel {
     init(title: String) {
