@@ -61,6 +61,9 @@ class TestViewController: UIViewController {
             fatalError("missing alignment hint view controller")
         }
 
+        // ...otherwise you can't tap the buttons in the simulator view below it
+        alignmentHintViewController.view.isUserInteractionEnabled = false
+        
         view.addSubview(alignmentHintViewController.view)
         addChild(alignmentHintViewController)
         alignmentHintViewController.didMove(toParent: self)
