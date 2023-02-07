@@ -60,9 +60,24 @@ Another option is to set the camera usage description in your build settings if 
 
 ### SighticInferenceView shows instruction screens
 
-The instructions screens shows the app user how to position her face in front of the screen. This phase can be skipped using a parameter to the init method of `SighticInferenceView`.
+The instruction screens provided by the SDK show the app user how to perform the test. You can disable those views using a parameter to the init method of `SighticInferenceView` and create instructions with your own design instead. Please include the following information when informing the app user about the test:
 
-![Instruction phase](images/instruction-view.png)
+* Tell the app user to hold their phone straight in front of their face
+* Tell the app user to hold their phone approx. 30 cm from their face
+* Tell the app user to follow the green dot with their eyes during the test
+* Tell the app user to hold the phone still during the test
+* Tell the app user to avoid talking during the test
+* Tell the app user to keep their eyes open during the test
+
+The images below show what the instruction views provided by the SDK look like.
+
+![Instruction phase - Keep head in mask](images/instruction-view-keep-head-in-mask.png)
+
+![Instruction phase - 30 cm between face and phone](images/instruction-view-space-device-to-face.png)
+
+![Instruction phase - Hold phone straight](images/instruction-view-hold-phone-straight.png)
+
+![Instruction phase - Follow the dot](images/instruction-view-follow-dot.png)
 
 ### SighticInferenceView shows alignment screen
 
