@@ -8,6 +8,7 @@ import SighticAnalytics
 struct TestView: View {
     @Binding var appState: AppState
     @State var sighticStatus: SighticStatus = .instruction
+    let allowToSave: Bool
 
     var body: some View {
         ZStack {
@@ -44,10 +45,10 @@ struct TestView: View {
     private func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task {
             appState = AppState.waitingForAnalysis
-            let inferenceResult = await sighticInferenceRecording.performInference()
+            let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: allowToSave)
             switch inferenceResult {
             case .success(let sighticInference):
-                appState = .result(sighticInference, sighticInferenceRecording)
+                appState = .result(sighticInference)
             case .failure(let sighticError):
                 appState = .error(sighticError)
             }
@@ -75,6 +76,9 @@ struct TestView: View {
 
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView(appState: .constant(.test(SighticInferenceViewConfiguration())))
+        TestView(
+            appState: .constant(.test(SighticInferenceViewConfiguration())),
+            allowToSave: true
+        )
     }
 }

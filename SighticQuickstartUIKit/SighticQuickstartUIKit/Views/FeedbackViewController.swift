@@ -20,9 +20,9 @@ class FeedbackViewController: UIViewController {
     }
 
     func sendFeedback(feedbackText: String) async {
-        if case .feedback(let sighticInference, let sighticInferenceRecording) = model.appState {
+        if case .feedback(let sighticInference) = model.appState {
             let feedback = agreeWithResult ? Feedback.agree : Feedback.disagree
-            let feedbackSentSuccess = await sighticInferenceRecording.sendFeedback(feedback, comment: feedbackText, for: sighticInference)
+            let feedbackSentSuccess = await sighticInference.sendFeedback(agreement: feedback, comment: feedbackText)
             if !feedbackSentSuccess {
                 showErrorAlert()
             } else {

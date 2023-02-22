@@ -63,7 +63,6 @@ Another option is to set the camera usage description in your build settings if 
 The instruction screens provided by the SDK show the app user how to perform the test. You can disable those views using a parameter to the init method of `SighticInferenceView` and create instructions with your own design instead. Please include the following information when informing the app user about the test:
 
 * Tell the app user to hold their phone straight in front of their face
-* Tell the app user to hold their phone approx. 30 cm from their face
 * Tell the app user to follow the green dot with their eyes during the test
 * Tell the app user to hold the phone still during the test
 * Tell the app user to avoid talking during the test
@@ -71,11 +70,9 @@ The instruction screens provided by the SDK show the app user how to perform the
 
 The images below show what the instruction views provided by the SDK look like.
 
-![Instruction phase - Keep head in mask](images/instruction-view-keep-head-in-mask.png)
-
-![Instruction phase - 30 cm between face and phone](images/instruction-view-space-device-to-face.png)
-
 ![Instruction phase - Hold phone straight](images/instruction-view-hold-phone-straight.png)
+
+![Instruction phase - Do not talk](images/instruction-view-do-not-talk.jpeg)
 
 ![Instruction phase - Follow the dot](images/instruction-view-follow-dot.png)
 
@@ -105,8 +102,9 @@ A green moving dot is presented during the test phase. The app user is supposed 
 
 ### App makes a peformInference request on the SighticInferenceRecording
 
-1. `SighticInferenceRecording` implements a function named `performInference`.
+1. `SighticInferenceRecording` implements a function named `performInference(allowToSave: Bool)`.
 1. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
+1. By setting the parameter `allowToSave` to `true`, you can give the server permission to save the inference input data. This can then be used to improve the application. Most importantly, the inference input data is anonymized and does not contain any personal information, nor can it be used to identify a real person, or the device that was used to collect the data.
 1. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
 1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
 1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
@@ -115,7 +113,7 @@ A green moving dot is presented during the test phase. The app user is supposed 
 
 ### App optionally sends feedback to Sightic Analytics regarding result
 
-1. `SighticInferenceRecording` implements a function named `sendFeedback`.
+1. `SighticInference` implements a function named `sendFeedback`.
 1. The app can optionally call `sendFeedback` to provide `Sightic Analytics` with feedback regarding the inference result.
 
 ## How to use SighticStatus optionally provided by the SDK
@@ -164,43 +162,20 @@ struct MyApp: App {
     }
 ```
 
-## How to check device and SDK backend support
-
-### Is the SDK version supported by the Sightic Analytics backend?
-
-```swift
-switch await SighticVersion.sdkVersions(apiKey: "your-api-key-here") {
-case let .success(sdkVersions):
-    if sdkVersions.isCurrentVersionSupported {
-        // Start using the SDK.
-    }
-    else {
-        // Using the current version is not recommended.
-        print("Current version (\(SighticVersion.sdkVersion)) is unsupported.")
-        print("Supported versions are: \(sdkVersions.supportedVersions)")
-    }
-case let .failure(error):
-    print("an error occurred: \(error)")
-}
-```
-
-If the current version is outdated, this might print the following.
-
-```text
-Current version (0.0.46) is unsupported.
-Supported versions are: ["0.0.47", "0.0.48", "1.0"]
-```
-
-### Is my device supported?
+## How to check if my device is supported
 
 This code sample queries the backend for a list of supported devices, and ensures that the phone the app is running on is supported.
 
 ```swift
-if case let .success(supportedDevices) = await SighticSupportedDevices.load() {
-    guard supportedDevices.isCurrentSupported else {
-        // Handle the case where the current phone is not supported
-        return
+do {
+    guard try await SighticSupportedDevices().isCurrentSupported else {
+      // Handle the case where the current phone model is not supported
     }
+
+    // Continue with test
+}
+catch {
+    print("Error while checking for supprted devices: \(error)")
 }
 ```
 
@@ -235,19 +210,21 @@ The steps below use names from the SwiftUI variant.
 
 ## App flow
 
-The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots below are from the UIKit variant.
+The SwiftUI and UIKit Quickstart variants have similar flow. The screenshots below are from the SwiftUI variant.
 
 ### StartViewController
 
 The `StartViewController` contains a button to go to the `TestViewController`. It also allows you to configure the `SighticInferenceView`:
+
 * Whether to show the instruction screens
 * Whether to overlay the default alignment screen with another view that shows `SighticStatus` provided by the SDK in an optional closure to the app. 
 
-![Start view](images/start-view.png)
+![Start view](images/start-view.jpeg)
 
 ### TestViewController
 
 The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
+
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/instruction-view.png)
 1. The next step is an alignment screen to help the user position the phone and their head correctly. The QuickStart app overlays the default alignment screen with alignment hints and a countdown using information in the `SighticStatus` closure.<br>

@@ -89,11 +89,11 @@ class TestViewController: UIViewController {
     /// Send the recording returned by the SighticInferenceView to the SighticAnalytics backend for analysis.
     private func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task.init {
-            model.appState = AppState.waiting
-            let inferenceResult = await sighticInferenceRecording.performInference()
+            model.appState = AppState.waiting            
+            let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: sighticInferenceViewConfiguration.allowToSave)
             switch inferenceResult {
             case .success(let sighticInference):
-                model.appState = .result(sighticInference, sighticInferenceRecording)
+                model.appState = .result(sighticInference)
             case .failure(let sighticError):
                 model.appState = .error(sighticError)
             }
