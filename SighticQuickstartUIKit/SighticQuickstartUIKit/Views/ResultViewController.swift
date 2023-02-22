@@ -19,7 +19,7 @@ class ResultViewController: UIViewController {
         ])
 
         let resultText: String
-        if case .result(let sighticInference, _) = model.appState {
+        if case .result(let sighticInference) = model.appState {
             resultText = "hasImpairment = \(sighticInference.hasImpairment)"
         } else {
             resultText = "<result not available>"
@@ -30,8 +30,8 @@ class ResultViewController: UIViewController {
         let body = UIQuickstartBody(text: "ResultView")
         let result = UIQuickstartBody(text: resultText)
         let button = UIQuickstartButton(title: "Go to feedback", action: {
-            if case .result(let sighticInference, let sighticInferenceRecording) = model.appState {
-                model.appState = .feedback(sighticInference, sighticInferenceRecording)
+            if case .result(let sighticInference) = model.appState {
+                model.appState = .feedback(sighticInference)
             }
         })
         let spacer2 = UIQuickstartSpacer()

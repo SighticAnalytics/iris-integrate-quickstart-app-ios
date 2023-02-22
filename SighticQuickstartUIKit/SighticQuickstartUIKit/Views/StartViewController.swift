@@ -20,7 +20,6 @@ import SighticAnalytics
 /// SighticInferenceView.
 class StartViewController: UIViewController {
     let sv = UIQuickstartStackview()
-    let sdkSupport = UIQuickstartBody(text: "Loading...")
     let deviceSupport = UIQuickstartBody(text: "Loading...")
     var button: UIButton?
 
@@ -77,7 +76,6 @@ class StartViewController: UIViewController {
 
         // Show whether backend supports current SDK version
         sv.addArrangedSubview(sdkSupportTitle)
-        sv.addArrangedSubview(sdkSupport)
 
         sv.addArrangedSubview(spacer4)
 
@@ -94,24 +92,9 @@ class StartViewController: UIViewController {
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor)
         ])
 
-        loadSDKSupport()
         loadDeviceSupport()
     }
     
-    func loadSDKSupport() {
-        Task {
-            let isSDKSupported = (try? await isSDKVersionSupported()) ?? true
-
-            if isSDKSupported == true {
-                sdkSupport.text = "SDK version (\(SighticVersion.sdkVersion)) is supported"
-                sdkSupport.textColor = .green
-            } else {
-                sdkSupport.text = "Unsupported SDK version (\(SighticVersion.sdkVersion))"
-                sdkSupport.textColor = .red
-            }
-        }
-    }
-
     func loadDeviceSupport() {
         Task {
             guard let device = try? await isDeviceModelSupported() else {
@@ -135,30 +118,12 @@ class StartViewController: UIViewController {
     }
 
     func isDeviceModelSupported() async throws -> SighticSupportedDevices {
-        switch await SighticSupportedDevices.load() {
-        case let .failure(error):
+        do {
+            return try await SighticSupportedDevices()
+        }
+        catch {
             print("Error while checking for supprted devices: \(error)")
             throw error
-        case let .success(supportedDevices):
-            return supportedDevices
         }
     }
-    
-    func isSDKVersionSupported() async throws -> Bool {
-        switch await SighticVersion.sdkVersions(apiKey: AppDelegate.apiKey) {
-        case let .failure(error):
-            print("Error while checking for supported versions: \(error)")
-            throw error
-        case let .success(versions):
-            if !versions.isCurrentVersionSupported {
-                print("Current version is not supported. Supported versions are: \(versions.supportedVersions)")
-                return false
-            }
-            else {
-                return true
-            }
-        }
-    }
-
 }
-

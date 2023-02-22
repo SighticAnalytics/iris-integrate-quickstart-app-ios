@@ -90,10 +90,10 @@ class TestViewController: UIViewController {
     private func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task.init {
             model.appState = AppState.waiting
-            let inferenceResult = await sighticInferenceRecording.performInference()
+            let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: true)
             switch inferenceResult {
             case .success(let sighticInference):
-                model.appState = .result(sighticInference, sighticInferenceRecording)
+                model.appState = .result(sighticInference)
             case .failure(let sighticError):
                 model.appState = .error(sighticError)
             }

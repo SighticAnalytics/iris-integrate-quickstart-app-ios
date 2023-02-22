@@ -13,9 +13,9 @@ enum AppState {
     case start
     case test(SighticInferenceViewConfiguration)
     case waiting
-    case result(SighticInference, SighticInferenceRecording)
+    case result(SighticInference)
     case error(SighticError)
-    case feedback(SighticInference, SighticInferenceRecording)
+    case feedback(SighticInference)
 }
 
 class Model {
