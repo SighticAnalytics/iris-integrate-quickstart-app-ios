@@ -64,7 +64,7 @@ extension SighticRecordingError {
             case .noAttention:
                 return "the user was not looking at the display"
             case .eyesTooClosed:
-                return "the user blinked too much"
+                return "the user kept their eyes too closed"
             case let .notCentered(offset):
                 switch offset {
                 case .down:
