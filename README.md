@@ -102,8 +102,9 @@ A green moving dot is presented during the test phase. The app user is supposed 
 
 ### App makes a peformInference request on the SighticInferenceRecording
 
-1. `SighticInferenceRecording` implements a function named `performInference`.
+1. `SighticInferenceRecording` implements a function named `performInference(allowToSave: Bool)`.
 1. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
+1. By setting the parameter `allowToSave` to `true`, you can give the server permission to save the inference input data. This can then be used to improve the application. Most importantly, the inference input data is anonymized and does not contain any personal information, nor can it be used to identify a real person, or the device that was used to collect the data.
 1. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
 1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
 1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
