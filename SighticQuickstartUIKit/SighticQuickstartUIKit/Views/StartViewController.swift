@@ -49,6 +49,12 @@ class StartViewController: UIViewController {
             self.sighticInferenceViewConfiguration.showInstructions = isOn
             print("showInstructions = \(self.sighticInferenceViewConfiguration.showInstructions)")
         })
+        let switch2 = UIQuickstartSwitch(title: "Allow-To-Save",
+                                         initialValue: sighticInferenceViewConfiguration.allowToSave,
+                                         action: { isOn in
+            self.sighticInferenceViewConfiguration.allowToSave = isOn
+            print("allow-to-save = \(self.sighticInferenceViewConfiguration.allowToSave)")
+        })
         self.button = UIQuickstartButton(title: "Go to test", action: {
             self.goToTest()
         })
@@ -70,6 +76,7 @@ class StartViewController: UIViewController {
         // Two switches to let QuickStart app user configure SighticInferenceView
         sv.addArrangedSubview(testConfigurationTitle)
         sv.addArrangedSubview(switch1)
+        sv.addArrangedSubview(switch2)
         sv.addArrangedSubview(button!)
 
         sv.addArrangedSubview(spacer3)

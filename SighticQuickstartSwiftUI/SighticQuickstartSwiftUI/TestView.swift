@@ -44,7 +44,7 @@ struct TestView: View {
     private func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task {
             appState = AppState.waitingForAnalysis
-            let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: true)
+            let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: sighticInferenceViewConfiguration.allowToSave)
             switch inferenceResult {
             case .success(let sighticInference):
                 appState = .result(sighticInference)

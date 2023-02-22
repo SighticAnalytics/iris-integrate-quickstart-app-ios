@@ -66,6 +66,7 @@ struct StartView: View {
                 .padding()
             StartViewInstructionToggle(showInstructions:
                                         $sighticInferenceViewConfiguration.showInstructions)
+            AllowToSaveToggle(allowToSave: $sighticInferenceViewConfiguration.allowToSave)
             Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
                 .padding()
             SupportView(deviceSupport: deviceSupport)
@@ -113,6 +114,19 @@ struct StartViewInstructionToggle: View {
             Spacer()
             Text("Show instructions")
             Toggle("Show instructions", isOn: $showInstructions).labelsHidden()
+            Spacer()
+        }
+    }
+}
+
+struct AllowToSaveToggle: View {
+    @Binding var allowToSave: Bool
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Allow to save")
+            Toggle("Allow to save", isOn: $allowToSave).labelsHidden()
             Spacer()
         }
     }

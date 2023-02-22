@@ -7,6 +7,7 @@ import SighticAnalytics
 
 struct SighticInferenceViewConfiguration {
     var showInstructions: Bool = false
+    var allowToSave = false
 }
 
 enum AppState {
