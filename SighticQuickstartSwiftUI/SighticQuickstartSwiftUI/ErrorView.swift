@@ -63,7 +63,7 @@ extension SighticRecordingError {
                 return "the phone was held too far away"
             case .noAttention:
                 return "the user was not looking at the display"
-            case .blink:
+            case .eyesTooClosed:
                 return "the user blinked too much"
             case let .notCentered(offset):
                 switch offset {
@@ -100,6 +100,10 @@ extension SighticRecordingError {
             @unknown default:
                 return ""
             }
+        case .fpsLowTempHigh:
+            return "the phone is too warm"
+        case .talking:
+            return "the user was talking during the test"
         @unknown default:
             return ""
         }

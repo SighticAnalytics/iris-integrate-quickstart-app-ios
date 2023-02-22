@@ -15,7 +15,7 @@ struct ResultView: View {
     
     var body: some View {
         switch appState {
-        case .result(let sighticInference, let sighticInferenceRecording):
+        case .result(let sighticInference):
             VStack {
                 Text("Sightic SDK Quickstart")
                     .font(.title)
@@ -27,7 +27,7 @@ struct ResultView: View {
                 Text(generateResultText(sighticInference))
                     .padding()
                 Button(action: {
-                    appState = .feedback(sighticInference, sighticInferenceRecording)
+                    appState = .feedback(sighticInference)
                 }, label: { Text("Go to feedback") })
                 Spacer()
             }

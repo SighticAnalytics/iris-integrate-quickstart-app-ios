@@ -14,9 +14,11 @@ struct FeedbackView: View {
 
 
     func sendFeedback() async {
-        if case .feedback(let sighticInference, let sighticInferenceRecording) = appState {
-            let feedback = agreeWithResult ? Feedback.agree : Feedback.disagree
-            let feedbackSentSuccess = await sighticInferenceRecording.sendFeedback(feedback, comment: feedbackText, for: sighticInference)
+        if case .feedback(let sighticInference) = appState {
+            let feedbackSentSuccess = await sighticInference.sendFeedback(
+                agreement: agreeWithResult ? Feedback.agree : Feedback.disagree,
+                comment: feedbackText
+            )
             if !feedbackSentSuccess {
                 showAlert = true
             } else {

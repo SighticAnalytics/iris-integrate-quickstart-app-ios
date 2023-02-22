@@ -7,17 +7,8 @@ import SighticAnalytics
 
 struct SupportView: View {
     let deviceSupport: SighticSupportedDevices?
-    let unsupportedSdkVersion: Bool?
     
     var body: some View {
-        if let unsupportedSdkVersion = unsupportedSdkVersion {
-            SupportStatus(
-                title: "SDK version support?",
-                supported: !unsupportedSdkVersion,
-                supportOK: "SDK version (\(SighticVersion.sdkVersion)) is supported",
-                supportNotOK: "Unsupported SDK version (\(SighticVersion.sdkVersion))"
-            )
-        }
         if let deviceSupport = deviceSupport {
             SupportStatus(
                 title: "Device model support?",
@@ -56,14 +47,11 @@ struct StartView: View {
     @Binding var appState: AppState
     
     @State private var deviceSupport: SighticSupportedDevices? = nil
-    @State private var unsupportedSdkVersion: Bool? = nil
     @State private var runAnyway = false
     @State private var sighticInferenceViewConfiguration = SighticInferenceViewConfiguration()
         
     var body: some View {
-        let showWarning =
-            unsupportedSdkVersion == true ||
-            deviceSupport?.isCurrentSupported == false
+        let showWarning = deviceSupport?.isCurrentSupported == false
         
         VStack {
             Text("Sightic SDK Quickstart")
@@ -80,12 +68,11 @@ struct StartView: View {
                                         $sighticInferenceViewConfiguration.showInstructions)
             Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
                 .padding()
-            SupportView(deviceSupport: deviceSupport, unsupportedSdkVersion: unsupportedSdkVersion)
+            SupportView(deviceSupport: deviceSupport)
             Spacer()
         }
         .onAppear {
             Task {
-                await checkSdkVersions()
                 await checkDeviceModel()
             }
         }
@@ -93,10 +80,9 @@ struct StartView: View {
     
     func goToTest() {
         Task {
-            await checkSdkVersions()
             await checkDeviceModel()
                         
-            if unsupportedSdkVersion == true || deviceSupport?.isCurrentSupported == false {
+            if deviceSupport?.isCurrentSupported == false {
                 guard runAnyway else {
                     // Make user click the button again
                     runAnyway = true
@@ -109,29 +95,14 @@ struct StartView: View {
     }
     
     func checkDeviceModel() async {
-        switch await SighticSupportedDevices.load() {
-        case let .success(deviceSupport):
-            self.deviceSupport = deviceSupport
-        case let .failure(error):
+        do {
+            self.deviceSupport = try await SighticSupportedDevices()
+        }
+        catch {
             print("Error while checking for supprted devices: \(error)")
         }
     }
     
-    func checkSdkVersions() async {
-        switch await SighticVersion.sdkVersions(apiKey: SighticQuickstartSwiftUI.apiKey) {
-        case let .failure(error):
-            print("Error while checking for supported versions: \(error)")
-        case let .success(versions):
-            print(versions)
-            if !versions.isCurrentVersionSupported {
-                print("Current version is not supported. Supported versions are: \(versions.supportedVersions)")
-                unsupportedSdkVersion = true
-            }
-            else {
-                unsupportedSdkVersion = false
-            }
-        }
-    }
 }
 
 struct StartViewInstructionToggle: View {
