@@ -49,7 +49,8 @@ struct StartView: View {
     @State private var deviceSupport: SighticSupportedDevices? = nil
     @State private var runAnyway = false
     @State private var sighticInferenceViewConfiguration = SighticInferenceViewConfiguration()
-        
+    @Binding var allowToSave: Bool
+    
     var body: some View {
         let showWarning = deviceSupport?.isCurrentSupported == false
         
@@ -66,7 +67,7 @@ struct StartView: View {
                 .padding()
             StartViewInstructionToggle(showInstructions:
                                         $sighticInferenceViewConfiguration.showInstructions)
-            AllowToSaveToggle(allowToSave: $sighticInferenceViewConfiguration.allowToSave)
+            AllowToSaveToggle(allowToSave: $allowToSave)
             Button(showWarning ? "Go to test anyway" : "Go to test") { goToTest() }
                 .padding()
             SupportView(deviceSupport: deviceSupport)
@@ -134,6 +135,9 @@ struct AllowToSaveToggle: View {
 
 struct Start_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(appState: .constant(.start))
+        StartView(
+            appState: .constant(.start),
+            allowToSave: .constant(true)
+        )
     }
 }

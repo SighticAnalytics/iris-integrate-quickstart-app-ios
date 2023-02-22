@@ -7,13 +7,14 @@ import SighticAnalytics
 
 struct ContentView: View {
     @State var appState: AppState = .start
+    @State var allowToSave = false
 
     var body: some View {
         switch appState {
         case .start:
-            StartView(appState: $appState)
+            StartView(appState: $appState, allowToSave: $allowToSave)
         case .test:
-            TestView(appState: $appState)
+            TestView(appState: $appState, allowToSave: allowToSave)
         case .waitingForAnalysis:
             WaitingView()
         case .result:
