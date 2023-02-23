@@ -164,7 +164,7 @@ struct MyApp: App {
 
 ## How to check if my device is supported
 
-This code sample queries the backend for a list of supported devices, and ensures that the phone the app is running on is supported.
+This code sample checks if the current device is supported, through a backend call.
 
 ```swift
 do {
