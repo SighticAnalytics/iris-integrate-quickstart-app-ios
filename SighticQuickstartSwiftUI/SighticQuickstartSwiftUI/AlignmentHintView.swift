@@ -80,9 +80,7 @@ struct AlignmentHintLabel: View {
         switch sighticStatus {
         case .align(let sighticAlignmentStatus):
             return sighticAlignmentStatus.message
-        case .countdown:
-            return SighticAlignmentStatus.ok.message
-        case .instruction, .test:
+        case .instruction, .countdown, .test:
             return nil
         @unknown default:
             break
