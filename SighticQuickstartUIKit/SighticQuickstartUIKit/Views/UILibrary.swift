@@ -148,6 +148,7 @@ class UIQuickstartAlignmentHint: UIStackView {
         }
         set(newValue) {
             l.text = newValue
+            updateLabelVisibility()
         }
     }
 
@@ -171,6 +172,15 @@ class UIQuickstartAlignmentHint: UIStackView {
             spacer1.heightAnchor.constraint(equalToConstant: 10),
             spacer2.heightAnchor.constraint(equalToConstant: 10)
         ])
+    }
+
+    // Hide label when there is no alignment text to show
+    func updateLabelVisibility() {
+        if let text = l.text, text.isEmpty {
+            l.layer.opacity = 0
+        } else {
+            l.layer.opacity = 0.5
+        }
     }
 
     func createHStackView() -> UIStackView {

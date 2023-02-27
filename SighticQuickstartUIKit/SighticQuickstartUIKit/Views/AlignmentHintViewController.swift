@@ -24,9 +24,7 @@ class AlignmentHintViewController: UIViewController {
         switch sighticStatus {
         case .align(let sighticAlignmentStatus):
             alignmentStatusLabel.text = sighticAlignmentStatus.message
-        case .countdown:
-            alignmentStatusLabel.text = SighticAlignmentStatus.ok.message
-        case .instruction, .test:
+        case .instruction, .countdown, .test:
             alignmentStatusLabel.text = ""
         @unknown default:
             break
