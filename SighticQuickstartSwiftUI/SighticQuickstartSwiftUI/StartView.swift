@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import SwiftUI
@@ -7,7 +7,7 @@ import SighticAnalytics
 
 struct SupportView: View {
     let deviceSupport: SighticSupportedDevices?
-    
+
     var body: some View {
         if let deviceSupport = deviceSupport {
             SupportStatus(
@@ -25,16 +25,15 @@ struct SupportStatus: View {
     let supported: Bool
     let supportOK: String
     let supportNotOK: String
-    
+
     var body: some View {
         VStack {
             Text(title)
-            
+
             if supported {
                 Text(supportOK)
                     .foregroundColor(.green)
-            }
-            else {
+            } else {
                 Text(supportNotOK)
                     .foregroundColor(.red)
             }
@@ -45,15 +44,15 @@ struct SupportStatus: View {
 
 struct StartView: View {
     @Binding var appState: AppState
-    
+
     @State private var deviceSupport: SighticSupportedDevices? = nil
     @State private var runAnyway = false
     @State private var sighticInferenceViewConfiguration = SighticInferenceViewConfiguration()
     @Binding var allowToSave: Bool
-    
+
     var body: some View {
         let showWarning = deviceSupport?.isCurrentSupported == false
-        
+
         VStack {
             Text("Sightic SDK Quickstart")
                 .font(.title)
@@ -79,13 +78,13 @@ struct StartView: View {
             }
         }
     }
-    
+
     func goToTest() {
         Task {
             if deviceSupport == nil {
                 await checkDeviceModel()
             }
-                        
+
             if deviceSupport?.isCurrentSupported == false {
                 guard runAnyway else {
                     // Make user click the button again
@@ -97,16 +96,15 @@ struct StartView: View {
             appState = .test(sighticInferenceViewConfiguration)
         }
     }
-    
+
     func checkDeviceModel() async {
         do {
             self.deviceSupport = try await SighticSupportedDevices()
-        }
-        catch {
+        } catch {
             print("Error while checking for supprted devices: \(error)")
         }
     }
-    
+
 }
 
 struct StartViewInstructionToggle: View {

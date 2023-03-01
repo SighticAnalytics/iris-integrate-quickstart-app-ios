@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
@@ -7,7 +7,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static var apiKey: String {
-        //TODO: Add your API key below. Get in touch with Sightic Analytics to retrieve an API key.
+        // TODO: Add your API key below. Get in touch with Sightic Analytics to retrieve an API key.
         let apiKey = ""
         guard !apiKey.isEmpty else {
             fatalError("No SighticAnalytics API key was set")

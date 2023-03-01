@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import SwiftUI
@@ -83,9 +83,8 @@ struct AlignmentHintLabel: View {
         case .instruction, .countdown, .test:
             return nil
         @unknown default:
-            break
+            return nil
         }
-        return nil
     }
 
     var body: some View {

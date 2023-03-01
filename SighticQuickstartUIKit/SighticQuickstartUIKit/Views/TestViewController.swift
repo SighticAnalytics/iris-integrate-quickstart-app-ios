@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
@@ -63,7 +63,7 @@ class TestViewController: UIViewController {
 
         // ...otherwise you can't tap the buttons in the simulator view below it
         alignmentHintViewController.view.isUserInteractionEnabled = false
-        
+
         view.addSubview(alignmentHintViewController.view)
         addChild(alignmentHintViewController)
         alignmentHintViewController.didMove(toParent: self)
@@ -89,7 +89,7 @@ class TestViewController: UIViewController {
     /// Send the recording returned by the SighticInferenceView to the SighticAnalytics backend for analysis.
     private func sendRecodingForAnalysis(_ sighticInferenceRecording: SighticInferenceRecording) {
         Task.init {
-            model.appState = AppState.waiting            
+            model.appState = AppState.waiting
             let inferenceResult = await sighticInferenceRecording.performInference(allowToSave: sighticInferenceViewConfiguration.allowToSave)
             switch inferenceResult {
             case .success(let sighticInference):
@@ -129,6 +129,7 @@ class TestViewController: UIViewController {
             view.bringSubviewToFront(alignmentHintViewController.view)
         }
     }
+
     /// Show SighticInferenceView on top of AlignmentStatusViewController
     private func showSighticView() {
         if let sighticViewController = sighticViewController {
