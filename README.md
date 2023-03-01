@@ -60,7 +60,21 @@ Another option is to set the camera usage description in your build settings if 
 
 ### SighticInferenceView shows instruction screens
 
-The instruction screens provided by the SDK show the app user how to perform the test. You can disable those views using a parameter to the init method of `SighticInferenceView` and create instructions with your own design instead. Please include the following information when informing the app user about the test:
+The instruction screens provided by the SDK show the app user how to perform the test. You can disable those views using a parameter to the init method of `SighticInferenceView` and create instructions with your own design instead. The animated icons can be accessed separately by adding the view `SighticInstructionView` (SwiftUI only) to your own instruction view. The different kinds of instructions are described in the enum `SighticInstruction`.
+
+You can customize the colors of the image, by setting the `faceOutlineColor` and `annotationsColor` properties. The following example uses green with 50% opacity for the outline, and yellow for annotations.
+
+```swift
+SighticInstructionView(
+   instruction: .holdPhoneInFrontOfFace,
+   faceOutlineColor: .green.opacity(0.5),
+   annotationsColor: .yellow
+)
+```
+
+![Example showing custom instruction view colors](images/instruction_view_custom_colors.jpg)
+
+Please include the following information when informing the app user about the test:
 
 * Tell the app user to hold their phone straight in front of their face
 * Tell the app user to follow the green dot with their eyes during the test
