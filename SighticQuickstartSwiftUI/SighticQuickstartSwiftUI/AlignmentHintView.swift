@@ -103,7 +103,7 @@ struct AlignmentHintLabel: View {
 
 struct StatusView_Previews: PreviewProvider {
     static func createSighticStatus() -> SighticStatus {
-        let sighticHeadTilt: SighticHeadTilt = .Down
+        let sighticHeadTilt: SighticHeadTilt = .down
         let sighticAlignmentStatus: SighticAlignmentStatus = .headTilted(sighticHeadTilt)
         let sighticStatus: SighticStatus = .align(sighticAlignmentStatus)
         return sighticStatus

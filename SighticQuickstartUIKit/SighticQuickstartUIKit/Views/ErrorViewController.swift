@@ -91,19 +91,21 @@ extension SighticRecordingError {
                 return ""
             case let .headTilted(tilt):
                 switch tilt {
-                case .Up:
+                case .up:
                     return "the user looked up"
-                case .Down:
+                case .down:
                     return "the user looked down"
-                case .Left:
+                case .left:
                     return "the user looked left"
-                case .Right:
+                case .right:
                     return "the user looked right"
-                case .NoTilt:
+                case .none:
                     return ""
                 @unknown default:
                     return ""
                 }
+            case .notPortraitOrientation:
+                return "the phone was not held in portrain orientation"
             @unknown default:
                 return ""
             }
@@ -111,6 +113,10 @@ extension SighticRecordingError {
             return "the phone is too warm"
         case .talking:
             return "the user was talking during the test"
+        case .deviceStationary:
+            return "the phone appears to be stationary"
+        case .noCameraPermission:
+            return "access to the camera was denied"
         @unknown default:
             return ""
         }
