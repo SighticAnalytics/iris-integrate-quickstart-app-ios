@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ struct ResultView: View {
         let text = "hasImpairment = \(inference.hasImpairment)"
         return text
     }
-    
+
     var body: some View {
         switch appState {
         case .result(let sighticInference):

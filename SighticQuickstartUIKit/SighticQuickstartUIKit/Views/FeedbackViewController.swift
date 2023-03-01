@@ -1,12 +1,11 @@
 //
-//  Copyright © 2023 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
 import SighticAnalytics
 
 class FeedbackViewController: UIViewController {
-
     let feedbackForm: UIQuickstartTextView
     var agreeWithResult: Bool = true
 

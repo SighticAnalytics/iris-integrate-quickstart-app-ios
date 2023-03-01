@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
@@ -28,7 +28,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         view.addSubview(sv)
         NSLayoutConstraint.activate([
             sv.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -63,7 +63,7 @@ class StartViewController: UIViewController {
         let spacer4 = UIQuickstartSpacer()
         let deviceSupportTitle = UIQuickstartBody(text: "Device model support?")
         let spacer5 = UIQuickstartSpacer()
-        
+
         // Title and SDK version
         sv.addArrangedSubview(title)
         sv.addArrangedSubview(sdkVersion)
@@ -101,7 +101,7 @@ class StartViewController: UIViewController {
 
         loadDeviceSupport()
     }
-    
+
     func loadDeviceSupport() {
         Task {
             guard let device = try? await isDeviceModelSupported() else {
@@ -117,7 +117,7 @@ class StartViewController: UIViewController {
             }
         }
     }
-    
+
     func goToTest() {
         Task {
             model.appState = .test(sighticInferenceViewConfiguration)
@@ -127,8 +127,7 @@ class StartViewController: UIViewController {
     func isDeviceModelSupported() async throws -> SighticSupportedDevices {
         do {
             return try await SighticSupportedDevices()
-        }
-        catch {
+        } catch {
             print("Error while checking for supprted devices: \(error)")
             throw error
         }

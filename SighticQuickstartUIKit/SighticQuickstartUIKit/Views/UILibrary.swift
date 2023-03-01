@@ -1,5 +1,5 @@
 //
-//  Copyright © 2023 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
@@ -357,7 +357,7 @@ class UIQuickstartSwitch: UIStackView {
         super.init(frame: frame)
         fatalError("init(frame:) has not been implemented")
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

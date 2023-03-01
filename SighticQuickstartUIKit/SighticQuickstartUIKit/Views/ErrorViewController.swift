@@ -1,5 +1,5 @@
 //
-//  Copyright © 2022 Sightic Analytics AB All rights reserved.
+// Copyright © 2022-2023 Sightic Analytics AB. All rights reserved.
 //
 
 import UIKit
@@ -49,7 +49,7 @@ class ErrorViewController: UIViewController {
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor)
         ])
     }
-    
+
     func createFailView(_ recordingError: SighticRecordingError) -> UIView {
         let label = UIQuickstartBody(text: "Test failed because \(recordingError.reasonString).")
         label.textColor = .red
