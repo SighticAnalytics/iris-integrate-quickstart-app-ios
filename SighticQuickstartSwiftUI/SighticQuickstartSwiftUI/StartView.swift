@@ -82,7 +82,9 @@ struct StartView: View {
     
     func goToTest() {
         Task {
-            await checkDeviceModel()
+            if deviceSupport == nil {
+                await checkDeviceModel()
+            }
                         
             if deviceSupport?.isCurrentSupported == false {
                 guard runAnyway else {
