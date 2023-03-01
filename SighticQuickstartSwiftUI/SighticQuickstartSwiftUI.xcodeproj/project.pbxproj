@@ -418,7 +418,7 @@
 			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios/";
 			requirement = {
 				kind = exactVersion;
-				version = 0.5.0;
+				version = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
