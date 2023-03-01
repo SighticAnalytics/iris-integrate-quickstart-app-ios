@@ -49,16 +49,14 @@ struct FeedbackView: View {
                     .border(.black)
                     .padding()
                     .frame(height: 150)
-                Button(action: {
-                    Task {
-                        await sendFeedback()
-                    }
-                }, label: { Text("Send feedback") })
-                    .padding()
-                Button(action: {
-                        appState = .start
-                }, label: { Text("Skip feedback") })
-                    .padding()
+                Button("Send feedback") {
+                    Task { await sendFeedback() }
+                }
+                .padding()
+                Button("Skip feedback") {
+                    appState = .start
+                }
+                .padding()
                 Spacer()
             }
             .alert("Send failed", isPresented: $showAlert, actions: {

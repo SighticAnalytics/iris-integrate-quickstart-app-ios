@@ -9,8 +9,7 @@ struct ResultView: View {
     @Binding var appState: AppState
 
     func generateResultText(_ inference: SighticInference) -> String {
-        let text = "hasImpairment = \(inference.hasImpairment)"
-        return text
+        "hasImpairment = \(inference.hasImpairment)"
     }
 
     var body: some View {
@@ -26,9 +25,9 @@ struct ResultView: View {
                     .padding()
                 Text(generateResultText(sighticInference))
                     .padding()
-                Button(action: {
+                Button("Go to feedback") {
                     appState = .feedback(sighticInference)
-                }, label: { Text("Go to feedback") })
+                }
                 Spacer()
             }
         default:

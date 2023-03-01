@@ -9,8 +9,7 @@ struct ErrorView: View {
     @Binding var appState: AppState
 
     func generateErrorText(error: SighticError) -> String {
-        let text = "SighticError: \(error.localizedDescription)"
-        return text
+        "SighticError: \(error.localizedDescription)"
     }
 
     var body: some View {
@@ -32,10 +31,9 @@ struct ErrorView: View {
                         .foregroundColor(.red)
                         .padding()
                 }
-                Button(action: {
-                        appState = .start
-                },
-                       label: { Text("Go to start") })
+                Button("Go to start") {
+                    appState = .start
+                }
                 Spacer()
             }
         default:

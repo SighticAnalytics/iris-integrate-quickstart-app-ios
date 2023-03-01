@@ -83,9 +83,8 @@ struct AlignmentHintLabel: View {
         case .instruction, .countdown, .test:
             return nil
         @unknown default:
-            break
+            return nil
         }
-        return nil
     }
 
     var body: some View {
