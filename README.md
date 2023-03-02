@@ -42,8 +42,8 @@ The SDK provides a view named `SighticInferenceView` that you must add to your a
 2. **Alignment screen**<br>The purpose of the alignment view is to make sure the face of the app user is positioned correctly in front of the screen. `SighticInferenceView` presents an alignment view with a face mesh to provide the app user with visual clues on how to position her device and face. The app can subscribe to alignment status updates from the SDK by providing a closure. The app should use the alignment status updates to show hints and a countdown as overlays on the `SighticInferenceView`. The QuickStart app shows an example of how to do this.
 3. **Test screen**<br>A green moving dot is presented to the app user during the test phase. The app user must follow the dot with her eyes. The test sequence has a duration of about 25 seconds.
 4. **Recording object**<br>The `SighticInferenceView` provides the app with the recorded data. The app sends the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
-6. **Result object**<br>The app will receive a boolean value back from the Sightic Analytics server that contains the result of the analysis.
-7. **Feedback**<br>The app can optionally collect feedback from the user whether she deems the result correct and send this information to Sightic Analytics. The information is used by Sightic Analytics to improve our model.
+5. **Result object**<br>The app will receive a boolean value back from the Sightic Analytics server that contains the result of the analysis.
+6. **Feedback**<br>The app can optionally collect feedback from the user whether she deems the result correct and send this information to Sightic Analytics. The information is used by Sightic Analytics to improve our model.
 
 ![SDK phases](images/sdk-overview-phases.png)
 
@@ -85,11 +85,11 @@ Another option is to set the camera usage description in your build settings if 
 ### Add the SighticInferenceView
 
 1. Add the SwiftUI view `SighticInferenceView` somewhere in your app. You must let the view occupy the **whole** screen.
-1. The `SighticInferenceView` requires:
+2. The `SighticInferenceView` requires:
    * An API key
    * A bool stating whether to show instructions to the app user.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
-1. The app should provide a closure to receive `SighticStatus` updates. The updates should be used by the app to add alignment hints as overlays on the alignment screen below.
+3. The app should provide a closure to receive `SighticStatus` updates. The updates should be used by the app to add alignment hints as overlays on the alignment screen below.
 
 ### SighticInferenceView shows instruction screens
 
@@ -144,24 +144,24 @@ A green moving dot is presented during the test phase. The app user is supposed 
 ### App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView
 
 1. The `SighticInferenceView` triggers the completion handler back to the app to indicate that the recording has finished.
-1. The app receives a `SighticInferenceRecordingResult` object through the callback.
-1. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`.
+2. The app receives a `SighticInferenceRecordingResult` object through the callback.
+3. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`.
 
 ### App makes a peformInference request on the SighticInferenceRecording
 
 1. `SighticInferenceRecording` implements a function named `performInference(allowToSave: Bool)`.
-1. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
-1. By setting the parameter `allowToSave` to `true`, you can give the server permission to save the inference input data. This can then be used to improve the application. Most importantly, the inference input data is anonymized and does not contain any personal information, nor can it be used to identify a real person, or the device that was used to collect the data.
-1. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
-1. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
-1. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
+2. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
+3. By setting the parameter `allowToSave` to `true`, you can give the server permission to save the inference input data. This can then be used to improve the application. Most importantly, the inference input data is anonymized and does not contain any personal information, nor can it be used to identify a real person, or the device that was used to collect the data.
+4. `performInference` is an async function and will return a `SighticInferenceResult` object when done.
+5. `SighticInferenceResult` is a result type that contains either a `SighticInference` or a `SighticError`.
+6. The `SighticInference` object contains a `bool` property named `hasImpairment` that can be used by the app to present the result.
 
 ![Call graph - perform inference](images/call-graph-perform-inference.png)
 
 ### App optionally sends feedback to Sightic Analytics regarding result
 
 1. `SighticInference` implements a function named `sendFeedback`.
-1. The app can optionally call `sendFeedback` to provide `Sightic Analytics` with feedback regarding the inference result.
+2. The app can optionally call `sendFeedback` to provide `Sightic Analytics` with feedback regarding the inference result.
 
 ## How to use SighticStatus optionally provided by the SDK
 
@@ -244,16 +244,16 @@ You must provide an API key to the SDK in order to run the QuickStart apps succe
 The steps below use names from the SwiftUI variant.
 
 1. Open `SighticQuickstartSwiftUI/SighticQuickstartSwiftUI.xcodeproj` with Xcode.
-1. Navigate to the Signing and Capabilites pane for the `SighticQuickstartSwiftUI` target.
-1. Change _team_ to your team.
-1. Change _Bundle identifier_ to something unique.
-1. Check _Automatically manage signing_.
+2. Navigate to the Signing and Capabilities pane for the `SighticQuickstartSwiftUI` target.
+3. Change _team_ to your team.
+4. Change _Bundle identifier_ to something unique.
+5. Check _Automatically manage signing_.
 
 ## Run app
 
 1. Select the _SighticQuickstartSwiftUI_ or _SighticQuickstartUIKit_ scheme in Xcode depending on what variant you are running.
-1. Select a Simulator or Device as destination. Please observe that the test can only be run on a device. A replacement view will be instead of the test by the SDK when running on a simulator so that the flow of the app can be tested.
-1. Run `⌘R` the app.
+2. Select a Simulator or Device as destination. Please observe that the test can only be run on a device. A replacement view will be instead of the test by the SDK when running on a simulator so that the flow of the app can be tested.
+3. Run `⌘R` the app.
 
 ## App flow
 
@@ -274,9 +274,9 @@ The `TestViewController` is a container for the `SighticInferenceView`. The `Sig
 
 1. Shows an instruction view to the user.<br>
    ![Instruction view](images/instruction-view.png)
-1. The next step is an alignment screen to help the user position the phone and their head correctly. The QuickStart app overlays the default alignment screen with alignment hints and a countdown using information in the `SighticStatus` closure.<br>
+2. The next step is an alignment screen to help the user position the phone and their head correctly. The QuickStart app overlays the default alignment screen with alignment hints and a countdown using information in the `SighticStatus` closure.<br>
    ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
-1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
+3. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
   ![Test in progress view - Moving dot](images/test-view.png)
 
 The `SighticInferenceView` triggers a callback to the app to indicate that the recording has finished. The app receives a `SighticInferenceRecordingResult` object through the callback. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`. `SighticInferenceRecording` implements a function named `performInference`. The app shall call the `performInference` method to send the recorded data to the Sightic Analytics server for analysis. The data sent to server contains features extracted from the face of the app user. The data does not contain a video stream that can be used to identify the user.
@@ -311,15 +311,15 @@ You can add the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/
 
 1. Remove `SighticAnalytics` Swift Package on the _Package Dependencies_ pane of the the _SighticQuickstart_ project.
    ![Remove Swift Package](images/7-xcframework-quickstart-remove-swift-package.png)
-1. Goto https://github.com/SighticAnalytics/sightic-sdk-ios/releases
-1. Scroll to the release you would like to use.
-1. Download the file `SighticAnalytics.xcframework.zip`.<br>
+2. Goto https://github.com/SighticAnalytics/sightic-sdk-ios/releases
+3. Scroll to the release you would like to use.
+4. Download the file `SighticAnalytics.xcframework.zip`.<br>
    ![Download zip file](images/8-xcframework-quickstart-app-download-xcframework-zip.png)
-1. Unpack the zip file<br>
+5. Unpack the zip file<br>
    ![Unpack zip file](images/9-xcframework-quickstart-app-unpack-xcframeowrk-zip.png)
-1. Drag `SighticAnalytics.xcframework` into your app projext in Xcode.<br>
+6. Drag `SighticAnalytics.xcframework` into your app projext in Xcode.<br>
    ![Copy xcframework to Xcode project](images/10-xcframework-quickstart-app-drag-xcframework-to-app.png)
-1. Add `SighticAnalytics` as a framework in the General pane of the `SighticQuickstartUIKit` target.<br>
+7. Add `SighticAnalytics` as a framework in the General pane of the `SighticQuickstartUIKit` target.<br>
    ![Add xcframework as Framework in Xcode](images/11-xcframework-quickstart-app-add-xcframework-as-dependency.png)
 
 ## How to update table of contents for this README
