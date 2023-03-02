@@ -1,6 +1,39 @@
-# QuickStart app for the Sightic Analytics iOS SDK
+# QuickStart app for the Sightic Analytics iOS SDK<!-- omit from toc -->
 
 The purpose of this app is to show developers how to integrate the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) in their project.
+
+## Contents<!-- omit from toc -->
+
+- [SDK Overview](#sdk-overview)
+- [SDK Requirements](#sdk-requirements)
+- [SDK API key](#sdk-api-key)
+- [How to use the SDK in your app](#how-to-use-the-sdk-in-your-app)
+  - [Add Swift package](#add-swift-package)
+  - [Camera usage description](#camera-usage-description)
+  - [Add the SighticInferenceView](#add-the-sighticinferenceview)
+  - [SighticInferenceView shows instruction screens](#sighticinferenceview-shows-instruction-screens)
+  - [SighticInferenceView shows alignment screen](#sighticinferenceview-shows-alignment-screen)
+  - [SighticInferenceView shows test screen](#sighticinferenceview-shows-test-screen)
+  - [App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView](#app-receives-a-sighticinferencerecordingresult-in-completion-handler-from-sighticinferenceview)
+  - [App makes a peformInference request on the SighticInferenceRecording](#app-makes-a-peforminference-request-on-the-sighticinferencerecording)
+  - [App optionally sends feedback to Sightic Analytics regarding result](#app-optionally-sends-feedback-to-sightic-analytics-regarding-result)
+- [How to use SighticStatus optionally provided by the SDK](#how-to-use-sighticstatus-optionally-provided-by-the-sdk)
+- [Translations using custom strings](#translations-using-custom-strings)
+  - [Providing strings to the SDK](#providing-strings-to-the-sdk)
+- [How to check if my device is supported](#how-to-check-if-my-device-is-supported)
+- [App overview](#app-overview)
+- [SDK API key in the QuickStart apps](#sdk-api-key-in-the-quickstart-apps)
+- [Configure signing](#configure-signing)
+- [Run app](#run-app)
+- [App flow](#app-flow)
+  - [StartViewController](#startviewcontroller)
+  - [TestViewController](#testviewcontroller)
+  - [WaitingViewController](#waitingviewcontroller)
+  - [ResultViewController](#resultviewcontroller)
+  - [ErrorViewController](#errorviewcontroller)
+  - [FeedbackViewController](#feedbackviewcontroller)
+- [Add SDK as xcframework instead of Swift Package](#add-sdk-as-xcframework-instead-of-swift-package)
+- [How to update table of contents for this README](#how-to-update-table-of-contents-for-this-readme)
 
 ## SDK Overview
 
@@ -288,3 +321,7 @@ You can add the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/
    ![Copy xcframework to Xcode project](images/10-xcframework-quickstart-app-drag-xcframework-to-app.png)
 1. Add `SighticAnalytics` as a framework in the General pane of the `SighticQuickstartUIKit` target.<br>
    ![Add xcframework as Framework in Xcode](images/11-xcframework-quickstart-app-add-xcframework-as-dependency.png)
+
+## How to update table of contents for this README
+
+The extension [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) for [VSCode](https://code.visualstudio.com/) can [generate a table of contents](https://github.com/yzhang-gh/vscode-markdown#table-of-contents).
