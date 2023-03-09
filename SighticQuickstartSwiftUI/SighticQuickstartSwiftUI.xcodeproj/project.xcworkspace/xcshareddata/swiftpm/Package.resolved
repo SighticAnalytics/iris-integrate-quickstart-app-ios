@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SighticAnalytics/sightic-sdk-ios/",
       "state" : {
-        "revision" : "417056f1d6bfbb261154070e99532d9953cdd61f",
-        "version" : "1.0.0"
+        "revision" : "c110c75d0f6a68c25f9f9f3c8377b52d4fe271b9",
+        "version" : "1.1.0"
       }
     }
   ],
