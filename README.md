@@ -18,6 +18,7 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
   - [App makes a peformInference request on the SighticInferenceRecording](#app-makes-a-peforminference-request-on-the-sighticinferencerecording)
   - [App optionally sends feedback to Sightic Analytics regarding result](#app-optionally-sends-feedback-to-sightic-analytics-regarding-result)
 - [How to use SighticStatus optionally provided by the SDK](#how-to-use-sighticstatus-optionally-provided-by-the-sdk)
+- [How to optionally let app users try out the test without sending it for analysis](#how-to-optionally-let-app-users-try-out-the-test-without-sending-it-for-analysis)
 - [Translations using custom strings](#translations-using-custom-strings)
   - [Providing strings to the SDK](#providing-strings-to-the-sdk)
 - [How to check if my device is supported](#how-to-check-if-my-device-is-supported)
@@ -166,6 +167,12 @@ A green moving dot is presented during the test phase. The app user is supposed 
 ## How to use SighticStatus optionally provided by the SDK
 
 The SDK can optionally provide `SighticStatus` information to make it possible for the app to create its own alignment screen. `SighticStatus` is an enum that contains `SighticAlignmentStatus`. It also shows when countdown is ongoing and when the test itself has started. The app must remove its alignment overlay when the test starts.
+
+## How to optionally let app users try out the test without sending it for analysis
+
+You can let your app users try out the Sightic Analytics test without sending the recording for analysis to the Sightic backend. One possibility is to let new app users do this. To make them familiar with how the test works.
+
+Follow the instructions in section [How to use the SDK in your app](#how-to-use-the-sdk-in-your-app) but skip the steps starting from section [App makes a peformInference request on the SighticInferenceRecording](#app-makes-a-peforminference-request-on-the-sighticinferencerecording) to do this.
 
 ## Translations using custom strings
 
