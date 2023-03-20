@@ -7,7 +7,7 @@ import SighticAnalytics
 
 struct ContentView: View {
     @State var appState: AppState = .start
-    @AppStorage("allowToSave") var allowToSave = false
+    @AppStorage("allowToSave") var allowToSave = true
 
     var body: some View {
         switch appState {
