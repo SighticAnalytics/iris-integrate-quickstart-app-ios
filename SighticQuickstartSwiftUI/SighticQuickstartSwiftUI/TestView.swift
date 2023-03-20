@@ -14,6 +14,7 @@ struct TestView: View {
         ZStack {
             SighticInferenceView(apiKey: SighticQuickstartSwiftUI.apiKey,
                                  showInstructions: sighticInferenceViewConfiguration.showInstructions,
+                                 includeFakeTest: true,
                                  statusCallback: self.handleSighticStatus,
                                  completion: self.handleResult)
             if shallShowAlignmentHintView() {
@@ -65,7 +66,7 @@ struct TestView: View {
         switch sighticStatus {
         case .align, .countdown:
             return true
-        case .instruction, .test:
+        case .instruction, .fakeTest, .test:
             return false
         @unknown default:
             return false

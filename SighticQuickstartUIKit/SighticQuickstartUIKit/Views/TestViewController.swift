@@ -35,6 +35,7 @@ class TestViewController: UIViewController {
         let sighticView =
         SighticInferenceView(apiKey: AppDelegate.apiKey,
                              showInstructions: sighticInferenceViewConfiguration.showInstructions,
+                             includeFakeTest: true,
                              statusCallback: self.handleSighticStatus,
                              completion: self.handleResult)
 
@@ -116,7 +117,7 @@ class TestViewController: UIViewController {
         switch sighticStatus {
         case .align, .countdown:
             return true
-        case .instruction, .test:
+        case .instruction, .fakeTest, .test:
             return false
         @unknown default:
             return false

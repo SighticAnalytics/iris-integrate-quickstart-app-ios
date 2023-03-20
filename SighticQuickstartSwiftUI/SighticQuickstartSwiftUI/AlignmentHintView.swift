@@ -12,7 +12,7 @@ struct AlignmentHintView: View {
         switch sighticStatus {
         case .countdown:
             return true
-        case .test, .instruction, .align:
+        case .fakeTest, .test, .instruction, .align:
             return false
         @unknown default:
             return false
@@ -38,7 +38,7 @@ struct CountdownView: View {
         switch sighticStatus {
         case .countdown(let countdownNumber):
             return countdownNumber
-        case .test, .instruction, .align:
+        case .fakeTest, .test, .instruction, .align:
             return nil
         @unknown default:
             return nil
@@ -80,7 +80,7 @@ struct AlignmentHintLabel: View {
         switch sighticStatus {
         case .align(let sighticAlignmentStatus):
             return sighticAlignmentStatus.message
-        case .instruction, .countdown, .test:
+        case .instruction, .countdown, .fakeTest, .test:
             return nil
         @unknown default:
             return nil
