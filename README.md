@@ -15,7 +15,7 @@ The purpose of this app is to show developers how to integrate the [Sightic Anal
   - [SighticInferenceView shows alignment screen](#sighticinferenceview-shows-alignment-screen)
   - [SighticInferenceView shows test screen](#sighticinferenceview-shows-test-screen)
   - [App receives a SighticInferenceRecordingResult in completion handler from SighticInferenceView](#app-receives-a-sighticinferencerecordingresult-in-completion-handler-from-sighticinferenceview)
-  - [App makes a peformInference request on the SighticInferenceRecording](#app-makes-a-peforminference-request-on-the-sighticinferencerecording)
+  - [App makes a performInference request on the SighticInferenceRecording](#app-makes-a-performinference-request-on-the-sighticinferencerecording)
   - [App optionally sends feedback to Sightic Analytics regarding result](#app-optionally-sends-feedback-to-sightic-analytics-regarding-result)
 - [How to use SighticStatus provided by the SDK](#how-to-use-sighticstatus-provided-by-the-sdk)
 - [How to optionally let app users try out the test without sending it for analysis](#how-to-optionally-let-app-users-try-out-the-test-without-sending-it-for-analysis)
@@ -75,7 +75,7 @@ You can also [add the SDK as a xcframework](https://github.com/SighticAnalytics/
 
 ### Camera usage description
 
-The SDK needs access to the device's camera and thus you must add a [camera usage description](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) to your app in the [Info.plist](https://developer.apple.com/documentation/bundleresources/information_property_list/managing_your_app_s_information_property_list).
+The SDK needs access to the device's camera, thus you must add a [camera usage description](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) to your app in the [Info.plist](https://developer.apple.com/documentation/bundleresources/information_property_list/managing_your_app_s_information_property_list).
 
 Another option is to set the camera usage description in your build settings if you have enabled automatic generation of an Info.plist file ([GENERATE_INFOPLIST_FILE](https://developer.apple.com/documentation/xcode/build-settings-reference)).
 
@@ -88,7 +88,7 @@ Another option is to set the camera usage description in your build settings if 
 1. Add the SwiftUI view `SighticInferenceView` somewhere in your app. You must let the view occupy the **whole** screen.
 2. The app shall provide `SighticInferenceView` with:
    * An API key
-   * A bool named `showInstructions` stating whether to show instructionsto the app user.
+   * A bool named `showInstructions` stating whether to show instructions the app user.
    * A bool named `includeFakeTest` stating whether to show a circling dot before the real test sequence starts. The purpose is to make the app user aware that the test has started and that they should start following the moving green dot with their eyes. This part of the test is not recorded. One possibility is to only set this flag to `true` for app users doing the test for the first time. The test sequence is prolonged with approximately two seconds when this flag is set to `true`.
    * A closure to receive `SighticStatus` updates. The updates should be used by the app to add alignment hints as overlays on the alignment screen as shown below.
    * A completion handler of type `(SighticInferenceRecordingResult) -> ()`.
@@ -149,7 +149,7 @@ A green moving dot is presented during the test phase. The app user is supposed 
 2. The app receives a `SighticInferenceRecordingResult` object through the callback.
 3. `SighticInferenceRecordingResult` is a result type that is either a success containing `SighticInferenceRecording` or a failure containing a `SighticError`.
 
-### App makes a peformInference request on the SighticInferenceRecording
+### App makes a performInference request on the SighticInferenceRecording
 
 1. `SighticInferenceRecording` implements a function named `performInference(allowToSave: Bool)`.
 2. The app shall call the `performInference` method to send the recorded data to the `Sightic Analytics` server for analysis.
@@ -173,13 +173,13 @@ The SDK provides `SighticStatus` information to make it possible for the app to 
 
 You can let your app users try out the Sightic Analytics test without sending the recording for analysis to the Sightic backend. One possibility is to let new app users do this. To make them familiar with how the test works.
 
-Follow the instructions in section [How to use the SDK in your app](#how-to-use-the-sdk-in-your-app) but skip the steps starting from section [App makes a peformInference request on the SighticInferenceRecording](#app-makes-a-peforminference-request-on-the-sighticinferencerecording) to do this.
+Follow the instructions in section [How to use the SDK in your app](#how-to-use-the-sdk-in-your-app) but skip the steps starting from section [App makes a performInference request on the SighticInferenceRecording](#app-makes-a-performinference-request-on-the-sighticinferencerecording) to do this.
 
 ## Translations using custom strings
 
 A number of user-visible strings can be customized by the host application, by implementing the protocol `SighticStrings` and provide it to the `SighticInferenceView`. This could for example be used to add support for more languages. The host application is then expected to return a non-nil string for each property defined by the protocol. The protocol is documented with a brief comment of what the string is supposed to say.
 
-If a `nil` value is returned, the SDK will fallback to a default value based on the current language setting. For this to work properly it is important that the returned value is `nil`, and not any other default value.
+If a `nil` value is returned, the SDK will fall back to a default value based on the current language setting. For this to work properly it is important that the returned value is `nil`, and not any other default value.
 
 To add custom strings, do the following:
 
@@ -317,7 +317,7 @@ A feedback view is shown to give the app user the possibility to provide feedbac
 
 You can add the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) as a xcframework to your app instead of as a Swift Package:
 
-1. Remove `SighticAnalytics` Swift Package on the _Package Dependencies_ pane of the the _SighticQuickstart_ project.
+1. Remove `SighticAnalytics` Swift Package on the _Package Dependencies_ pane of the _SighticQuickstart_ project.
    ![Remove Swift Package](images/7-xcframework-quickstart-remove-swift-package.png)
 2. Goto https://github.com/SighticAnalytics/sightic-sdk-ios/releases
 3. Scroll to the release you would like to use.
@@ -325,7 +325,7 @@ You can add the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/
    ![Download zip file](images/8-xcframework-quickstart-app-download-xcframework-zip.png)
 5. Unpack the zip file<br>
    ![Unpack zip file](images/9-xcframework-quickstart-app-unpack-xcframeowrk-zip.png)
-6. Drag `SighticAnalytics.xcframework` into your app projext in Xcode.<br>
+6. Drag `SighticAnalytics.xcframework` into your app project in Xcode.<br>
    ![Copy xcframework to Xcode project](images/10-xcframework-quickstart-app-drag-xcframework-to-app.png)
 7. Add `SighticAnalytics` as a framework in the General pane of the `SighticQuickstartUIKit` target.<br>
    ![Add xcframework as Framework in Xcode](images/11-xcframework-quickstart-app-add-xcframework-as-dependency.png)
