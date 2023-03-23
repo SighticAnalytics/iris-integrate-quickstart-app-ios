@@ -86,7 +86,7 @@ The images below show what the instruction views provided by the SDK look like.
 
 ![Instruction phase - Hold phone straight](images/instruction-view-hold-phone-straight.png)
 
-![Instruction phase - Do not talk](images/instruction-view-do-not-talk.jpeg)
+![Instruction phase - Do not talk](images/instruction-view-do-not-talk.png)
 
 ![Instruction phase - Follow the dot](images/instruction-view-follow-dot.png)
 
@@ -99,7 +99,9 @@ The app shall add alignment hints and a countdown as overlays on the alignment s
 * See `AlignmentHintView` for the SwiftUI variant.
 
 ![Alignment phase - Place face in mask](images/alignment-view-place-face-in-mask.png)
+
 ![Alignment phase - Hold phone closer](images/alignment-view-hold-phone-closer.png)
+
 ![Alignment phase - Countdown](images/alignment-view-countdown.png)
 
 ### SighticInferenceView shows test screen
@@ -233,14 +235,14 @@ The `StartViewController` contains a button to go to the `TestViewController`. I
 * Whether to show the instruction screens
 * Whether to overlay the default alignment screen with another view that shows `SighticStatus` provided by the SDK in an optional closure to the app. 
 
-![Start view](images/start-view.jpeg)
+![Start view](images/start-view.png)
 
 ### TestViewController
 
 The `TestViewController` is a container for the `SighticInferenceView`. The `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
 
 1. Shows an instruction view to the user.<br>
-   ![Instruction view](images/instruction-view.png)
+   ![Instruction view](images/instruction-view-hold-phone-straight.png)
 1. The next step is an alignment screen to help the user position the phone and their head correctly. The QuickStart app overlays the default alignment screen with alignment hints and a countdown using information in the `SighticStatus` closure.<br>
    ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
 1. A dot is shown to the user while the test itself is running. The user is supposed to follow the dot with their eyes.<br>
