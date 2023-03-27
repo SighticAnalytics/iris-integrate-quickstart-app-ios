@@ -134,7 +134,9 @@ The app shall add alignment hints and a countdown as overlays on the alignment s
 * See `AlignmentHintView` for the SwiftUI variant.
 
 ![Alignment phase - Place face in mask](images/alignment-view-place-face-in-mask.png)
+
 ![Alignment phase - Hold phone closer](images/alignment-view-hold-phone-closer.png)
+
 ![Alignment phase - Countdown](images/alignment-view-countdown.png)
 
 ### SighticInferenceView shows test screen
