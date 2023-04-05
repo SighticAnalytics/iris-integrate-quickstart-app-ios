@@ -30,7 +30,7 @@ SDK documentation is available at https://sighticanalytics.github.io/sightic-sdk
 
 ## API key
 
-The SDK requires and API key:
+The SDK requires an API key:
 * `SighticQuickstartUIKit`: Add the API key to the `AppDelegate.swift`.
 * `SighticQuickstartSwiftUI`: Add the API key to `SighticQuickstartSwiftUIApp.swift`.
 
