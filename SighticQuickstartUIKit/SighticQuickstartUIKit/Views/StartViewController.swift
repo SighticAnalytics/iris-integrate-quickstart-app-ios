@@ -59,8 +59,6 @@ class StartViewController: UIViewController {
             self.goToTest()
         })
         let spacer3 = UIQuickstartSpacer()
-        let sdkSupportTitle = UIQuickstartBody(text: "SDK version support?")
-        let spacer4 = UIQuickstartSpacer()
         let deviceSupportTitle = UIQuickstartBody(text: "Device model support?")
         let spacer5 = UIQuickstartSpacer()
 
@@ -81,11 +79,6 @@ class StartViewController: UIViewController {
 
         sv.addArrangedSubview(spacer3)
 
-        // Show whether backend supports current SDK version
-        sv.addArrangedSubview(sdkSupportTitle)
-
-        sv.addArrangedSubview(spacer4)
-
         // Show whether current device is supported by the SDK
         sv.addArrangedSubview(deviceSupportTitle)
         sv.addArrangedSubview(deviceSupport)
@@ -95,7 +88,6 @@ class StartViewController: UIViewController {
         NSLayoutConstraint.activate([
             spacer3.heightAnchor.constraint(equalTo: spacer1.heightAnchor),
             spacer5.heightAnchor.constraint(equalTo: spacer1.heightAnchor),
-            spacer4.heightAnchor.constraint(equalTo: sdkSupportTitle.heightAnchor),
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor)
         ])
 
