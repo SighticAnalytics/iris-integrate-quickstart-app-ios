@@ -117,6 +117,8 @@ extension SighticRecordingError {
             return "the phone appears to be stationary"
         case .noCameraPermission:
             return "access to the camera was denied"
+        case .notFollowingTheDot:
+            return "the user was not following the dot good enough"
         @unknown default:
             return ""
         }
