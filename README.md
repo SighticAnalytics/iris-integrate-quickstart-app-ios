@@ -1,6 +1,6 @@
-# QuickStart apps for the Sightic Analytics iOS SDK<!-- omit from toc -->
+# Sightic SDK QuickStart app<!-- omit from toc -->
 
-The QuickStart apps show developers how to integrate the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios).
+The Sightic SDK QuickStart app is intended to show developers how to integrate the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios).
 
 ## Contents<!-- omit from toc -->
 
@@ -12,88 +12,135 @@ The QuickStart apps show developers how to integrate the [Sightic Analytics iOS 
 - [App flow](#app-flow)
   - [StartView](#startview)
   - [TestView](#testview)
-  - [WaitingView](#waitingview)
+  - [InferenceView](#inferenceview)
   - [ResultView](#resultview)
-  - [ErrorView](#errorview)
   - [FeedbackView](#feedbackview)
+  - [ErrorView](#errorview)
 
 ## Overview
 
-* There is one QuickStart app for [UIKit](https://developer.apple.com/documentation/uikit) based apps in the folder `SighticQuickstartUIKit`.
-* There is one QuickStart app for [SwiftUI](https://developer.apple.com/documentation/swiftui/) based apps in the folder `SighticQuickstartSwiftUI`.
-* The deployment target is set to iOS 15.
-* The QuickStart apps add [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) as a Swift Package.
+* The QuickStart app is written in Swift/SwiftUI.
+* It adds the [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) as a Swift Package Manager dependency.
 
 ## SDK documentation
 
-SDK documentation is available at https://sighticanalytics.github.io/sightic-sdk-ios/documentation/sighticanalytics/. [Add to your app](https://sighticanalytics.github.io/sightic-sdk-ios/documentation/sighticanalytics/addtoapp) shows how to integrate the SDK.
+* SDK documentation is [available here](https://sighticanalytics.github.io/sightic-sdk-ios/documentation/sighticanalytics/).
+* The [Integrating with Your App](https://sighticanalytics.github.io/sightic-sdk-ios/documentation/sighticanalytics/integrating) page explains in more detail how to integrate the SDK.
 
 ## API key
 
-The SDK requires an API key:
-* `SighticQuickstartUIKit`: Add the API key to the `AppDelegate.swift`.
-* `SighticQuickstartSwiftUI`: Add the API key to `SighticQuickstartSwiftUIApp.swift`.
+* The SDK requires an API key.
+* Add your API key in the `@main` entry point in `SighticQuickstart.swift`.
 
 ## App signing
 
-1. Open `SighticQuickstartSwiftUI/SighticQuickstartSwiftUI.xcodeproj` or `SighticQuickstartUIKit/SighticQuickstartUIKit.xcodeproj` in Xcode.
-2. Navigate to the Signing and Capabilities pane for the `SighticQuickstartSwiftUI` or `SighticQuickstartUIKit` target.
+1. Open `SighticQuickstart.xcodeproj` in Xcode.
+2. Navigate to the Signing and Capabilities tab for the `SighticQuickstart` target.
 3. Change _team_ to your team.
 4. Change _Bundle identifier_ to something unique.
 5. Check _Automatically manage signing_.
 
 ## Run app
 
-1. Select the _SighticQuickstartSwiftUI_ or _SighticQuickstartUIKit_ scheme in Xcode.
-2. Select a device as destination. The test cannot be run on a simulator.
+1. Open `SighticQuickstart.xcodeproj` in Xcode.
+2. Select a device as destination. Please note that the Sightic test does not run on an iOS Simulator.
 3. Run `⌘R` the app.
 
 ## App flow
 
-The SwiftUI and UIKit Quickstart apps have similar flow. The screenshots below are from the SwiftUI variant.
+The following sections describe the [Sightic Analytics user interface flow](https://sighticanalytics.github.io/sightic-sdk-ios/documentation/sighticanalytics/phases/) as implemented by the QuickStart app. 
 
 ### StartView
 
-The `StartView` contains a button to go to the `TestView`. It also allows you to configure `SighticInferenceView`:
+`StartView` contains a button to go to the `TestView`. It also allows you to configure properties passed into `SighticView` in `TestView`:
 
 * Whether to show the instructions.
 * Whether to allow the server to save data from the test. The data sent to server contains facial features of the app user. It does not contain a video that can identify the user.
 
-![Start view](images/start-view.png)
+![StartView](images/startview.png)
 
 ### TestView
 
-The `TestView` is a container for `SighticInferenceView`. `SighticInferenceView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and performs the following phases:
+`TestView` is a container for `SighticView`. `SighticView` is part of [Sightic Analytics iOS SDK](https://github.com/SighticAnalytics/sightic-sdk-ios) and flows through the following phases:
 
-1. Shows instructions.<br>
-   ![Instruction view](images/instruction-view-hold-phone-straight.png)
-2. Shows alignment view to help the user position the phone and head. The QuickStart app overlays the view with alignment hints and a countdown using information in the `SighticStatus` closure.<br>
-   ![Test in progress view - Positioning camera](images/alignment-view-hold-phone-closer.png)
-3. A dot is visible while the test itself is running. The user follows the dot with their eyes.<br>
-  ![Test in progress view - Moving dot](images/test-view.png)
+1. Alignment: A view that helps the user achieve the correct positioning of their phone and head.<br>
+   ![TestView - Alignment](images/testview-alignment.png)
+2. Test: A view that displays an animated dot that the user should follow with their eyes.<br>
+  ![TestView - Test](images/testview-test.png)
 
-The `SighticInferenceView` triggers a callback with `SighticInferenceRecordingResult` to the app when the recording has finished. `SighticInferenceRecordingResult` contains `SighticInferenceRecording` or `SighticError`. `SighticInferenceRecording` implements the `performInference` function. Call `performInference` to send anonymized data to the Sightic Analytics server for analysis.
+When the test has finished `SighticView` calls the completion handler with a [`Result`]([https:://todo](https://developer.apple.com/documentation/swift/result)) value containing either `SighticRecording` or `SighticRecordingError`. These are passed to `InferenceView` and `ErrorView` respectively.
 
-### WaitingView
+```swift
+SighticView( ... ) { result in
+    switch result {
+    case .success(let recording):
+        // Use recording.performInference() to send the recording for analysis
+    case .failure(let error):
+        // Use error to present that something went wrong
+    }
+}
+```
 
-The analysis by the Sightic server takes a couple of seconds. The QuickStart app shows `WaitingView` to inform the app user about the status.
+### InferenceView
 
-![Waiting for analysis view](images/waiting-view.png)
+`InferenceView` takes a `SighticRecording` and sends it for analysis to the Sightic backend. Again, a `Result` value is returned, this time containing either `SighticInference` or `SighticError`. These are passed on to `ResultView` and `ErrorView` respectively.
+
+```swift
+let recording: SighticRecording
+
+switch await recording.performInference( ... ) {
+case .success(let inference):
+    // Use inference to present test results
+case .failure(let error):
+    // Use error to present that something went wrong
+}
+```
+
+![InferenceView](images/inferenceview.png)
 
 ### ResultView
 
-`performInference` is an async function and returns `SighticInferenceResult`. `SighticInferenceResult` contains `SighticInference` or `SighticError`. `SighticInference` contains a `bool` named `hasImpairment` with the result. The QuickStart app shows the value of `hasImpairment`.
+`ResultView` displays the result contained in `SighticInference`. It optionally allows the user to open `FeedbackView` or return to `StartView`
 
-![Result view](images/result-view.png)
+The SighticInference value contains the inference result in the `hasImpairment: Bool` property.
 
-### ErrorView
+```swift
+let inference: SighticInference
 
-The test is aborted if something goes wrong.
+Text(inference.hasImpairment
+    ? "The test result is positive."
+    : "The test result is negative."
+)
+```
 
-![Error view](images/error-view.png)
+![ResultView](images/resultview.png)
 
 ### FeedbackView
 
-The SDK accepts free text and a boolean for user feedback.
+The `SighticInference` value also contains a `sendFeedback` function for sending feedback on the inference result to Sightic Analytics. This view is presented if the user opted to send feedback in `ResultView`. 
 
-![Feedback view](images/feedback-view.png)
+```swift
+let inference: SighticInference
+
+do {
+    try await inference.sendFeedback(
+        isAgreeing ? .agree : .disagree,
+        comment: comment
+    )
+    // Feedback was sent successfully
+} catch {
+    // Failed to send feedback
+}
+```
+
+I
+
+![FeedbackView](images/feedbackview.png)
+
+### ErrorView
+
+This view is presented if an error occured during the test or when performing inference.
+
+![ErrorView](images/errorview.png)
+
+> Note: While charging the phone may get too hot to perform the test. This can often be the case while developing since you will usually have a cable connected for testing and debugging. In the field this is a very rare occurence.
