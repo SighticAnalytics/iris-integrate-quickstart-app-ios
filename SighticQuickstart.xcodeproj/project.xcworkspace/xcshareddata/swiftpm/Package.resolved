@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "sightic-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SighticAnalytics/sightic-sdk-ios.git",
+      "state" : {
+        "revision" : "1b3d749ce4f1cd2b2c8420d48c00c1c3c034a5a8",
+        "version" : "2.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
