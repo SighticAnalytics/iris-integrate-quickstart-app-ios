@@ -2,13 +2,13 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
 /// Initial view.
 ///
 /// The start view implements logic to check if the current device is compatible
-/// with Sightic SDK using the `SighticSupportedDevices.status` property.
+/// with IRIS integrate using the `SighticSupportedDevices.status` property.
 struct StartView: View {
     @Binding var screen: Screen
 
@@ -20,8 +20,8 @@ struct StartView: View {
     var body: some View {
         VStack {
             Header(
-                title: "Sightic Quickstart",
-                subtitle: "SDK version: \(SighticVersion.sdkVersion)"
+                title: "IRIS integrate Quickstart",
+                subtitle: "IRIS integrate version: \(SighticVersion.sdkVersion)"
             )
 
             Spacer()
@@ -32,26 +32,26 @@ struct StartView: View {
                 ProgressView().controlSize(.extraLarge)
 
             case .supported:
-                HugeButton("Start test") {
-                    startTest()
+                HugeButton("Start scan") {
+                    startScan()
                 }
 
             case .networkError:
                 Text("There seems to be a network error")
 
             case .unsupported:
-                Text("Device not supported by Sightic SDK 😞")
+                Text("Device not supported by the IRIS integrate framework 😞")
                     .padding()
-                Button("Start test anyway") {
-                    startTest()
+                Button("Start scan anyway") {
+                    startScan()
                 }
                 .buttonStyle(.borderedProminent)
             }
 
             Spacer()
 
-            // Show warning if SighticQuickstart.apiKey is not set
-            if SighticQuickstart.apiKey.isEmpty {
+            // Show warning if IRISintegrateQuickstart.apiKey is not set
+            if IRISintegrateQuickstart.apiKey.isEmpty {
                 TextFrame(
                     symbol: "exclamationmark.triangle",
                     title: "API key missing",
@@ -72,8 +72,8 @@ struct StartView: View {
         }
     }
 
-    private func startTest() {
-        screen = .test(
+    private func startScan() {
+        screen = .scan(
             showInstructions: showInstructions,
             allowToSave: allowToSave
         )

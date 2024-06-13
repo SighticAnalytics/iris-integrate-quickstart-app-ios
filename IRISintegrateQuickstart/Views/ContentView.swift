@@ -2,15 +2,15 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
 /// Screens possible to navigate to.
 enum Screen {
     /// Start screen.
     case start
-    /// Sightic test screen
-    case test(showInstructions: Bool, allowToSave: Bool)
+    /// Sightic scan screen
+    case scan(showInstructions: Bool, allowToSave: Bool)
     /// Send recording to Sightic backend and wait for result.
     case inference(SighticRecording, allowToSave: Bool)
     /// Display inference result.
@@ -28,8 +28,8 @@ struct ContentView: View {
         switch screen {
         case .start:
             StartView(screen: $screen)
-        case .test(let showInstructions, let allowToSave):
-            TestView(screen: $screen, showInstructions: showInstructions, allowToSave: allowToSave)
+        case .scan(let showInstructions, let allowToSave):
+            ScanView(screen: $screen, showInstructions: showInstructions, allowToSave: allowToSave)
         case .inference(let recording, let allowToSave):
             InferenceView(screen: $screen, recording: recording, allowToSave: allowToSave)
         case .result(let inference):
