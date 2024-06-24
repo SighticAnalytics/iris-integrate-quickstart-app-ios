@@ -2,7 +2,7 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
 /// View that presents a UI for providing feedback on the inference result.
@@ -70,15 +70,16 @@ struct FeedbackView: View {
         )
     }
 
+    @MainActor
     private func sendFeedback() async {
         isSending = true
         defer { isSending = false }
 
         do {
-            try await inference.sendFeedback(
+            try await Task { try await inference.sendFeedback(
                 isAgreeing ? .agree : .disagree,
                 comment: comment
-            )
+            )}.value
             screen = .start
         } catch {
             showAlert = true

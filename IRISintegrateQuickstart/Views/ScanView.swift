@@ -2,18 +2,18 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
-/// View that displays the Sightic test.
-struct TestView: View {
+/// View that displays the IRIS integrate scan flow.
+struct ScanView: View {
     @Binding var screen: Screen
     let showInstructions: Bool
     let allowToSave: Bool
 
     var body: some View {
         SighticView(
-            apiKey: SighticQuickstart.apiKey,
+            apiKey: IRISintegrateQuickstart.apiKey,
             configuration: SighticConfiguration(
                 showInstructions: showInstructions,
                 sendUsageTelemetry: true
@@ -30,8 +30,8 @@ struct TestView: View {
 }
 
 #Preview {
-    TestView(
-        screen: .constant(.test(showInstructions: true, allowToSave: true)),
+    ScanView(
+        screen: .constant(.scan(showInstructions: true, allowToSave: true)),
         showInstructions: true, allowToSave: true
     )
 }

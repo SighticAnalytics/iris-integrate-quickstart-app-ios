@@ -2,7 +2,7 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
 /// View that is displayed while waiting for an inference result.
@@ -26,11 +26,14 @@ struct InferenceView: View {
             Spacer()
         }
         .task {
-            switch await recording.performInference(allowToSave: allowToSave) {
-            case .success(let inference):
-                screen = .result(inference)
-            case .failure(let error):
-                screen = .error(.sighticError(error))
+            let result = await recording.performInference(allowToSave: allowToSave)
+            Task { @MainActor in
+                switch result {
+                case .success(let inference):
+                    screen = .result(inference)
+                case .failure(let error):
+                    screen = .error(.sighticError(error))
+                }
             }
         }
     }

@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062467D32B614A1D003E7320 /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 062467D22B614A1D003E7320 /* SighticAnalytics */; };
 		06A128DE2B5924E900E9C39F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D02B5924E900E9C39F /* Error.swift */; };
-		06A128DF2B5924E900E9C39F /* SighticQuickstart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D12B5924E900E9C39F /* SighticQuickstart.swift */; };
+		06A128DF2B5924E900E9C39F /* IRISintegrateQuickstart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D12B5924E900E9C39F /* IRISintegrateQuickstart.swift */; };
 		06A128E02B5924E900E9C39F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A128D22B5924E900E9C39F /* Assets.xcassets */; };
 		06A128E12B5924E900E9C39F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A128D42B5924E900E9C39F /* Preview Assets.xcassets */; };
 		06A128E22B5924E900E9C39F /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D62B5924E900E9C39F /* StartView.swift */; };
 		06A128E32B5924E900E9C39F /* InferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D72B5924E900E9C39F /* InferenceView.swift */; };
 		06A128E42B5924E900E9C39F /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D82B5924E900E9C39F /* ResultView.swift */; };
-		06A128E52B5924E900E9C39F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D92B5924E900E9C39F /* TestView.swift */; };
+		06A128E52B5924E900E9C39F /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128D92B5924E900E9C39F /* ScanView.swift */; };
 		06A128E62B5924E900E9C39F /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DA2B5924E900E9C39F /* FeedbackView.swift */; };
 		06A128E72B5924E900E9C39F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DB2B5924E900E9C39F /* ContentView.swift */; };
 		06A128E82B5924E900E9C39F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DC2B5924E900E9C39F /* Components.swift */; };
 		06A128E92B5924E900E9C39F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DD2B5924E900E9C39F /* ErrorView.swift */; };
-		06DC7BE62B5E5C7E00DCD41E /* SighticAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 06DC7BE52B5E5C7E00DCD41E /* SighticAnalytics */; };
+		150B166F2C295A32008A9BA4 /* IRISintegrate in Frameworks */ = {isa = PBXBuildFile; productRef = 150B166E2C295A32008A9BA4 /* IRISintegrate */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,18 +37,18 @@
 
 /* Begin PBXFileReference section */
 		06A128D02B5924E900E9C39F /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		06A128D12B5924E900E9C39F /* SighticQuickstart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SighticQuickstart.swift; sourceTree = "<group>"; };
+		06A128D12B5924E900E9C39F /* IRISintegrateQuickstart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRISintegrateQuickstart.swift; sourceTree = "<group>"; };
 		06A128D22B5924E900E9C39F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06A128D42B5924E900E9C39F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		06A128D62B5924E900E9C39F /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		06A128D72B5924E900E9C39F /* InferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InferenceView.swift; sourceTree = "<group>"; };
 		06A128D82B5924E900E9C39F /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
-		06A128D92B5924E900E9C39F /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		06A128D92B5924E900E9C39F /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		06A128DA2B5924E900E9C39F /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		06A128DB2B5924E900E9C39F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		06A128DC2B5924E900E9C39F /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		06A128DD2B5924E900E9C39F /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SighticQuickstart.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15EFC97E28FD670A00E3FE5F /* IRISintegrateQuickstart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRISintegrateQuickstart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,24 +56,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06DC7BE62B5E5C7E00DCD41E /* SighticAnalytics in Frameworks */,
-				062467D32B614A1D003E7320 /* SighticAnalytics in Frameworks */,
+				150B166F2C295A32008A9BA4 /* IRISintegrate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06A128CF2B5924E900E9C39F /* SighticQuickstart */ = {
+		06A128CF2B5924E900E9C39F /* IRISintegrateQuickstart */ = {
 			isa = PBXGroup;
 			children = (
 				06A128D22B5924E900E9C39F /* Assets.xcassets */,
 				06A128D32B5924E900E9C39F /* Preview Content */,
 				06A128D52B5924E900E9C39F /* Views */,
 				06A128D02B5924E900E9C39F /* Error.swift */,
-				06A128D12B5924E900E9C39F /* SighticQuickstart.swift */,
+				06A128D12B5924E900E9C39F /* IRISintegrateQuickstart.swift */,
 			);
-			path = SighticQuickstart;
+			path = IRISintegrateQuickstart;
 			sourceTree = "<group>";
 		};
 		06A128D32B5924E900E9C39F /* Preview Content */ = {
@@ -95,7 +93,7 @@
 				06A128D72B5924E900E9C39F /* InferenceView.swift */,
 				06A128D82B5924E900E9C39F /* ResultView.swift */,
 				06A128D62B5924E900E9C39F /* StartView.swift */,
-				06A128D92B5924E900E9C39F /* TestView.swift */,
+				06A128D92B5924E900E9C39F /* ScanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,7 +101,7 @@
 		15EFC97528FD670A00E3FE5F = {
 			isa = PBXGroup;
 			children = (
-				06A128CF2B5924E900E9C39F /* SighticQuickstart */,
+				06A128CF2B5924E900E9C39F /* IRISintegrateQuickstart */,
 				15EFC97F28FD670A00E3FE5F /* Products */,
 				15EFC9C328FD7F5800E3FE5F /* Frameworks */,
 			);
@@ -112,7 +110,7 @@
 		15EFC97F28FD670A00E3FE5F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */,
+				15EFC97E28FD670A00E3FE5F /* IRISintegrateQuickstart.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,9 +125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		15EFC97D28FD670A00E3FE5F /* SighticQuickstart */ = {
+		15EFC97D28FD670A00E3FE5F /* IRISintegrateQuickstart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstart" */;
+			buildConfigurationList = 15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "IRISintegrateQuickstart" */;
 			buildPhases = (
 				15EFC97A28FD670A00E3FE5F /* Sources */,
 				15EFC97B28FD670A00E3FE5F /* Frameworks */,
@@ -140,13 +138,12 @@
 			);
 			dependencies = (
 			);
-			name = SighticQuickstart;
+			name = IRISintegrateQuickstart;
 			packageProductDependencies = (
-				06DC7BE52B5E5C7E00DCD41E /* SighticAnalytics */,
-				062467D22B614A1D003E7320 /* SighticAnalytics */,
+				150B166E2C295A32008A9BA4 /* IRISintegrate */,
 			);
 			productName = SighticsQuickstart;
-			productReference = 15EFC97E28FD670A00E3FE5F /* SighticQuickstart.app */;
+			productReference = 15EFC97E28FD670A00E3FE5F /* IRISintegrateQuickstart.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -157,14 +154,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					15EFC97D28FD670A00E3FE5F = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstart" */;
+			buildConfigurationList = 15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "IRISintegrateQuickstart" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -180,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15EFC97D28FD670A00E3FE5F /* SighticQuickstart */,
+				15EFC97D28FD670A00E3FE5F /* IRISintegrateQuickstart */,
 			);
 		};
 /* End PBXProject section */
@@ -202,10 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06A128DF2B5924E900E9C39F /* SighticQuickstart.swift in Sources */,
+				06A128DF2B5924E900E9C39F /* IRISintegrateQuickstart.swift in Sources */,
 				06A128E82B5924E900E9C39F /* Components.swift in Sources */,
 				06A128E42B5924E900E9C39F /* ResultView.swift in Sources */,
-				06A128E52B5924E900E9C39F /* TestView.swift in Sources */,
+				06A128E52B5924E900E9C39F /* ScanView.swift in Sources */,
 				06A128DE2B5924E900E9C39F /* Error.swift in Sources */,
 				06A128E22B5924E900E9C39F /* StartView.swift in Sources */,
 				06A128E92B5924E900E9C39F /* ErrorView.swift in Sources */,
@@ -222,6 +219,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -283,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -342,13 +341,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstart/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"IRISintegrateQuickstart/Preview Content\"";
 				DEVELOPMENT_TEAM = 38M74ZQGUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Sightic Quickstart";
+				INFOPLIST_KEY_CFBundleDisplayName = "IRIS integrate Quickstart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCameraUsageDescription = "The camera will be used to track the user's face during the test to detect cognitive impairment.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera will be used to track the user's face during the scan to detect cognitive impairment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -358,8 +357,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sighticanalytics.SighticQuickstart;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sightic.IRISintegrateQuickstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -381,13 +380,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SighticQuickstart/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"IRISintegrateQuickstart/Preview Content\"";
 				DEVELOPMENT_TEAM = 38M74ZQGUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Sightic Quickstart";
+				INFOPLIST_KEY_CFBundleDisplayName = "IRIS integrate Quickstart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCameraUsageDescription = "The camera will be used to track the user's face during the test to detect cognitive impairment.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera will be used to track the user's face during the scan to detect cognitive impairment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -397,8 +396,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sighticanalytics.SighticQuickstart;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sightic.IRISintegrateQuickstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -415,7 +414,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "SighticQuickstart" */ = {
+		15EFC97928FD670A00E3FE5F /* Build configuration list for PBXProject "IRISintegrateQuickstart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15EFC98A28FD670B00E3FE5F /* Debug */,
@@ -424,7 +423,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "SighticQuickstart" */ = {
+		15EFC98C28FD670B00E3FE5F /* Build configuration list for PBXNativeTarget "IRISintegrateQuickstart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15EFC98D28FD670B00E3FE5F /* Debug */,
@@ -440,21 +439,17 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				kind = exactVersion;
+				version = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		062467D22B614A1D003E7320 /* SighticAnalytics */ = {
+		150B166E2C295A32008A9BA4 /* IRISintegrate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 062467D12B614A1D003E7320 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
-			productName = SighticAnalytics;
-		};
-		06DC7BE52B5E5C7E00DCD41E /* SighticAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SighticAnalytics;
+			productName = IRISintegrate;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

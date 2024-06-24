@@ -2,7 +2,7 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 import SwiftUI
 
 /// View displaying an error received by Sightic SDK.

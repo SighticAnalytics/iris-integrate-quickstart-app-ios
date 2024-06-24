@@ -2,13 +2,12 @@
 // Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
 //
 
-import SighticAnalytics
+import IRISintegrate
 
 /// The errors we want to handle in the UI.
 ///
-/// At different points in the Sightic SDK flow we can receive errors of different types.
-///
-/// For convenience we wrap these in an enum that is an associated value on `Screen.error`.
+/// At different points in the IRIS integrate flow we can receive errors.
+/// We wrap these in an enum that is an associated value on `Screen.error`.
 enum Error {
     case sighticError(SighticError)
     case recordingError(SighticRecordingError)
@@ -44,7 +43,7 @@ extension SighticRecordingError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .interrupted:
-            "Test was interrupted."
+            "Scan was interrupted."
         case .user(let userError):
             userError.description
         case .devicePerformance:
@@ -52,7 +51,7 @@ extension SighticRecordingError: CustomStringConvertible {
         case .noCameraPermission:
             "Access to the camera was denied."
         case .cancelled:
-            "You cancelled the test."
+            "You cancelled the scan."
         case .createRecordingFailure:
             "Failed to create recording."
         case .deviceNotSupported:
