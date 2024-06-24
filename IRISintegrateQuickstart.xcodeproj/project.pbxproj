@@ -19,7 +19,7 @@
 		06A128E72B5924E900E9C39F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DB2B5924E900E9C39F /* ContentView.swift */; };
 		06A128E82B5924E900E9C39F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DC2B5924E900E9C39F /* Components.swift */; };
 		06A128E92B5924E900E9C39F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A128DD2B5924E900E9C39F /* ErrorView.swift */; };
-		150B166F2C295A32008A9BA4 /* IRISintegrate in Frameworks */ = {isa = PBXBuildFile; productRef = 150B166E2C295A32008A9BA4 /* IRISintegrate */; };
+		15269E562C29B88A008B9BCE /* IRISintegrate in Frameworks */ = {isa = PBXBuildFile; productRef = 15269E552C29B88A008B9BCE /* IRISintegrate */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				150B166F2C295A32008A9BA4 /* IRISintegrate in Frameworks */,
+				15269E562C29B88A008B9BCE /* IRISintegrate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +140,7 @@
 			);
 			name = IRISintegrateQuickstart;
 			packageProductDependencies = (
-				150B166E2C295A32008A9BA4 /* IRISintegrate */,
+				15269E552C29B88A008B9BCE /* IRISintegrate */,
 			);
 			productName = SighticsQuickstart;
 			productReference = 15EFC97E28FD670A00E3FE5F /* IRISintegrateQuickstart.app */;
@@ -171,7 +171,7 @@
 			);
 			mainGroup = 15EFC97528FD670A00E3FE5F;
 			packageReferences = (
-				062467D12B614A1D003E7320 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */,
+				15269E542C29B88A008B9BCE /* XCRemoteSwiftPackageReference "iris-integrate-ios" */,
 			);
 			productRefGroup = 15EFC97F28FD670A00E3FE5F /* Products */;
 			projectDirPath = "";
@@ -435,9 +435,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		062467D12B614A1D003E7320 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */ = {
+		15269E542C29B88A008B9BCE /* XCRemoteSwiftPackageReference "iris-integrate-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SighticAnalytics/sightic-sdk-ios.git";
+			repositoryURL = "https://github.com/SighticAnalytics/iris-integrate-ios";
 			requirement = {
 				kind = exactVersion;
 				version = 2.1.0;
@@ -446,9 +446,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		150B166E2C295A32008A9BA4 /* IRISintegrate */ = {
+		15269E552C29B88A008B9BCE /* IRISintegrate */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 062467D12B614A1D003E7320 /* XCRemoteSwiftPackageReference "sightic-sdk-ios" */;
+			package = 15269E542C29B88A008B9BCE /* XCRemoteSwiftPackageReference "iris-integrate-ios" */;
 			productName = IRISintegrate;
 		};
 /* End XCSwiftPackageProductDependency section */
