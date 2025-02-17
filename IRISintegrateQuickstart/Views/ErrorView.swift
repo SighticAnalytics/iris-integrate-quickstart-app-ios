@@ -1,5 +1,5 @@
 //
-// Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
+// Copyright © 2022-2025 Sightic Analytics AB. All rights reserved.
 //
 
 import IRISintegrate
@@ -9,11 +9,6 @@ import SwiftUI
 struct ErrorView: View {
     @Binding var screen: Screen
     let error: Error
-
-    @State var agreeWithResult: Bool = true
-    @State var feedbackText: String = ""
-    @FocusState var textEditorFocused: Bool
-    @State private var showAlert = false
 
     var body: some View {
         VStack {
@@ -37,6 +32,6 @@ struct ErrorView: View {
 #Preview {
     ErrorView(
         screen: .constant(.start),
-        error: .recordingError(.user(.headTooFarAway))
+        error: .recordingError(.user(.notFollowingDot))
     )
 }

@@ -1,13 +1,13 @@
 {
-  "originHash" : "070a5a50d90aee1f430548e951d93067e1af5210d815e1164aaa4a4b1dcf6ad8",
+  "originHash" : "c11453013299adc90fcc765057f08df009f46728311077bd42a497bba322a1fa",
   "pins" : [
     {
       "identity" : "iris-integrate-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SighticAnalytics/iris-integrate-ios",
+      "location" : "https://github.com/SighticAnalytics/iris-integrate-ios.git",
       "state" : {
-        "revision" : "77b7f0508bdfbf82a9512e6384b57f623a029310",
-        "version" : "2.1.0"
+        "revision" : "e1e7df5be575faec8ef3f4aa967559993c5b1360",
+        "version" : "3.0.0"
       }
     }
   ],
