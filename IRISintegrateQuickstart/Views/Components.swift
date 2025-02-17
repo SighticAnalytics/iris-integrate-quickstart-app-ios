@@ -1,5 +1,5 @@
 //
-// Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
+// Copyright © 2022-2025 Sightic Analytics AB. All rights reserved.
 //
 
 import SwiftUI
@@ -63,7 +63,7 @@ struct HugeButton: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.roundedRectangle(radius: .infinity))
+        .buttonBorderShape(.roundedRectangle(radius: .greatestFiniteMagnitude))
         .tint(color)
     }
 }
@@ -94,7 +94,7 @@ struct LargeButton: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.roundedRectangle(radius: .infinity))
+        .buttonBorderShape(.roundedRectangle(radius: .greatestFiniteMagnitude))
         .tint(color)
     }
 }

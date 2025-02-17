@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SighticAnalytics/iris-integrate-ios",
       "state" : {
-        "revision" : "77b7f0508bdfbf82a9512e6384b57f623a029310",
-        "version" : "2.1.0"
+        "revision" : "e1e7df5be575faec8ef3f4aa967559993c5b1360",
+        "version" : "3.0.0"
       }
     }
   ],

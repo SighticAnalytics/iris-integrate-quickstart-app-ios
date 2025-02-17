@@ -1,5 +1,5 @@
 //
-// Copyright © 2022-2024 Sightic Analytics AB. All rights reserved.
+// Copyright © 2022-2025 Sightic Analytics AB. All rights reserved.
 //
 
 import IRISintegrate
@@ -24,7 +24,7 @@ extension Error: CustomStringConvertible {
     }
 }
 
-extension SighticError: CustomStringConvertible {
+extension SighticError: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .invalidAPIKey:
@@ -39,7 +39,7 @@ extension SighticError: CustomStringConvertible {
     }
 }
 
-extension SighticRecordingError: CustomStringConvertible {
+extension SighticRecordingError: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .interrupted:
@@ -60,7 +60,7 @@ extension SighticRecordingError: CustomStringConvertible {
     }
 }
 
-extension SighticUserError: CustomStringConvertible {
+extension SighticUserError: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .eyesTooClosed:
@@ -72,7 +72,7 @@ extension SighticUserError: CustomStringConvertible {
             case .up:
                 "You looked up too much."
             case .down:
-                "You looked down too."
+                "You looked down too much."
             case .left:
                 "You looked too much to the left."
             case .right:
